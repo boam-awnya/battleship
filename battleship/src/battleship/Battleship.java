@@ -1,21 +1,57 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package battleship;
+
+
+import battleship.Game;
+
+
+
+
 
 /**
  *
- * @author Boam family
+ * @author jeremyrklein
  */
-public class Battleship {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+
+public class Battleship {
+    
+    String help = 
+              "\n\t***********************************************************************"
+            + "\n\t* Prepare to meet your worst nightmare!                               *"                            
+            + "\n\t* You will be playing against a partner. The object of the game       *"
+            + "\n\t* is to mark three adjacent squares either horizontally, vertically   *"
+            + "\n\t* with your marker before your opponent does.                         *" 
+            + "\n\t*                                                                     *"
+            + "\n\t* Good Luck!!!                                                        *"
+            + "\n\t***********************************************************************"
+            + "\n";
+
+    
+    public Battleship() {
+        
     }
     
+    
+        
+    public static void main(String[] args) {
+        Battleship battleship = new Battleship();
+        battleship.display();
+        
+        Board boardA = new Board(true);
+        boardA.display();
+        
+        Board boardB = new Board(false);
+        boardB.display();
+        
+        Game game = new Game();
+        game.displayPlayers();
+        
+        
+    }
+    
+    private void display() {
+        System.out.println(this.help);
+    }
+    
+
 }
