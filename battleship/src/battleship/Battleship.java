@@ -37,6 +37,9 @@ public class Battleship {
         Battleship battleship = new Battleship();
         battleship.display();
         
+        Menu mainMenu = new Menu();
+        mainMenu.enterName();
+        
         Board boardA = new Board(true);
         boardA.display();
         
