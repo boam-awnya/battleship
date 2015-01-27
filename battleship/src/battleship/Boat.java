@@ -20,7 +20,7 @@ public class Boat {
     
     Boat(String shipName)
     {
-        name == shipName;
+        name = shipName;
     }
 
     

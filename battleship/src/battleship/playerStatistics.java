@@ -12,7 +12,7 @@ package battleship;
 public class playerStatistics {
     
     int highScore; //displays high score and name of player
-    highScore == 0;
+ 
     
     int getScore()
     {
