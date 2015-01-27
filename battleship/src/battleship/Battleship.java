@@ -1,7 +1,7 @@
 package battleship;
 
 
-import battleship.Game;
+//import battleship.Game;
 
 
 
@@ -29,6 +29,7 @@ public class Battleship {
     
     public Battleship() {
         
+        //Emty Constructor
     }
     
     
@@ -48,6 +49,9 @@ public class Battleship {
         
         Game game = new Game();
         game.displayPlayers();
+        
+        Boat Battleship = new Boat("Battleship");
+        
         
         
     }
