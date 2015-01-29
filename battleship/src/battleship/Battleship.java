@@ -34,7 +34,8 @@ public class Battleship {
     
     
         
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         Battleship battleship = new Battleship();
         battleship.display();
         
@@ -55,7 +56,7 @@ public class Battleship {
         
         
     }
-    
+  
     private void display() {
         System.out.println(this.help);
     }
