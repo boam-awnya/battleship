@@ -5,26 +5,48 @@
  */
 package battleship;
 
+import java.awt.Point;
+
 /**
  *
  * @author jeffrysimpson
  */
 public class Board
 {
-    int rows = 5;
-    int cols = 5;
+    int rows = 10;
+    int cols = 10;
     int[][] grid = new int[rows][cols];
     String boardtype;
+    
+    public Board() {
+    }
+    
+      
+    public void clearTheBoard() {
+        // TODO
+    }
     
     
     public Board(Boolean playerBoard)
     {
         if(playerBoard)
-            boardtype = "Player";
+            boardtype = "My Board";
         else
-            boardtype = "Opponent";
+            boardtype = "Oponent's board";
                  
     }
+
+    public void occupyLocation(Player player, int row, int column) {
+        Player playerAtLocation = this.boardLocations[row][column];
+
+        if (playerAtLocation != null) { // location already occupied
+            new BattleshipError().displayError("This location is already occupied. "
+                    + "Try a different location.");
+        }
+        this.boardLocations[row][column] = player;
+    }
+
+
     
     public void display()
     {
@@ -36,4 +58,16 @@ public class Board
             System.out.println();
         }
     }
+
+    public class Location {
+
+        public int row;
+        public int column;
+        public Player player;
+
+        Location() {
+        }
+        
+    }
+
 }
