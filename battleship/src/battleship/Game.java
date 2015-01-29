@@ -9,7 +9,8 @@ package battleship;
 
 
 public class Game {
-
+     String PLAYER_A__HIT__MARKER = "X";
+     String PLAYER_A_MISS_MARKER = "O";
      String gameType;
      Player playerA;
      Player playerB;
@@ -24,6 +25,7 @@ public class Game {
 
     public Game() {
    
+        
        this.playerA = new Player();
        this.playerA.name = "Captain Bemax";
        this.playerB = new Player();
@@ -31,7 +33,58 @@ public class Game {
        
     }
 
+public Game(String gameType) {
+        this();
 
+        this.gameType = gameType;
+        this.board = new Board(10, 10);
+        
+    }
+
+
+    public void start() {
+
+        this.setPlayingOrder(playerA, playerB);
+
+        // clear the board
+        this.board.clearTheBoard();
+        this.status = Game.NEW_GAME;
+    }
+
+    public void setPlayingOrder(Player player1, Player player2) {
+
+        double randomValue = Math.random();
+
+        if (randomValue < 0.5) {
+            this.currentPlayer = player1;
+            this.otherPlayer = player2;
+        } else {
+            this.otherPlayer = player2;
+            this.currentPlayer = player1;
+        }
+
+    }
+
+    public void recordWinner() {
+        if (this.currentPlayer == this.playerA) {
+            this.winner = this.playerA;
+            this.loser = this.playerB;
+        } else {
+            this.winner = this.playerB;
+            this.loser = this.playerA;
+        }
+
+        long noWins = this.winner.getWins();
+        noWins++;
+        this.winner.setWins(noWins);
+        long noLosses = this.loser.getLosses();
+        noLosses++;
+        this.loser.setLosses(noLosses);
+
+        this.status = Game.WINNER;
+        
+    }
+    
     public void displayWinningMessage () {
         System.out.println(
              "\n\t*******************************************************************************"
