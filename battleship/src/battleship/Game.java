@@ -9,13 +9,20 @@ package battleship;
 
 
 public class Game {
-     String PLAYER_A__HIT__MARKER = "X";
-     String PLAYER_A_MISS_MARKER = "O";
+     public static final String PLAYER_A__HIT__MARKER = "X";
+     public static final String PLAYER_A_MISS_MARKER = "O";
+     public static final String PLAYER_B__HIT__MARKER = "X";
+     public static final String PLAYER_B_MISS_MARKER = "O";
+     public static final String CONTINUE = "CONTINUE";
+     public static final String NEW_GAME = "NEW_GAME";
+     public static final String PLAYING = "PLAYING"; 
+     public static final String WINNER = "WINNER"; 
+     
      String gameType;
      Player playerA;
      Player playerB;
-     //Player currentPlayer;
-     //Player otherPlayer;
+     Player currentPlayer;
+     Player otherPlayer;
      Player winner;
      Player loser;
      String status;
@@ -37,8 +44,8 @@ public Game(String gameType) {
         this();
 
         this.gameType = gameType;
-        this.board = new Board(10, 10);
-        
+        this.boardA = new Board();
+        this.boardB = new Board();
     }
 
 
@@ -47,7 +54,8 @@ public Game(String gameType) {
         this.setPlayingOrder(playerA, playerB);
 
         // clear the board
-        this.board.clearTheBoard();
+        this.boardA.clearTheBoard();
+        this.boardB.clearTheBoard();
         this.status = Game.NEW_GAME;
     }
 
