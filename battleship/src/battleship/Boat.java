@@ -7,23 +7,25 @@ package battleship;
 
 /**
  *
- * @author katiewalker
+ * @author Jeffry Simpson - BYUI CIT260 Section 03
  */
-public class Boat {
-    //Options for names
-    //Carrier (5)
-    //Battelship (4)
-    //Cruiser (3)
-    //Submarine (3)
-    //Destroyer (2)
-    String name;
-    
-    Boat(String shipName)
-    {
-        name = shipName;
-    }
+public class Boat
+{
+    int maxDamage, hitDamage=0;   //max ddamage assigned in constructor
+    String name;                   //ship name
 
+    Boat(int damage, String shipname)    //Constructor
+    {
+        this.maxDamage=damage;    //Max damage for this ship
+        this.name = shipname;       //Ship name
+    }
     
-            
-    
+    public void hit()       //function if the ship is hit
+    {
+         this.hitDamage++;
+         System.out.println("You hit my " + this.name);
+         
+         if(this.hitDamage== this.maxDamage)
+               System.out.println("You sunk my " + this.name);
+    }
 }
