@@ -51,8 +51,8 @@ public class Battleship {
         Game game = new Game();
         game.displayPlayers();
         
-        Boat Battleship = new Boat("Battleship");
-        
+        Boat myBattleship = new Boat(4, "Battleship");
+       
         
         
     }
