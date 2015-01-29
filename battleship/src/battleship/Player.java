@@ -7,18 +7,49 @@ package battleship;
 
 /**
  *
- * @author jeffrysimpson
+ * @author jeffrysimpson, awnyaboam
  */
 public class Player
 {
     String name;
     String playerType;
+    private long wins = 0;
+    private long losses = 0;
     
-    public Player()
-    {
-        
+    
+    public Player(){
         
     }
+    
+   public void setName(String name) {
+       this.name = name;
+   }
+    
+   
+    public String getPlayerType() {
+        return playerType;
+    }
+    
+    public void setPlayerType(String playerType) {
+        this.playerType = playerType;
+    }
+    
+    public long getWins() {
+        return wins;
+    }
+    
+    public void setWins(long wins) {
+        this.wins = wins;
+    }
+    
+    public long getLosses() {
+        return losses;
+    }
+    
+    public void setLosses (long losses) {
+        this.losses = losses;    
+    }
+    
     
     public void displayName()
     {
