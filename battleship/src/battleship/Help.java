@@ -7,12 +7,14 @@ package battleship;
 
 /**
  *
- * @author shatziwebster
+ * @author Shatzi-Webster
  */
 public class Help {
     
-    public void Help() {
-    System.out.println("opponent should not be looking at the screen. " +
+    
+    public void displayHelp() {
+        String help = "Thank you for asking. I'm here to help!";
+    System.out.println( help +
             "The goal of the game \n" +
             "\n" +
             "To be the first to sink the opponent’s Battleship.Rules\n" +
