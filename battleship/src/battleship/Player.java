@@ -71,32 +71,32 @@ public class Player
     
     int getGameStats(int hit, int miss)
     {
-        double totalShots,hitPercent,missPercent;   //Local Variables
+        double totalShots,hitPercent,missPercent;   //Requirement 1 - Two or more primitive Variables
         int hitOutput, missOutput;                  //Variables for typecasting
         
-        if(hit == 0 && miss == 0)   //check if both Hit and miss are zero
+        if(hit == 0 && miss == 0)   //Requirement 3 - At least one Relational operator 
         {
-            System.out.println("\nError: You can't divide by 0\n");
+            System.out.println("\nError: You can't divide by 0\n");  //Check for 0 and print error
             return -1;
         }
-        else if(hit < 0 || miss < 0) 
+        else if(hit < 0 || miss < 0)  //CHeck if Hit or miss are less than 0
         {
             System.out.println("\nError: Invalid value in \"Hit\" or \"Miss\"\n");
             return -1;
         }
         else
         {
-             totalShots = hit + miss;
+             totalShots = hit + miss;               //Requirement 2 - Two or More Mathmatical Operators
              hitPercent = hit/totalShots;
              missPercent = miss/totalShots;
              
-             hitOutput = (int) (hitPercent * 100);
+             hitOutput = (int) (hitPercent * 100);   //Requirement 4 - A type conversion using type casting
              missOutput = (int) (missPercent * 100);
             
-             
+             // Requirement 5 - at least two character escape sequences
              System.out.println("\nYou statistics:\n\tTotal shots: " + (int) totalShots + "\n\tHits:" + hit +" Percentage: " +hitOutput + "%\n\tMiss:" + miss +" Percentage: " +missOutput+"%");
                  
-            return 0;
+            return 0;  //Exit all is well
          }
         
     }
