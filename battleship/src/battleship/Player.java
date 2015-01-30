@@ -57,4 +57,49 @@ public class Player
     }
            
     
+     /*-------------------------------------------------------------------
+    Description:  Calculates Hit and Miss Percentage from Hit and Miss info
+    
+    Author(s):  Jeffry Simpson
+    Info:  Group Lesson #3 assignemnt
+    
+    input: Hit and Miss
+    Output: 0 for OK and -1 for Error
+    
+    --------------------------------------------------------------------*/
+    
+    
+    int getGameStats(int hit, int miss)
+    {
+        double totalShots,hitPercent,missPercent;   //Local Variables
+        int hitOutput, missOutput;                  //Variables for typecasting
+        
+        if(hit == 0 && miss == 0)   //check if both Hit and miss are zero
+        {
+            System.out.println("\nError: You can't divide by 0\n");
+            return -1;
+        }
+        else if(hit < 0 || miss < 0) 
+        {
+            System.out.println("\nError: Invalid value in \"Hit\" or \"Miss\"\n");
+            return -1;
+        }
+        else
+        {
+             totalShots = hit + miss;
+             hitPercent = hit/totalShots;
+             missPercent = miss/totalShots;
+             
+             hitOutput = (int) (hitPercent * 100);
+             missOutput = (int) (missPercent * 100);
+            
+             
+             System.out.println("\nYou statistics:\n\tTotal shots: " + (int) totalShots + "\n\tHits:" + hit +" Percentage: " +hitOutput + "%\n\tMiss:" + miss +" Percentage: " +missOutput+"%");
+                 
+            return 0;
+         }
+        
+    }
+   
+    
 }
