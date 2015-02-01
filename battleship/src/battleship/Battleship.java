@@ -52,6 +52,9 @@ public class Battleship {
         Game game = new Game();
         game.displayPlayers();
         
+        boardB.shipPlacement();
+        boardB.boardDisplay();
+        
         Boat myBattleship = new Boat(4, "Battleship");
        
         //Lession 3 Group assigment 
