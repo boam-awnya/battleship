@@ -40,8 +40,8 @@ public class Battleship {
         Battleship battleship = new Battleship();
         battleship.display();
         
-        Menu mainMenu = new Menu();
-        mainMenu.enterName();
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.getInput();
         
         Board boardA = new Board(true);
         boardA.display();
@@ -49,9 +49,7 @@ public class Battleship {
         Board boardB = new Board(false);
         boardB.display();
         
-        Help helpMenu = new Help();
-        helpMenu.getInput();
-        
+         
         Game game = new Game();
         game.displayPlayers();
         
