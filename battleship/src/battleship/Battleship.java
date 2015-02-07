@@ -15,7 +15,7 @@ package battleship;
 
 public class Battleship {
     
-    String help = 
+    String welcome = 
               "\n\t***********************************************************************"
             + "\n\t* Prepare to meet your worst nightmare!                               *"                            
             + "\n\t* You will be playing against a partner. The object of the game       *"
@@ -41,16 +41,22 @@ public class Battleship {
         battleship.display();
         
         Menu mainMenu = new Menu();
-        mainMenu.enterName();
-        
-        Board boardA = new Board(true);
+        mainMenu.getInput();
+    }
+    
+    
+        private void display() {
+        System.out.println(this.welcome);
+    }
+    
+    
+}   
+ /*       Board boardA = new Board(true);
         boardA.display();
         
         Board boardB = new Board(false);
         boardB.display();
         
-        Help helpMenu = new Help();
-        helpMenu.getInput();
         
         Game game = new Game();
         game.displayPlayers();
@@ -72,9 +78,6 @@ public class Battleship {
         
     }
   
-    private void display() {
-        System.out.println(this.help);
-    }
-    
 
-}
+
+}  */

@@ -7,27 +7,19 @@ package battleship;
 
 /**
  *
- * @author Shatzi-Webster
+ * @author shatziwebster
  */
 public class Shot {
-    
-    int hit;
     
     
         public Shot ()
     {
-       if (hit == 1){
-           System.out.println("You have hit my Battleship!");
+        boolean shot;
+       if (shot=true){
+           System.out.println("You have made a strike");
        }                 
-       else if (hit == 2) {
-           System.out.println("You have hit my Aircraft Carrier!");
+       else {System.out.println("You have missed");
     }
-       else if (hit == 3) {
-           System.out.println("You have hit my Submarine!");
-       }
-       else {
-           System.out.println("You have missed!");
-       }
     
     }
     

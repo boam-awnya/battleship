@@ -13,8 +13,10 @@ public class Player
 {
     String name;
     String playerType;
+    String marker;
     private long wins = 0;
     private long losses = 0;
+    
     
     
     public Player(){

@@ -77,6 +77,8 @@ public class Board
         return random.nextInt(9);
     }
     
+  
+    
     // Function to randomly place ships; placed horizontally towards the right
     // of the starting point for now...
     public void shipPlacement() {
