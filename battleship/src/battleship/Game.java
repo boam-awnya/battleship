@@ -26,8 +26,8 @@ public class Game {
      Player winner;
      Player loser;
      String status;
-     Board boardA;
-     Board boardB;
+     Board boatBoard;
+     Board shotBoard;
    
 
     public Game() {
@@ -44,8 +44,8 @@ public Game(String gameType) {
         this();
 
         this.gameType = gameType;
-        this.boardA = new Board();
-        this.boardB = new Board();
+        this.boatBoard = new Board(true);
+        this.shotBoard = new Board(false);
     }
 
 
@@ -54,8 +54,8 @@ public Game(String gameType) {
         this.setPlayingOrder(playerA, playerB);
 
         // clear the board
-        this.boardA.clearTheBoard();
-        this.boardB.clearTheBoard();
+        this.boatBoard.clearTheBoard();
+        this.shotBoard.clearTheBoard();
         this.status = Game.NEW_GAME;
     }
 
@@ -67,8 +67,8 @@ public Game(String gameType) {
             this.currentPlayer = player1;
             this.otherPlayer = player2;
         } else {
-            this.otherPlayer = player2;
-            this.currentPlayer = player1;
+            this.currentPlayer = player2;
+            this.otherPlayer = player1;
         }
 
     }
