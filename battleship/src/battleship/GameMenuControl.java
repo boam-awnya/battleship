@@ -5,14 +5,18 @@
  */
 package battleship;
 
+import java.awt.Point;
+
 /**
  *
- * @author Jeffry Simpson - BYUI CIT260 Section 03
+ * @author Jeffry Simpson, Vehikite-John - BYUI CIT260 Section 03
  */
 public class GameMenuControl
 {
     private Game game;
     private Board board;
+    private GetLocationView getLocationView;
+    private Player player;
 
     public GameMenuControl(Game game) {
         this.game = game;
@@ -26,10 +30,18 @@ public class GameMenuControl
         //this.board.shipPlacement();
     }
     
-    public void fireAShot()
+    public int fireAShot()
     {
-        new BattleshipError().displayLine("Fired a Shot");
         
+        Point location = getLocationView.getInput();
+        if (location == null) { // no location was entered?
+            return -1;
+        }
+            
+        this.game.shotBoard.occupyLocation(player, location.x, location.y);
+        new BattleshipError().displayLine("Fired a Shot");
+        return 0;
+         
     }
     
      public void displayBoard()
