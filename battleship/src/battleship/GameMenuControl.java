@@ -21,6 +21,7 @@ public class GameMenuControl
     public GameMenuControl(Game game) {
         this.game = game;
         this.board = game.boatBoard;
+        this.getLocationView = new GetLocationView(game);
     }
 
     
