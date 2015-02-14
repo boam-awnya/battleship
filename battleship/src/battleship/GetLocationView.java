@@ -28,7 +28,9 @@ public class GetLocationView {
     public Point getInput() {
 
         Scanner inFile = new Scanner(System.in); // get input file      
+        //String[] coordinates = new String[2];
         String[] coordinates;
+        
         Point location = null;
         
         boolean valid = false;
@@ -70,6 +72,14 @@ public class GetLocationView {
                 }
             }
 
+            coordinates[0] = convertRow(coordinates[0]);
+            if  (coordinates[0].equals("-1"))
+            { // wrong Row  values entered.
+                    new BattleshipError().displayError(
+                        "You must enter a letter A-J "
+                        + "or a \"Q\" to quit. Try again.");
+                    continue;
+            }
             
             // user java regular expression to check for valid integer number 
             // for both numbers
@@ -116,4 +126,31 @@ public class GetLocationView {
             
     }
 
+    /*
+    Method: convertRow
+    Owner: Jeffry Simpson
+    Descpt: Lesson 5 Individual programming assignment, Iterate through Valid
+            row values to change it to a string value representing the number
+            of the rows.
+    */
+    
+    public String convertRow(String row)
+    {
+        String findRow = "-1";  //assume error until proven otherwize
+        String rowValues[] = {"A","B","C","D","E","F","G","H","I","J"}; 
+        
+        for(int i=0;i<rowValues.length;i++)
+        {
+           if(row.toUpperCase().equals(rowValues[i]))   //If passed in string equals one of the Strings in our Grid
+           {
+                    findRow=Integer.toString(i);   //Assign the number of the Grid
+                    break;  //Leave the loop
+           }
+        }
+           
+        return findRow;  //Return what we found, or -1
+        
+    }
+    
+    
 }
