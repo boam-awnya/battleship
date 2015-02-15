@@ -72,6 +72,7 @@ public class GetLocationView {
                 }
             }
 
+            //2/14 - Add this section to convert Letters Enter for Row to num of grid.
             coordinates[0] = convertRow(coordinates[0]);
             if  (coordinates[0].equals("-1"))
             { // wrong Row  values entered.
@@ -100,8 +101,9 @@ public class GetLocationView {
             Board board = this.game.shotBoard; // get the game board
             
             // Check for invalid row and column entered
-            if (row < 1   ||  row > board.rows ||
-                column < 1  ||  column > board.cols) {
+            //2/14 Jeffry - Mondified to be < 0 not less than 1
+            if (row < 0   ||  row > board.rows ||
+                column < 0  ||  column > board.cols) {
                 new BattleshipError().displayError(
                         "Enter a valid letter A-J and number number 1-10. Try again.");
                 continue;
@@ -109,15 +111,21 @@ public class GetLocationView {
             
             // create a Point object to store the row and column coordinates in
             location = new Point(row, column);
+          
             
+ /***********    2/14 Jeffry  Commented out.  I think we should be getting the info, not checking if its valid here
+  * 
+          
             // check to see if the location entered is already occupied
             // if ( board.boardLocations[row-1][column-1].player != null ) {
+         
             if ( board.boardLocations[row-1][column-1] != null ) {
                 new BattleshipError().displayError(
                     "The current location is taken. Select another location");
                 continue;
             }
-
+*********************/   
+            
             valid = true; // a valid location was entered
 
         }
@@ -128,7 +136,8 @@ public class GetLocationView {
 
     /*
     Method: convertRow
-    Owner: Jeffry Simpson
+    Owner:  Jeffry Simpson
+    Date:   2/14/2015
     Descpt: Lesson 5 Individual programming assignment, Iterate through Valid
             row values to change it to a string value representing the number
             of the rows.

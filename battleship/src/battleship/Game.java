@@ -18,7 +18,7 @@ public class Game {
      public static final String PLAYING = "PLAYING"; 
      public static final String WINNER = "WINNER"; 
      
-     String gameType;
+     //String gameType; --  2/14 Jeffry, this is not being used anywhere
      Player playerA;
      Player playerB;
      Player currentPlayer;
@@ -37,10 +37,14 @@ public class Game {
        this.playerA.name = "Captain Bemax";
        this.playerB = new Player();
        this.playerB.name = "AI";
+       this.boatBoard = new Board(true);        //2/14 Jeffry added to remove NPE
+       this.shotBoard = new Board(false);       //2/14 Jeffry added to remove NPE
        
     }
 
-public Game(String gameType) {
+/**************   2/14 Jeffry - this is not currently being used.
+ 
+    public Game(String gameType) {
         this();
 
         this.gameType = gameType;
@@ -48,7 +52,7 @@ public Game(String gameType) {
         this.shotBoard = new Board(false);
     }
 
-
+*/
     public void start() {
 
         this.setPlayingOrder(playerA, playerB);
