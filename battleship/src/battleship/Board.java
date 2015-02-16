@@ -24,7 +24,25 @@ public class Board
     public Board() {
     }
     
-      
+    public Board(int noRows, int noColumns) {
+  
+        this.createBoardLocations(noRows, noColumns);
+    }
+    
+    public void createBoardLocations(int noRows, int noColumns) {
+        this.rows= noRows;
+        this.cols= noColumns;
+        
+        // add locations to the board
+        this.boardLocations = new Player[noRows][noColumns];
+        for (int row = 0; row < noRows; row++) { // for every row
+            // for every column in the row
+            for (int column = 0; column < noColumns; column++) { 
+                this.boardLocations[row][column] = new Player();           
+            }            
+        }   
+    }
+    
     public void clearTheBoard() {
         // TODO
     }
