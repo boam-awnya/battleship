@@ -18,7 +18,7 @@ public class Board
     int cols = 10;
     int[][] grid = new int[rows][cols];
     String boardtype;
-    private Player[][] boardLocations;
+    public Player[][] boardLocations;
     Random random = new Random();
     
     public Board() {

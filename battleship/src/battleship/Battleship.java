@@ -44,11 +44,9 @@ public class Battleship {
         mainMenu.getInput();
     }
     
-    
         private void display() {
         System.out.println(this.welcome);
     }
-    
     
 }   
  /*       Board boardA = new Board(true);
