@@ -16,10 +16,16 @@ public class Player
     String marker;
     private long wins = 0;
     private long losses = 0;
+    Board shotBoard;    //Jeffry - 2/16 added
+    Board boatBoard;    //Jeffry - 2/16 added
     
     
     
-    public Player(){
+    public Player()
+    {
+       shotBoard = new Board();    //Jeffry - 2/216 added to avoid getting NPE
+       boatBoard = new Board();    //Jeffry - 2/216 added to avoid getting NPE
+
         
     }
     

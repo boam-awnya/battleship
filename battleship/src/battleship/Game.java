@@ -26,8 +26,8 @@ public class Game {
      Player winner;
      Player loser;
      String status;
-     Board boatBoard;
-     Board shotBoard;
+     //Board boatBoard;    2/16 - Jeffry Removed to move under player
+     //Board shotBoard;   2/16 - Jeffry Removed to move under player
    
 
     public Game() {
@@ -37,8 +37,8 @@ public class Game {
        this.playerA.name = "Captain Bemax";
        this.playerB = new Player();
        this.playerB.name = "AI";
-       this.boatBoard = new Board(true);        //2/14 Jeffry added to remove NPE
-       this.shotBoard = new Board(false);       //2/14 Jeffry added to remove NPE
+     //  this.boatBoard = new Board(true);        //2-16 Jeffry remove - 2-14  added to remove NPE
+     //  this.shotBoard = new Board(false);       //2-16 Jeffry remove - 2-14  added to remove NPE
        
     }
 
@@ -53,29 +53,56 @@ public class Game {
     }
 
 */
-    public void start() {
+    public void start(int numPlayers) {
 
-        this.setPlayingOrder(playerA, playerB);
+        this.setPlayingOrder(numPlayers);   //2-16 Jeffry Added NumPlayers, removed Player1 and Player2 variables
 
-        // clear the board
-        this.boatBoard.clearTheBoard();
-        this.shotBoard.clearTheBoard();
+        // clear the board for both players  (2/16 Jeffry added Player. )
+        playerA.boatBoard.clearTheBoard();
+        playerA.shotBoard.clearTheBoard();
+        playerB.boatBoard.clearTheBoard();
+        playerB.shotBoard.clearTheBoard();
         this.status = Game.NEW_GAME;
     }
 
-    public void setPlayingOrder(Player player1, Player player2) {
+    public void setPlayingOrder(int numPlayers) {  //2-16 Jeffry Added NumPLayers, removed Player 1 and Player2 variables
 
-        double randomValue = Math.random();
-
-        if (randomValue < 0.5) {
-            this.currentPlayer = player1;
-            this.otherPlayer = player2;
-        } else {
-            this.currentPlayer = player2;
-            this.otherPlayer = player1;
+        if(numPlayers == 1)   //2-16 Jeffry -  One Player Game, Real Player always starts
+        {
+            this.currentPlayer = playerA;
+            this.otherPlayer = playerB;
+        }
+        else    // Else for two player game, randomly choose which one goes first
+        {   
+            double randomValue = Math.random();
+            
+            if (randomValue < 0.5) {
+                this.currentPlayer = playerA;
+                this.otherPlayer = playerB;
+            } else {
+                this.currentPlayer = playerB;
+                this.otherPlayer = playerA;
+            }
         }
 
     }
+    
+        /*
+    Method: SwtichPlayers
+    Owner:  Jeffry Simpson
+    Date:   2/16/2015
+    Descpt: Method to switch current and other Player.
+    */
+    public void switchPlayers()
+    {
+        Player tempPlayer;  //temp place holder
+        
+        tempPlayer = this.currentPlayer;
+        this.currentPlayer = this.otherPlayer;
+        this.otherPlayer = tempPlayer;
+        
+    }
+    
 
     public void recordWinner() {
         if (this.currentPlayer == this.playerA) {

@@ -98,7 +98,7 @@ public class GetLocationView {
             int row = Integer.parseInt(coordinates[0]);
             int column = Integer.parseInt(coordinates[1]);
                      
-            Board board = this.game.shotBoard; // get the game board
+            Board board = this.game.currentPlayer.shotBoard;    // get the game board
             
             // Check for invalid row and column entered
             //2/14 Jeffry - Mondified to be < 0 not less than 1

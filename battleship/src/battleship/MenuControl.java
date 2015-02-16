@@ -19,14 +19,15 @@ public class MenuControl
         
     }
     
-    public void startGame(int x)
+    public void startGame(int numPlayers)   //2-16 Jeffry Changed x to numPlayers
     {
         Game game = new Game();
+        game.start(numPlayers);       //2-16 Jeffry Call to setup Game and Players
         gameMenu = new GameMenu(game);
         gameMenu.getInput();
         
         //add stuff here
-    }
+    }   
     
     
     public void displayHelpMenu() 
