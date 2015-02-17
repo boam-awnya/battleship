@@ -31,6 +31,7 @@ public class GameMenu
     
     public GameMenu(Game game) 
     {
+        this.game = game;  //2-16 Jeffry Added
         this.gameMenuControl = new GameMenuControl(game);
         
     }
@@ -53,7 +54,7 @@ public class GameMenu
                     this.gameMenuControl.placeShips();
                     break;
                 case "F":
-                    this.gameMenuControl.fireAShot();
+                    this.gameMenuControl.fireAShot();  
                     break;
                 case "D":
                     gameMenuControl.displayBoard();

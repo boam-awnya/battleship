@@ -44,40 +44,8 @@ public class Battleship {
         mainMenu.getInput();
     }
     
-    
         private void display() {
         System.out.println(this.welcome);
     }
     
-    
 }   
- /*       Board boardA = new Board(true);
-        boardA.display();
-        
-        Board boardB = new Board(false);
-        boardB.display();
-        
-        
-        Game game = new Game();
-        game.displayPlayers();
-        
-        boardB.shipPlacement();
-        boardB.boardDisplay();
-        
-       
-        Boat myBattleship = new Boat(4, "Battleship");
-       
-        //Lession 3 Group assigment 
-        Player player1 = new Player();
-        
-        player1.getGameStats(10, 10);   //Testcase 1 - Happy Path
-        player1.getGameStats(0, 0);     //Testcase 2 - Divid by zero
-        player1.getGameStats(-1, -4);   //Testcase 3 - invalid values
-        player1.getGameStats(0, 10);    //Testcase 4 - All Miss no Hits
-        player1.getGameStats(10, 0);    //Testcase 5 - All Hits no Miss
-        
-    }
-  
-
-
-}  */
