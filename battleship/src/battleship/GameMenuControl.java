@@ -64,6 +64,7 @@ public class GameMenuControl
     public void displayStatistics()
     {
          new BattleshipError().displayLine("Display Statistics");
+         this.game.currentPlayer.sortScores();
     }
     
     public void displayPreferencesMenu()
