@@ -108,6 +108,35 @@ public class Player
          }
         
     }
+    
+    //Group Programming Assignment 2-19-15
+    //The exchange sort compares the first element with each following element of the array, making any necessary swaps.
+    
+    public void sortScores () 
+    {
+        
+        int[] scores = {50, 90, 60, 40, 20, 90, 10};
+        int temp;
+        
+        for(int i=0; i<scores.length-1; i++) 
+        {
+            for (int j=i+1; j < scores.length; j++)
+            {
+                if(scores[i] < scores[j])
+                {
+                    temp=scores[i];
+                    scores[i]=scores[j];
+                    scores[j]=temp;
+                }
+            }
+       } 
+        for (int i = 0; i<scores.length; i++)
+            System.out.println(scores[i]);
+            
+    }
+        
+ 
+ 
    
     
 }
