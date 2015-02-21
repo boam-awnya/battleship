@@ -68,8 +68,9 @@ public class Player
     /*-------------------------------------------------------------------
     Description: Calculate hits and misses on shotBoard
     
-    Author(s): John Vehikite
-    Note: Is this a good name for this method?
+    Author(s): John Vehikite\
+    
+    Note: I am not sure if this is the best name for this method.
     --------------------------------------------------------------------*/
     
     public void getHitMiss() {
