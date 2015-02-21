@@ -141,7 +141,7 @@ public class Player
     public void sortScores () 
     {
         
-        int[] scores = {50, 90, 60, 40, 20, 90, 10};
+        int[] scores = {10, 90, 60, 40, 20, 90, 50};
         int temp;
         
         for(int i=0; i<scores.length-1; i++) 
