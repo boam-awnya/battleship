@@ -18,15 +18,24 @@ public class Board
     int cols = 10;
     int[][] grid = new int[rows][cols];
     String boardtype;
-    private Player[][] boardLocations;
+    //public Player[][] boardLocations;   //Jeffry 2/14  Don't belive we need this.
     Random random = new Random();
     
     public Board() {
     }
     
-      
-    public void clearTheBoard() {
-        // TODO
+           /*
+    Method: ClearTheBoard
+    Owner:  Jeffry Simpson
+    Date:   2/16/2015
+    Descpt: Method to clear the board
+    */  
+    public void clearTheBoard() 
+    {
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < cols; j++) 
+                grid[i][j] = 0;
+    
     }
     
     
@@ -40,13 +49,13 @@ public class Board
     }
 
     public void occupyLocation(Player player, int row, int column) {
-        Player playerAtLocation = this.boardLocations[row][column];
+        this.grid = player.shotBoard.grid;
 
-        if (playerAtLocation != null) { // location already occupied
+        if (this.grid[row][column] != 0) { // location already occupied
             new BattleshipError().displayError("This location is already occupied. "
                     + "Try a different location.");
         }
-        this.boardLocations[row][column] = player;
+        this.grid[row][column] = 1;
     }
 
 
@@ -56,7 +65,7 @@ public class Board
         System.out.println("This is the " + boardtype + "'s board and it is " + rows + " by " + cols + ".");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-            grid[i][j] = 0;
+            //grid[i][j] = 0;                       //2-16 jeffry Commented out the line that was setting everyting to zero
             System.out.print(grid[i][j]);
             }
             System.out.println();
@@ -76,6 +85,8 @@ public class Board
     public int getRandom() {
         return random.nextInt(9);
     }
+    
+  
     
     // Function to randomly place ships; placed horizontally towards the right
     // of the starting point for now...

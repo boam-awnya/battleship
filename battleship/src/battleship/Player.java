@@ -13,11 +13,19 @@ public class Player
 {
     String name;
     String playerType;
+    String marker;
     private long wins = 0;
     private long losses = 0;
+    Board shotBoard;    //Jeffry - 2/16 added
+    Board boatBoard;    //Jeffry - 2/16 added
     
     
-    public Player(){
+    
+    public Player()
+    {
+       shotBoard = new Board();    //Jeffry - 2/216 added to avoid getting NPE
+       boatBoard = new Board();    //Jeffry - 2/216 added to avoid getting NPE
+
         
     }
     
@@ -57,7 +65,31 @@ public class Player
     }
            
     
-     /*-------------------------------------------------------------------
+    /*-------------------------------------------------------------------
+    Description: Calculate hits and misses on shotBoard
+    
+    Author(s): John Vehikite
+    Note: Is this a good name for this method?
+    --------------------------------------------------------------------*/
+    
+    public void getHitMiss() {
+        Board board = this.shotBoard;
+        int hit = 0;
+        int miss = 1; // no code to show misses yet, so intialized to 1 for testing
+        
+        for(int i = 0; i < board.rows; i++) {
+            for (int j = 0; j < board.cols; j++) {
+                if(board.grid[i][j] == 1)
+                    hit++;
+                if(board.grid[i][j] == 2)
+                    miss++;
+            }
+        }
+        getGameStats(hit, miss);
+    }
+    
+    
+    /*-------------------------------------------------------------------
     Description:  Calculates Hit and Miss Percentage from Hit and Miss info
     
     Author(s):  Jeffry Simpson
@@ -73,6 +105,7 @@ public class Player
     {
         double totalShots,hitPercent,missPercent;   //Requirement 1 - Two or more primitive Variables
         int hitOutput, missOutput;                  //Variables for typecasting
+        Board board = this.shotBoard;
         
         if(hit == 0 && miss == 0)   //Requirement 3 - At least one Relational operator 
         {
@@ -100,6 +133,35 @@ public class Player
          }
         
     }
+    
+    //Group Programming Assignment 2-19-15
+    //The exchange sort compares the first element with each following element of the array, making any necessary swaps.
+    
+    public void sortScores () 
+    {
+        
+        int[] scores = {50, 90, 60, 40, 20, 90, 10};
+        int temp;
+        
+        for(int i=0; i<scores.length-1; i++) 
+        {
+            for (int j=i+1; j < scores.length; j++)
+            {
+                if(scores[i] < scores[j])
+                {
+                    temp=scores[i];
+                    scores[i]=scores[j];
+                    scores[j]=temp;
+                }
+            }
+       } 
+        for (int i = 0; i<scores.length; i++)
+            System.out.println(scores[i]);
+            
+    }
+        
+ 
+ 
    
     
 }

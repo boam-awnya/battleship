@@ -18,7 +18,7 @@ public class Game {
      public static final String PLAYING = "PLAYING"; 
      public static final String WINNER = "WINNER"; 
      
-     String gameType;
+     //String gameType; --  2/14 Jeffry, this is not being used anywhere
      Player playerA;
      Player playerB;
      Player currentPlayer;
@@ -26,8 +26,8 @@ public class Game {
      Player winner;
      Player loser;
      String status;
-     Board boardA;
-     Board boardB;
+     //Board boatBoard;    2/16 - Jeffry Removed to move under player
+     //Board shotBoard;   2/16 - Jeffry Removed to move under player
    
 
     public Game() {
@@ -37,41 +37,72 @@ public class Game {
        this.playerA.name = "Captain Bemax";
        this.playerB = new Player();
        this.playerB.name = "AI";
+     //  this.boatBoard = new Board(true);        //2-16 Jeffry remove - 2-14  added to remove NPE
+     //  this.shotBoard = new Board(false);       //2-16 Jeffry remove - 2-14  added to remove NPE
        
     }
 
-public Game(String gameType) {
+/**************   2/14 Jeffry - this is not currently being used.
+ 
+    public Game(String gameType) {
         this();
 
         this.gameType = gameType;
-        this.boardA = new Board();
-        this.boardB = new Board();
+        this.boatBoard = new Board(true);
+        this.shotBoard = new Board(false);
     }
 
+*/
+    public void start(int numPlayers) {
 
-    public void start() {
+        this.setPlayingOrder(numPlayers);   //2-16 Jeffry Added NumPlayers, removed Player1 and Player2 variables
 
-        this.setPlayingOrder(playerA, playerB);
-
-        // clear the board
-        this.boardA.clearTheBoard();
-        this.boardB.clearTheBoard();
+        // clear the board for both players  (2/16 Jeffry added Player. )
+        playerA.boatBoard.clearTheBoard();
+        playerA.shotBoard.clearTheBoard();
+        playerB.boatBoard.clearTheBoard();
+        playerB.shotBoard.clearTheBoard();
         this.status = Game.NEW_GAME;
     }
 
-    public void setPlayingOrder(Player player1, Player player2) {
+    public void setPlayingOrder(int numPlayers) {  //2-16 Jeffry Added NumPLayers, removed Player 1 and Player2 variables
 
-        double randomValue = Math.random();
-
-        if (randomValue < 0.5) {
-            this.currentPlayer = player1;
-            this.otherPlayer = player2;
-        } else {
-            this.otherPlayer = player2;
-            this.currentPlayer = player1;
+        if(numPlayers == 1)   //2-16 Jeffry -  One Player Game, Real Player always starts
+        {
+            this.currentPlayer = playerA;
+            this.otherPlayer = playerB;
+        }
+        else    // Else for two player game, randomly choose which one goes first
+        {   
+            double randomValue = Math.random();
+            
+            if (randomValue < 0.5) {
+                this.currentPlayer = playerA;
+                this.otherPlayer = playerB;
+            } else {
+                this.currentPlayer = playerB;
+                this.otherPlayer = playerA;
+            }
         }
 
     }
+    
+        /*
+    Method: SwtichPlayers
+    Owner:  Jeffry Simpson
+    Date:   2/16/2015
+    Descpt: Method to switch current and other Player.
+    */
+    public void switchPlayers()
+    {
+        Player tempPlayer;  //temp place holder
+        
+        tempPlayer = this.currentPlayer;
+        this.currentPlayer = this.otherPlayer;
+        this.otherPlayer = tempPlayer;
+        
+    }
+    
 
     public void recordWinner() {
         if (this.currentPlayer == this.playerA) {

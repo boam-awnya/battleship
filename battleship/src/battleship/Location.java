@@ -17,11 +17,11 @@ public void occupyLocation(Player player) {
 this.player = player;
 }
 public void displayMarker() {
-    if (this.player != null) {
-        //System.out.println(this.player.marker);
-        }
+if (this.player != null) {
+    System.out.println(this.player.marker);
+    }
     else {
         System.out.println(" ");
-        }
     }
+}
 }
