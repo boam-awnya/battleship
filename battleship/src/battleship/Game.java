@@ -17,6 +17,7 @@ public class Game {
      public static final String NEW_GAME = "NEW_GAME";
      public static final String PLAYING = "PLAYING"; 
      public static final String WINNER = "WINNER"; 
+     public static final String AIPLAYER = "AI";        //2/20 Jeffry added AI player string
      
      //String gameType; --  2/14 Jeffry, this is not being used anywhere
      Player playerA;
@@ -71,9 +72,13 @@ public class Game {
         {
             this.currentPlayer = playerA;
             this.otherPlayer = playerB;
+            this.playerB.setPlayerType(AIPLAYER);       //2-20 added AIPlayer String in 1 player game
         }
         else    // Else for two player game, randomly choose which one goes first
         {   
+            this.playerA.setPlayerType("");     //2-20 Jeffry Set player types to real
+            this.playerB.setPlayerType("");
+            
             double randomValue = Math.random();
             
             if (randomValue < 0.5) {

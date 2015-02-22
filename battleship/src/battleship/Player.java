@@ -23,8 +23,9 @@ public class Player
     
     public Player()
     {
-       shotBoard = new Board();    //Jeffry - 2/216 added to avoid getting NPE
-       boatBoard = new Board();    //Jeffry - 2/216 added to avoid getting NPE
+       
+       shotBoard = new Board();    //Jeffry - 2/16 added to avoid getting NPE
+       boatBoard = new Board();    //Jeffry - 2/16 added to avoid getting NPE
 
         
     }
@@ -63,7 +64,29 @@ public class Player
     {
         System.out.println("My name is " + this.name);
     }
-           
+       
+    /*-------------------------------------------------------------------
+    Description:  Count number of shots taken
+    
+    Author(s):  Jeffry Simpson
+    Info:  indivudal Lesson #6 assignemnt
+    
+    input: N/A
+    Output: int sum of shots
+    
+    --------------------------------------------------------------------*/
+    public int shotsTaken()
+    {
+        int sum=0;
+        
+        for( int[] row : this.shotBoard.grid)
+            for(int col : row)
+                if(col == 1)
+                    sum++;
+                    
+      return sum;              
+    }
+    
     
      /*-------------------------------------------------------------------
     Description:  Calculates Hit and Miss Percentage from Hit and Miss info

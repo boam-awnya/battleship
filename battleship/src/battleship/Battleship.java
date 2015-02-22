@@ -39,9 +39,10 @@ public class Battleship {
         
         Battleship battleship = new Battleship();
         battleship.display();
-        
+     
         Menu mainMenu = new Menu();
         mainMenu.getInput();
+       
     }
     
         private void display() {
