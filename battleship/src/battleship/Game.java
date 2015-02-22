@@ -34,7 +34,7 @@ public class Game {
    
         
        this.playerA = new Player();
-       this.playerA.name = "Captain Bemax";
+       this.playerA.name = "Captain Baymax";
        this.playerB = new Player();
        this.playerB.name = "AI";
      //  this.boatBoard = new Board(true);        //2-16 Jeffry remove - 2-14  added to remove NPE

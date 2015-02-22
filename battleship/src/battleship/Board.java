@@ -44,7 +44,7 @@ public class Board
         if(playerBoard)
             boardtype = "Player";
         else
-            boardtype = "Oponent";
+            boardtype = "Opponent";
                  
     }
 
