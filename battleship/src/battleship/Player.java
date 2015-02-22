@@ -154,12 +154,26 @@ public class Player
         {
             result += scores[i];
         }
-        System.out.println(result/average);
+        System.out.println("The current average score is: " + result/average);
         
     }
         
+    //For-each loop to associate name with score--authored by Colby 2/21/15
+
     
     
+ public void highScoreNames()
+    {
+                System.out.print("\n");
+                System.out.println ("Names of players with current high scores:");
+		String [] titles = {"James", "Baymax", "AI", "Kim", "Baymax", "Matt", "Amber"};
+				
+	for( String name : titles ) 
+	{
+		System.out.println( name );
+		
+	}
+    }    
 }
         
  
