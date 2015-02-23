@@ -17,8 +17,8 @@ public class Battleship {
     
     String welcome = 
               "\n\t***********************************************************************"
-            + "\n\t* Prepare to meet your worst nightmare!                               *"                            
-            + "\n\t* You will be playing against a partner. The object of the game       *"
+            + "\n\t* Prepare your fleet. A battle is about to begin!                     *"                            
+            + "\n\t* You will be playing against the computer. The object of the game    *"
             + "\n\t* is to find and destroy your opponent's Battleship before yours is   *"
             + "\n\t* destroyed.                                                          *" 
             + "\n\t*                                                                     *"
@@ -39,9 +39,10 @@ public class Battleship {
         
         Battleship battleship = new Battleship();
         battleship.display();
-        
+     
         Menu mainMenu = new Menu();
         mainMenu.getInput();
+       
     }
     
         private void display() {

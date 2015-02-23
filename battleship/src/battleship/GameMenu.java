@@ -20,6 +20,7 @@ public class GameMenu
     private final static String[][] menuItems = {
         {"P", "Place your ships"},
         {"F", "Fire a shot"},
+        {"A", "Show available shot coordinates"},
         {"D", "Display the board"},
         {"S", "Start a new game"},
         {"R", "Report stastics"},
@@ -55,6 +56,9 @@ public class GameMenu
                     break;
                 case "F":
                     this.gameMenuControl.fireAShot();  
+                    break;
+                case "A":
+                    this.gameMenuControl.availableShots();
                     break;
                 case "D":
                     gameMenuControl.displayBoard();

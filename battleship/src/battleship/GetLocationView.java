@@ -39,7 +39,7 @@ public class GetLocationView {
         // prompt the use to enter the locaton to placeread the row and column coordinates
         while (!valid) {
             // prompt for the row and column numbers
-            System.out.println("\n\n\t" + this.game.playerA.name + " it is your turn."
+            System.out.println("\n\n\t" + this.game.currentPlayer.name + " it is your turn."
                 + " Enter a row and column number (For example: A 3)");
             
             // get the value entered by the user 
@@ -111,21 +111,7 @@ public class GetLocationView {
             
             // create a Point object to store the row and column coordinates in
             location = new Point(row, column);
-          
-            
- /***********    2/14 Jeffry  Commented out.  I think we should be getting the info, not checking if its valid here
-  * 
-          
-            // check to see if the location entered is already occupied
-            // if ( board.boardLocations[row-1][column-1].player != null ) {
-         
-            if ( board.boardLocations[row-1][column-1] != null ) {
-                new BattleshipError().displayError(
-                    "The current location is taken. Select another location");
-                continue;
-            }
-*********************/   
-            
+                    
             valid = true; // a valid location was entered
 
         }

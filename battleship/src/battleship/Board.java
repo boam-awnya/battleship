@@ -14,22 +14,38 @@ import java.util.Random;
  */
 public class Board
 {
-    int rows = 10;
-    int cols = 10;
+    int rows = 10;   // Standard board rows
+    int cols = 10;   // Stardard boad columns
     int[][] grid = new int[rows][cols];
-    String boardtype;
-    //public Player[][] boardLocations;   //Jeffry 2/14  Don't belive we need this.
-    Random random = new Random();
+    int hits;
+    int misses;
+    Random random = new Random(); 
     
+    //String boardtype;                   //Jeffry 2/20 Don't believe we need this now
+    //public Player[][] boardLocations;   //Jeffry 2/14  Don't belive we need this.
+   
+     //Constructor
     public Board() {
     }
     
-           /*
+      //Constructor
+    public Board(Boolean playerBoard)
+    {
+        /*if(playerBoard)
+            boardtype = "Player";
+        else
+            boardtype = "Oponent";
+          */       
+    }
+    
+    /**************************************************************************
+     * 
     Method: ClearTheBoard
     Owner:  Jeffry Simpson
     Date:   2/16/2015
     Descpt: Method to clear the board
-    */  
+    * 
+    ***************************************************************************/  
     public void clearTheBoard() 
     {
         for (int i = 0; i < rows; i++)
@@ -38,31 +54,59 @@ public class Board
     
     }
     
+  
+   /**************************************************************************
+     * 
+    Method: checkLocation
+    Owner:  Jeffry
+    Date:   2/20
+    Descpt: Check if a location is occupied return 0 or 1 (No or Yes)
     
-    public Board(Boolean playerBoard)
-    {
-        if(playerBoard)
-            boardtype = "Player";
-        else
-            boardtype = "Oponent";
-                 
-    }
-
-    public void occupyLocation(Player player, int row, int column) {
+    * 
+    ***************************************************************************/
+        public int checkLocation(Player player, Point location) 
+        {
+        
+        int occupied = 0;       //Not occupied
         this.grid = player.shotBoard.grid;
 
-        if (this.grid[row][column] != 0) { // location already occupied
-            new BattleshipError().displayError("This location is already occupied. "
-                    + "Try a different location.");
-        }
-        this.grid[row][column] = 1;
+        if (this.grid[location.x][location.y] != 0) 
+            occupied = 1;
+        
+        return occupied;   //0 = not occupied 1= occupied
     }
+    
+    
+    
+    /**************************************************************************
+     * 
+    Method: occupyLocation
+    Owner:  
+    Date:   
+    Descpt: Determine if a location is occupied
+    Notes:  2/20-Jeffry  Changed method to return INT not void
+    * 
+    ***************************************************************************/
+    public int occupyLocation(Player player, Point location) {
+        
+        int occupied = 1;       //Not occupied
+        this.grid = player.shotBoard.grid;
+
+        if (this.grid[location.x][location.y] == 0)   //Check if the location is emppty
+        { 
+            this.grid[location.x][location.y] = 1;
+            occupied = 0;
+        }
+        
+        return occupied;    //return  1  = already occupied, 0 = added
+    }
+
 
 
     
     public void display()
     {
-        System.out.println("This is the " + boardtype + "'s board and it is " + rows + " by " + cols + ".");
+        System.out.println("This is the " + this + "'s board and it is " + rows + " by " + cols + ".");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
             //grid[i][j] = 0;                       //2-16 jeffry Commented out the line that was setting everyting to zero
@@ -72,8 +116,10 @@ public class Board
         }
     }
     
+/*  2/20 - Jeffry   Not being used. 
+    
     public void boardDisplay() {
-        System.out.println("This is the " + boardtype + "'s board after ship placement.");
+        System.out.println("This is the " + this + "'s board after ship placement.");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
             System.out.print(grid[i][j]);
@@ -81,16 +127,27 @@ public class Board
             System.out.println();
         }
     }
+  */
+    
     
     public int getRandom() {
         return random.nextInt(9);
     }
     
+    public int shipLocation(Player currentPlayer, Point location)
+    {
+        
+      this.grid[location.x][location.y]= 1;
+    
+      return 0;
+    }
   
     
     // Function to randomly place ships; placed horizontally towards the right
     // of the starting point for now...
-    public void shipPlacement() {
+   // public void shipPlacement()   *** 2/20 Jeffry
+    public void shipPlacementAI()
+    {
         double row = 0;
         double col = 0;
         
@@ -168,13 +225,14 @@ public class Board
         }
     }
 
-    public class Location {
+
+public class Lxocation {
 
         public int row;
         public int column;
         public Player player;
 
-        Location() {
+        Lxocation() {
         }
         
     }

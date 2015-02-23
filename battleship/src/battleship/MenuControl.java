@@ -23,6 +23,7 @@ public class MenuControl
     {
         Game game = new Game();
         game.start(numPlayers);       //2-16 Jeffry Call to setup Game and Players
+        game.playerB.marker = "MyCheck";  //2-20 Jeff temp debug marker
         gameMenu = new GameMenu(game);
         gameMenu.getInput();
         
