@@ -91,6 +91,8 @@ public class GameMenuControl
     {
          new BattleshipError().displayLine("Display Statistics");
          this.game.currentPlayer.sortScores();
+         this.game.currentPlayer.averageScores();
+         this.game.currentPlayer.highScoreNames();
          //player.getGameStats(hit, miss);
          System.out.println("Shots Taken: " + this.game.currentPlayer.shotsTaken());
                  

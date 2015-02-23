@@ -157,9 +157,50 @@ public class Player
             System.out.println(scores[i]);
             
     }
+    
+    //for-each loop to calculate the average of the scores. By Shatzi for the Individual Assignment lesson6
+    
+   
+    public void averageScores() 
+    {
+        int[] scores = {50, 90, 60, 40, 20, 90, 10};
+        double result = 0; //average will have decimal point
+        int average = 0;
+    
+        for (int i = 0; i<scores.length; ++i)
+        {
+            average++;
+
+        }
+        
+        for(int i=0; i < scores.length; i++)
+        {
+            result += scores[i];
+        }
+        System.out.println("The current average score is: " + result/average);
+        
+    }
+        
+    //For-each loop to associate name with score--authored by Colby 2/21/15
+
+    
+    
+ public void highScoreNames()
+    {
+                System.out.print("\n");
+                System.out.println ("Names of players with current high scores:");
+		String [] titles = {"James", "Baymax", "AI", "Kim", "Baymax", "Matt", "Amber"};
+				
+	for( String name : titles ) 
+	{
+		System.out.println( name );
+		
+	}
+    }    
+}
         
  
  
    
     
-}
+

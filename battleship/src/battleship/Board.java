@@ -225,7 +225,8 @@ public class Board
         }
     }
 
-    public class Lxocation {
+
+public class Lxocation {
 
         public int row;
         public int column;
