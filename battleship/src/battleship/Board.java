@@ -71,7 +71,7 @@ public class Board
         this.grid = player.shotBoard.grid;
 
         if (this.grid[location.x][location.y] != 0) 
-            occupied = 1;
+           occupied = this.grid[location.x][location.y];  //Get the ship
         
         return occupied;   //0 = not occupied 1= occupied
     }
