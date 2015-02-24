@@ -22,7 +22,7 @@ public class Battleship {
             + "\n\t* is to find and destroy your opponent's Battleship before yours is   *"
             + "\n\t* destroyed.                                                          *" 
             + "\n\t*                                                                     *"
-            + "\n\t* Good Luck!!!                                                        *"
+            + "\n\t* Good Luck!!!!                                                       *"
             + "\n\t***********************************************************************"
             + "\n";
 
