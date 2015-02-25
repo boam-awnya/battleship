@@ -26,7 +26,9 @@ public class Player
        
        shotBoard = new Board();    //Jeffry - 2/16 added to avoid getting NPE
        boatBoard = new Board();    //Jeffry - 2/16 added to avoid getting NPE
-
+       Boat submarine = new Boat(3,"Submarine");    //Jeremy - 2/24
+       Boat battleship = new Boat(4,"Battleship");  //Jeremy - 2/24
+       Boat carrier = new Boat(5,"Carrier");        //Jeremy - 2/24
         
     }
     
