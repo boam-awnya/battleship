@@ -151,6 +151,10 @@ public class Board
         double row = 0;
         double col = 0;
         
+        Boat submarine = new Boat(3,"Submarine");
+        Boat battleship = new Boat(4,"Battleship");
+        Boat carrier = new Boat(5,"Carrier");
+        
         for(int shipType = 1; shipType < 4; shipType++) {        
             //Typecasting practice
             int shipRow = (int) row;
