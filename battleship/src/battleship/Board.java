@@ -122,6 +122,8 @@ public class Board
         return random.nextInt(maxVal);
     }
     
+    
+    
     public int shipLocation(Player currentPlayer, Point location)
     {
         
@@ -136,60 +138,60 @@ public class Board
    // public void shipPlacement()   *** 2/20 Jeffry
     public void shipPlacementAI(Boat boat)   //  ** Added Boat object
     {
-        int flag=0;     //CHeck for other boats in same place
-        int maxRows = this.rows;
-        int maxCols = this.cols;      
-        int shipRow = 0;
-        int shipCol = 0;
+        int flag;                   //Flag for other boats in same locaiton
+        int maxRows = this.rows;    //Used for Random and boundry checking
+        int maxCols = this.cols;    //Used for Random and boundry checking  
+        int shipRow = 0;            //Used for starting row
+        int shipCol = 0;            //Used for starting col
         
         do
         {   
-            shipRow = getRandom(maxRows);
-            shipCol = getRandom(maxCols);
+            flag=0;  //Always reset
+            shipRow = getRandom(maxRows);       //Get Random Startrow
+            shipCol = getRandom(maxCols);       //Get Random StartCol
             boat.direction = getRandom(2)+1;
             
             // assures ship isn't placed off the grid
             if(boat.direction == 1) //Direction is down
-                while(shipRow+boat.size  >= maxRows ) 
+                while(shipRow+boat.size  >= maxRows ) //Makes sure starting plus size are ok.
                 {
                     System.out.println(shipRow + ", " + shipCol + " is an invalid starting point. Please try again.");
-                    shipRow = getRandom(maxRows);
+                    shipRow = getRandom(maxRows);  //Get new Row
                 }
                 
             else //boat.diretion is RIGHT
             {
-                while(shipCol+boat.size  >= maxCols ) 
+                while(shipCol+boat.size  >= maxCols )   //Make sure starting plus size are ok
                 {
                     System.out.println(shipRow + ", " + shipCol + " is an invalid starting point. Please try again.");
-                    shipCol = getRandom(maxCols);
+                    shipCol = getRandom(maxCols);  //Get new Col
                 } 
             }
 
             // tests if another ship is in the proposed grid space
-            // TODO: Code to check each space the ship occupies
-            int rowOffset = shipRow;
+            int rowOffset = shipRow;  //Start at begining
             int colOffset = shipCol;
-            for(int i = 0; i < boat.maxDamage;i++)
+            for(int i = 0; i < boat.size;i++)  //Loop through the boat size
             {
 
-                if(this.grid[rowOffset][colOffset] != 0)
+                if(this.grid[rowOffset][colOffset] != 0)  //See if a value is in the grid locaiton other than 0
                 {
-                    flag= 1;
+                    flag= 1;  //Set the flag to repeat the loop
                     System.out.println("Conflict at " + rowOffset + colOffset);
                     break;
 
                 }           
 
-                if(boat.direction == 1)  //CHeck 
+                if(boat.direction == 1)  //Increment row or column in the loop
                     rowOffset++;
                 else
                     colOffset++;
 
 
             }
-        }while(flag !=0);
+        }while(flag !=0);  //If flag = 1 then get a new Row and COlumn and try again.
         
-        //Fill in the grid with the current boat
+        //Fill in the grid with the current boat location
         for(int i=0,rowOffset=shipRow,colOffset=shipCol;i<boat.size;i++)
         {
             this.grid[rowOffset][colOffset]= boat.size;
