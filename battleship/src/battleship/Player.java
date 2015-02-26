@@ -22,7 +22,6 @@ public class Player
     Boat submarine;
     Boat battleship;
     Boat carrier;
-    Boat patrol;
  
     
     public Player()
@@ -33,7 +32,6 @@ public class Player
        submarine = new Boat(3,"Submarine", ShipType.SUBMARINE);
        battleship = new Boat(4,"BattleShip", ShipType.BATTLESHIP);
        carrier = new Boat(5,"Carrier", ShipType.CARRIER);
-       patrol = new Boat(3,"Patrol", ShipType.SUBMARINE);
 
        
 
