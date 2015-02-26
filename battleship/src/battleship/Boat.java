@@ -11,13 +11,22 @@ package battleship;
  */
 public class Boat
 {
-    int maxDamage, hitDamage=0;   //max ddamage assigned in constructor
+    private ShipType shipType;
+    
+    int size,direction,maxDamage, hitDamage=0;   //max ddamage assigned in constructor
     String name;                   //ship name
 
-    Boat(int damage, String shipname)    //Constructor
+    Boat(int damage, String shipname, ShipType type)    //Constructor
     {
         this.maxDamage=damage;    //Max damage for this ship
         this.name = shipname;       //Ship name
+        this.size = damage;         //size of boat
+        this.shipType = type;
+    }
+    
+    public ShipType getShipType()
+    {
+        return this.shipType;
     }
     
     public void hit()       //function if the ship is hit

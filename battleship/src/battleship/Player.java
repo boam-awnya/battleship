@@ -5,6 +5,7 @@
  */
 package battleship;
 
+
 /**
  *
  * @author jeffrysimpson, awnyaboam
@@ -18,17 +19,24 @@ public class Player
     private long losses = 0;
     Board shotBoard;    //Jeffry - 2/16 added
     Board boatBoard;    //Jeffry - 2/16 added
-    
-    
+    Boat submarine;
+    Boat battleship;
+    Boat carrier;
+    Boat patrol;
+ 
     
     public Player()
     {
        
        shotBoard = new Board();    //Jeffry - 2/16 added to avoid getting NPE
        boatBoard = new Board();    //Jeffry - 2/16 added to avoid getting NPE
-       Boat submarine = new Boat(3,"Submarine");    //Jeremy - 2/24
-       Boat battleship = new Boat(4,"Battleship");  //Jeremy - 2/24
-       Boat carrier = new Boat(5,"Carrier");        //Jeremy - 2/24
+       submarine = new Boat(3,"Submarine", ShipType.SUBMARINE);
+       battleship = new Boat(4,"BattleShip", ShipType.BATTLESHIP);
+       carrier = new Boat(5,"Carrier", ShipType.CARRIER);
+       patrol = new Boat(3,"Patrol", ShipType.SUBMARINE);
+
+       
+
         
     }
     
