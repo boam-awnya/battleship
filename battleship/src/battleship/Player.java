@@ -26,7 +26,9 @@ public class Player
        
        shotBoard = new Board();    //Jeffry - 2/16 added to avoid getting NPE
        boatBoard = new Board();    //Jeffry - 2/16 added to avoid getting NPE
-
+       Boat submarine = new Boat(3,"Submarine");    //Jeremy - 2/24
+       Boat battleship = new Boat(4,"Battleship");  //Jeremy - 2/24
+       Boat carrier = new Boat(5,"Carrier");        //Jeremy - 2/24
         
     }
     
@@ -88,7 +90,32 @@ public class Player
     }
     
     
-     /*-------------------------------------------------------------------
+    /*-------------------------------------------------------------------
+    Description: Calculate hits and misses on shotBoard
+    
+    Author(s): John Vehikite\
+    
+    Note: I am not sure if this is the best name for this method.
+    --------------------------------------------------------------------*/
+    
+    public void getHitMiss() {
+        Board board = this.shotBoard;
+        int hit = 0;
+        int miss = 1; // no code to show misses yet, so intialized to 1 for testing
+        
+        for(int i = 0; i < board.rows; i++) {
+            for (int j = 0; j < board.cols; j++) {
+                if(board.grid[i][j] == 1)
+                    hit++;
+                if(board.grid[i][j] == 2)
+                    miss++;
+            }
+        }
+        getGameStats(hit, miss);
+    }
+    
+    
+    /*-------------------------------------------------------------------
     Description:  Calculates Hit and Miss Percentage from Hit and Miss info
     
     Author(s):  Jeffry Simpson
@@ -104,6 +131,7 @@ public class Player
     {
         double totalShots,hitPercent,missPercent;   //Requirement 1 - Two or more primitive Variables
         int hitOutput, missOutput;                  //Variables for typecasting
+        Board board = this.shotBoard;
         
         if(hit == 0 && miss == 0)   //Requirement 3 - At least one Relational operator 
         {
@@ -138,7 +166,7 @@ public class Player
     public void sortScores () 
     {
         
-        int[] scores = {50, 90, 60, 40, 20, 90, 10};
+        int[] scores = {10, 90, 60, 40, 20, 90, 50};
         int temp;
         
         for(int i=0; i<scores.length-1; i++) 
