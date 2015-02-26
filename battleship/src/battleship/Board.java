@@ -115,23 +115,11 @@ public class Board
             System.out.println();
         }
     }
-    
-/*  2/20 - Jeffry   Not being used. 
-    
-    public void boardDisplay() {
-        System.out.println("This is the " + this + "'s board after ship placement.");
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-            System.out.print(grid[i][j]);
-            }
-            System.out.println();
-        }
-    }
-  */
+
     
     
-    public int getRandom() {
-        return random.nextInt(9);
+    public int getRandom(int maxVal) {
+        return random.nextInt(maxVal);
     }
     
     public int shipLocation(Player currentPlayer, Point location)
@@ -146,84 +134,77 @@ public class Board
     // Function to randomly place ships; placed horizontally towards the right
     // of the starting point for now...
    // public void shipPlacement()   *** 2/20 Jeffry
-    public void shipPlacementAI()
+    public void shipPlacementAI(Boat boat)   //  ** Added Boat object
     {
-        double row = 0;
-        double col = 0;
-                
-        for(int shipType = 1; shipType < 4; shipType++) {        
-            //Typecasting practice
-            int shipRow = (int) row;
-            int shipCol = (int) col;
-            shipRow = getRandom();
-            shipCol = getRandom();
-            
-            // Is shipRow or shipCol < 0?
-            while(shipRow < 0 || shipCol < 0) {
-                System.out.println(shipRow + ", " + shipCol + " is an invalid starting point. Please try again.");
-                if(shipRow < 0) {
-                    shipRow = getRandom();
-                }
-                
-                if(shipCol < 0) {
-                    shipCol = getRandom();
-                }
-            }
-            
-            // Is shipRow or shipCol > 9?
-            while(shipRow > 9 || shipCol > 9) {
-                System.out.println(shipRow + ", " + shipCol + " is an invalid starting point. Please try again.");
-                if(shipRow > 9) {
-                    shipRow = getRandom();
-                }
-                
-                if(shipCol > 9) {
-                    shipCol = getRandom();
-                }
-            }
+        int flag=0;     //CHeck for other boats in same place
+        int maxRows = this.rows;
+        int maxCols = this.cols;      
+        int shipRow = 0;
+        int shipCol = 0;
+        
+        do
+        {   
+            shipRow = getRandom(maxRows);
+            shipCol = getRandom(maxCols);
+            boat.direction = getRandom(2)+1;
             
             // assures ship isn't placed off the grid
-            while(shipCol > (8 - shipType)) {
-                System.out.println(shipRow + ", " + shipCol + " is an invalid starting point. Please try again.");
-                shipCol = random.nextInt(8 - shipType);
+            if(boat.direction == 1) //Direction is down
+                while(shipRow+boat.size  >= maxRows ) 
+                {
+                    System.out.println(shipRow + ", " + shipCol + " is an invalid starting point. Please try again.");
+                    shipRow = getRandom(maxRows);
+                }
+                
+            else //boat.diretion is RIGHT
+            {
+                while(shipCol+boat.size  >= maxCols ) 
+                {
+                    System.out.println(shipRow + ", " + shipCol + " is an invalid starting point. Please try again.");
+                    shipCol = getRandom(maxCols);
+                } 
             }
 
             // tests if another ship is in the proposed grid space
             // TODO: Code to check each space the ship occupies
-            int check = -1;
-            int count = 0;
-            int max = shipType + 2;
-            while(check != 0) {
-                while(count < max) {
-                    if(grid[shipRow][shipCol + count] > 0) {
-                        System.out.println(shipRow + ", " + shipCol + " is an invalid starting point. Please try again.");
-                        shipRow = getRandom();
-                        break;
-                    }
-                    count++;
-                }
-                check++;
+            int rowOffset = shipRow;
+            int colOffset = shipCol;
+            for(int i = 0; i < boat.maxDamage;i++)
+            {
+
+                if(this.grid[rowOffset][colOffset] != 0)
+                {
+                    flag= 1;
+                    System.out.println("Conflict at " + rowOffset + colOffset);
+                    break;
+
+                }           
+
+                if(boat.direction == 1)  //CHeck 
+                    rowOffset++;
+                else
+                    colOffset++;
+
+
             }
-            
-            
-            // outputs appropriate message
-            if(shipType == 1) {
-                System.out.print("AI Submarine \"starting point\" is: " + shipRow + ", " + shipCol + ".\n");
-            }
-            else if(shipType == 2) {
-                System.out.print("AI Battleship \"starting point\" is: " + shipRow + ", " + shipCol + ".\n");
-            }
-            else if(shipType == 3) {
-                System.out.print("AI Aircraft Carrier \"starting point\" is: " + shipRow + ", " + shipCol + ".\n");
-            }
-            
-            // "draws" ship on grid
-            for(int i = 0; i < (shipType + 2); i++) {
-                grid[shipRow][shipCol] = shipType;
-                shipCol++;
-            }
+        }while(flag !=0);
+        
+        //Fill in the grid with the current boat
+        for(int i=0,rowOffset=shipRow,colOffset=shipCol;i<boat.size;i++)
+        {
+            this.grid[rowOffset][colOffset]= boat.size;
+            if(boat.direction == 1)  //CHeck 
+                    rowOffset++;
+                else
+                    colOffset++;
         }
-    }
+
+        System.out.println("AI " + boat.getShipType()+ " \"starting point\" is: " + shipRow + ", " + shipCol + " direction = " + boat.direction);
+
+
+        }
+        
+    
 
 
 public class Lxocation {

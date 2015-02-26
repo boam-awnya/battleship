@@ -28,13 +28,22 @@ public class GameMenuControl
     
     public void placeShips()
     {
+        //this.game.switchPlayers();  //  Jeff  Temp DEBUG STATEMENT
+        
         Player currentPlayer = this.game.currentPlayer; 
         Board board = this.game.currentPlayer.boatBoard;
+       
+        
+        
         
         new BattleshipError().displayLine("Placed a Ship");
         if(currentPlayer.playerType == "AI")  //"AI"  string is for computer players, 
         {
-            board.shipPlacementAI();  //Let the AI pick all the locations
+            board.shipPlacementAI(currentPlayer.submarine);  //Let the AI pick all the locations
+            board.shipPlacementAI(currentPlayer.battleship);  //Let the AI pick all the locations
+            board.shipPlacementAI(currentPlayer.carrier);  //Let the AI pick all the locations
+           
+            board.display();
         }
         else   //Real players go here.          
         {
