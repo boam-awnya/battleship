@@ -31,7 +31,7 @@ public class Player
        boatBoard = new Board();    //Jeffry - 2/16 added to avoid getting NPE
        submarine = new Boat(3,"Submarine", ShipType.SUBMARINE);     //Jeremy - 2/24
        battleship = new Boat(4,"BattleShip", ShipType.BATTLESHIP);  //Jeremy - 2/24 
-       carrier = new Boat(5,"Carrier", ShipType.CARRIER);           //Jeremy - 2/24
+       carrier = new Boat(5,"Carrier", ShipType.CARRIER);
 
        
 
