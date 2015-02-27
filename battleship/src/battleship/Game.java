@@ -56,7 +56,6 @@ public class Game {
 */
     public void start(int numPlayers) {
 
-        this.setPlayingOrder(numPlayers);   //2-16 Jeffry Added NumPlayers, removed Player1 and Player2 variables
 
         // clear the board for both players  (2/16 Jeffry added Player. )
         playerA.boatBoard.clearTheBoard();
@@ -64,6 +63,17 @@ public class Game {
         playerB.boatBoard.clearTheBoard();
         playerB.shotBoard.clearTheBoard();
         this.status = Game.NEW_GAME;
+        
+        this.setPlayingOrder(numPlayers);   //2-16 Jeffry Added NumPlayers, removed Player1 and Player2 variables
+
+        if(numPlayers == 1)  //Setup AI ships
+        {
+            playerB.boatBoard.shipPlacementAI(playerB.submarine);  //Let the AI pick all the locations
+            playerB.boatBoard.shipPlacementAI(playerB.battleship);  //Let the AI pick all the locations
+            playerB.boatBoard.shipPlacementAI(playerB.carrier);  //Let the AI pick all the locations
+           
+            playerB.boatBoard.display();
+        }
     }
 
     public void setPlayingOrder(int numPlayers) {  //2-16 Jeffry Added NumPLayers, removed Player 1 and Player2 variables

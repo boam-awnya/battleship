@@ -28,20 +28,10 @@ public class GameMenuControl
     
     public void placeShips()
     {
-        Player currentPlayer = this.game.currentPlayer; 
-        Board board = this.game.currentPlayer.boatBoard;
-        
+       
         new BattleshipError().displayLine("Placed a Ship");
-        if(currentPlayer.playerType == "AI")  //"AI"  string is for computer players, 
-        {
-            board.shipPlacementAI();  //Let the AI pick all the locations
-        }
-        else   //Real players go here.          
-        {
-            Point location = getLocationView.getInput();
-            if(location != null)
-                board.shipLocation(currentPlayer, location);
-        }
+        
+    
     }
     
     public int fireAShot()
