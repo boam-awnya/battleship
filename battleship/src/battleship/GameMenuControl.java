@@ -69,8 +69,9 @@ public class GameMenuControl
         /* Katie 2/26/2015
         Added code to establish enhanced firing system for program.
         */
+
         otherFlag = board.occupyLocation (otherPlayer, location); //needed to do same for opponent shotboard
-            Boat aiBoat = new Boat(4, "ship");
+            Boat aiBoat = new Boat(4, "ship", ShipType.BATTLESHIP);
    
             if( otherFlag == 1){
                    int local = otherBoard.checkLocation(otherPlayer, location); //checks location of coordinates
