@@ -47,13 +47,17 @@ public class GameMenuControl
     public int fireAShot()
     {
         Player currentPlayer = this.game.currentPlayer;     //2-16 Jeffry Create local object to point to Game object
+        Player otherPlayer = this.game.otherPlayer;  //2-25 Katie Created local object for otherPlayer
         Board board = this.game.currentPlayer.shotBoard;    //2-16 Jeffry Create local object to point to Game object
-        int flag=0;                                         //flag to determine if FireAShot is successful
+        Board otherBoard = this.game.otherPlayer.shotBoard; //2-25 Katie Created local object for otherPlayer shotBoard
+        int flag=0;
+        int otherFlag=0;//flag to determine if FireAShot is successful
+        
+         Point location = getLocationView.getInput();
         
         do
         {  
-        
-            Point location = getLocationView.getInput();
+       
             if (location == null) 
             { // no location was entered?  
                 flag= -1;  //we should never get this error
@@ -64,15 +68,32 @@ public class GameMenuControl
             
             String tempPrint =((char) (location.x + 65) + " " + location.y);
 
-            if( flag == 1)  //Location already useed
+            if( flag == 1)  //Location already used
                 new BattleshipError().displayLine("You've already used " +  tempPrint + " for a shot");  //2/20 Jeffry - Temp print out of location
             else
                 new BattleshipError().displayLine("Fired a Shot at " +  tempPrint);  //2/16 Jeffry - Temp print out of location
-        
+            
+
         }while(flag != 0);
         
+        /* Katie 2/26/2015
+        Added code to establish enhanced firing system for program.
+        */
+        otherFlag = board.occupyLocation (otherPlayer, location); //needed to do same for opponent shotboard
+            Boat aiBoat = new Boat(4, "ship");
+   
+            if( otherFlag == 1){
+                   int local = otherBoard.checkLocation(otherPlayer, location); //checks location of coordinates
+                   aiBoat.hit(); //calls hit method in boat.java
+                   aiBoat.hitOrSunk(2, 4); //calls hitOrSunk method in boat.java
+            }
+            else{
+               this.game.switchPlayers(); //calls swtich player method in game.java
+  
+            }           
+
         return flag;
-         
+        
     }
     
     /*
