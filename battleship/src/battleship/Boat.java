@@ -11,7 +11,7 @@ package battleship;
  */
 public class Boat
 {
-    private ShipType shipType;
+    private ShipType shipType;  //Enum type of Ships
     
     int size,direction,maxDamage, hitDamage=0;   //max ddamage assigned in constructor
     String name;                   //ship name
@@ -24,6 +24,7 @@ public class Boat
         this.shipType = type;
     }
     
+    //Use to print out type of Ship
     public ShipType getShipType()
     {
         return this.shipType;
