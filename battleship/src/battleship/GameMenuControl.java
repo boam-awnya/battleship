@@ -18,6 +18,7 @@ public class GameMenuControl
     //private Board board;  //2-16 jeffry Removed, not needed as we have it in game object
     private GetLocationView getLocationView;
     private Player player;
+    private PlaceShipMenu placeShipMenu;
 
     public GameMenuControl(Game game) {
         this.game = game;
@@ -29,8 +30,8 @@ public class GameMenuControl
     public void placeShips()
     {
        
-        new BattleshipError().displayLine("Placed a Ship");
-        
+        placeShipMenu = new PlaceShipMenu(game);
+        placeShipMenu.getInput();
     
     }
     
