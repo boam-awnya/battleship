@@ -37,10 +37,11 @@ public class GameMenuControl
     
     public int fireAShot()
     {
-        Player currentPlayer = this.game.currentPlayer;     //2-16 Jeffry Create local object to point to Game object
-        Player otherPlayer = this.game.otherPlayer;  //2-25 Katie Created local object for otherPlayer
-        Board board = this.game.currentPlayer.shotBoard;    //2-16 Jeffry Create local object to point to Game object
-        Board otherBoard = this.game.otherPlayer.shotBoard; //2-25 Katie Created local object for otherPlayer shotBoard
+       // Player currentPlayer = this.game.currentPlayer.shotBoard;     //2-16 Jeffry Create local object to point to Game object
+       // Player otherPlayer = this.game.otherPlayer.boatBoard;  //2-25 Katie Created local object for otherPlayer
+       // Board board = this.game.currentPlayer.shotBoard;    //2-16 Jeffry Create local object to point to Game object
+        //Board otherBoard = this.game.otherPlayer.shotBoard; //2-25 Katie Created local object for otherPlayer shotBoard
+        
         int flag=0;
         int otherFlag=0;//flag to determine if FireAShot is successful
         
@@ -55,7 +56,7 @@ public class GameMenuControl
                 break;
             }
             
-            flag = board.occupyLocation(currentPlayer, location);       //Set the shot in the grid,
+            flag = this.game.currentPlayer.shotBoard.occupyLocation(location);       //Set the shot in the grid,
             
             String tempPrint =((char) (location.x + 65) + " " + location.y);
 
@@ -71,11 +72,11 @@ public class GameMenuControl
         Added code to establish enhanced firing system for program.
         */
 
-        otherFlag = board.occupyLocation (otherPlayer, location); //needed to do same for opponent shotboard
+        otherFlag = this.game.otherPlayer.boatBoard.occupyLocation(location); //needed to do same for opponent shotboard
             Boat aiBoat = new Boat(4, "ship", ShipType.BATTLESHIP);
    
-            if( otherFlag == 1){
-                   int local = otherBoard.checkLocation(otherPlayer, location); //checks location of coordinates
+            if(otherFlag != 0){
+                   int local = this.game.otherPlayer.boatBoard.checkLocation(location); //checks location of coordinates
                    aiBoat.hit(); //calls hit method in boat.java
                    aiBoat.hitOrSunk(2, 4); //calls hitOrSunk method in boat.java
             }
