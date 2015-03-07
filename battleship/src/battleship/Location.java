@@ -7,6 +7,7 @@ package battleship;
 *
 * @author griffithsC
 */
+
 public class Location {
 
 private int row;
