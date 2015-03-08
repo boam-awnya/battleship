@@ -102,7 +102,7 @@ public class GameMenu
         return;
     }
     
-    public final void display() 
+    private final void display() //Updated to private 3/7 - Jeremy K.
     {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
