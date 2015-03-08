@@ -12,16 +12,16 @@ package battleship;
  */
 public class Player
 {
-    String name;
-    String playerType;
-    String marker;
+    private String name;
+    private String playerType;
+    private String marker;
     private long wins = 0;
     private long losses = 0;
-    Board shotBoard;    //Jeffry - 2/16 added
-    Board boatBoard;    //Jeffry - 2/16 added
-    Boat submarine;
-    Boat battleship;
-    Boat carrier;
+    public Board shotBoard;    //Jeffry - 2/16 added
+    public Board boatBoard;    //Jeffry - 2/16 added
+    public Boat submarine;
+    public Boat battleship;
+    public Boat carrier;
  
     
     public Player()
@@ -32,11 +32,14 @@ public class Player
        submarine = new Boat(3,"Submarine", ShipType.SUBMARINE);     //Jeremy - 2/24
        battleship = new Boat(4,"BattleShip", ShipType.BATTLESHIP);  //Jeremy - 2/24 
        carrier = new Boat(5,"Carrier", ShipType.CARRIER);
-
-       
-
         
     }
+
+    public String getName()
+    {
+        return name;
+    }
+    
     
    public void setName(String name) {
        this.name = name;
@@ -50,7 +53,18 @@ public class Player
     public void setPlayerType(String playerType) {
         this.playerType = playerType;
     }
+
+    public String getMarker()
+    {
+        return marker;
+    }
+
+    public void setMarker(String marker)
+    {
+        this.marker = marker;
+    }
     
+   
     public long getWins() {
         return wins;
     }
@@ -133,7 +147,7 @@ public class Player
     --------------------------------------------------------------------*/
     
     
-    int getGameStats(int hit, int miss)
+     public int getGameStats(int hit, int miss)
     {
         double totalShots,hitPercent,missPercent;   //Requirement 1 - Two or more primitive Variables
         int hitOutput, missOutput;                  //Variables for typecasting
