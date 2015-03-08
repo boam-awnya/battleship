@@ -96,6 +96,7 @@ public class GameMenuControl
     Author(s): John Vehikite
     */
     
+    
     public void availableShots() {
         Player currentPlayer = this.game.currentPlayer;
         Board board = this.game.currentPlayer.shotBoard;

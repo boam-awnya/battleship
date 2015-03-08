@@ -221,7 +221,6 @@ public class Board
         return flag;
     }
    
-    
      /**************************************************************************
      * 
     Method: putShipinGrid

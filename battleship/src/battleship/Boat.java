@@ -6,7 +6,6 @@
 package battleship;
 
 /**
- *
  * @author Jeffry Simpson - BYUI CIT260 Section 03
  */
 public class Boat 
