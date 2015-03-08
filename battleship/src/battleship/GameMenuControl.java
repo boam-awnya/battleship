@@ -77,7 +77,7 @@ public class GameMenuControl
    
             if(otherFlag != 0){
                    int local = this.game.otherPlayer.boatBoard.checkLocation(location); //checks location of coordinates
-                   aiBoat.hit(); //calls hit method in boat.java
+                //   aiBoat.hit();        -- uses the hit method in boat.java.  Can switch to the hitOrSunk if needed later
                    aiBoat.hitOrSunk(2, 4); //calls hitOrSunk method in boat.java
             }
             else{

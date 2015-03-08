@@ -243,7 +243,7 @@ public class Board
                     colOffset++;
         }
    
-        new BattleshipError().displayLine(boat.getShipType() + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.direction);
+        new BattleshipError().displayLine(boat.name + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.direction);
     
     }
 
