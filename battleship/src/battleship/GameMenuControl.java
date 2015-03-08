@@ -26,7 +26,7 @@ public class GameMenuControl
         this.getLocationView = new GetLocationView(game);
     }
 
-    
+    /* 3/7 Katie: Changed placeShips() for Lesson 8...change back after assignment completed.
     public void placeShips()
     {
        
@@ -34,7 +34,32 @@ public class GameMenuControl
         placeShipMenu.getInput();
     
     }
+    */
     
+    private void placeShips()
+    {
+       
+        placeShipMenu = new PlaceShipMenu(game);
+        placeShipMenu.getInput();
+    
+    }
+
+    public GetLocationView getGetLocationView() {
+        return getLocationView;
+    }
+
+    public void setGetLocationView(GetLocationView getLocationView) {
+        this.getLocationView = getLocationView;
+    }
+
+    public PlaceShipMenu getPlaceShipMenu() {
+        return placeShipMenu;
+    }
+
+    public void setPlaceShipMenu(PlaceShipMenu placeShipMenu) {
+        this.placeShipMenu = placeShipMenu;
+    }
+    //end of change 3/7
     public int fireAShot()
     {
        // Player currentPlayer = this.game.currentPlayer.shotBoard;     //2-16 Jeffry Create local object to point to Game object
@@ -73,12 +98,12 @@ public class GameMenuControl
         */
 
         otherFlag = this.game.otherPlayer.boatBoard.occupyLocation(location); //needed to do same for opponent shotboard
-            Boat aiBoat = new Boat(4, "ship", ShipType.BATTLESHIP);
+            Boat hitBoat = new Boat(4, "ship", ShipType.BATTLESHIP);
    
             if(otherFlag != 0){
                    int local = this.game.otherPlayer.boatBoard.checkLocation(location); //checks location of coordinates
-                   aiBoat.hit(); //calls hit method in boat.java
-                   aiBoat.hitOrSunk(2, 4); //calls hitOrSunk method in boat.java
+                   hitBoat.hit(); //calls hit method in boat.java
+                   hitBoat.hitOrSunk(2, 4); //calls hitOrSunk method in boat.java
             }
             else{
                this.game.switchPlayers(); //calls swtich player method in game.java
