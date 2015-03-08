@@ -14,11 +14,11 @@ import java.util.Random;
  */
 public class Board
 {
-    int rows = 10;   // Standard board rows
-    int cols = 10;   // Stardard boad columns
-    int[][] grid = new int[rows][cols];
-    int hits;
-    int misses;
+    private static int rows = 10;   // Standard board rows
+    private static int cols = 10;   // Stardard boad columns
+    private int[][] grid = new int[rows][cols];
+    private int hits;
+    private int misses;
     Random random = new Random(); 
     
     //String boardtype;                   //Jeffry 2/20 Don't believe we need this now
@@ -37,6 +37,24 @@ public class Board
             boardtype = "Oponent";
           */       
     }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
+
+    public int getCols() {
+        return cols;
+    }
+
+    public void setCols(int cols) {
+        this.cols = cols;
+    }
+    
+    
     
     /**************************************************************************
      * 
@@ -65,8 +83,8 @@ public class Board
     
     * 
     ***************************************************************************/
-        public int checkLocation(Point location) 
-        {
+    public int checkLocation(Point location) 
+    {
         
         int occupied = 0;       //Not occupied
         //this.grid = player.shotBoard.grid; // 3/5 Katie :input not needed, no longer passing in player
@@ -121,7 +139,7 @@ public class Board
 
     
     
-    public int getRandom(int maxVal) {
+    private int getRandom(int maxVal) {
         return random.nextInt(maxVal);
     }
     
