@@ -1,5 +1,7 @@
 package battleship;
 
+import java.io.Serializable;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -8,17 +10,88 @@ package battleship;
 
 
 
-public class Game {
-     public static final String PLAYER_A__HIT__MARKER = "X";
-     public static final String PLAYER_A_MISS_MARKER = "O";
-     public static final String PLAYER_B__HIT__MARKER = "X";
-     public static final String PLAYER_B_MISS_MARKER = "O";
-     public static final String CONTINUE = "CONTINUE";
-     public static final String NEW_GAME = "NEW_GAME";
-     public static final String PLAYING = "PLAYING"; 
-     public static final String WINNER = "WINNER"; 
-     public static final String AIPLAYER = "AI";        //2/20 Jeffry added AI player string
+public class Game implements Serializable {
+     private static final String PLAYER_A__HIT__MARKER = "X";
+     private static final String PLAYER_A_MISS_MARKER = "O";
+     private static final String PLAYER_B__HIT__MARKER = "X";
+     private static final String PLAYER_B_MISS_MARKER = "O";
+     private static final String CONTINUE = "CONTINUE";
+     private static final String NEW_GAME = "NEW_GAME";
+     private static final String PLAYING = "PLAYING"; 
+     private static final String WINNER = "WINNER"; 
+     private static final String AIPLAYER = "AI";        //2/20 Jeffry added AI player string
+
+    public Game() {
+       this.playerA = new Player();
+       this.playerA.name = "Captain Baymax";
+       this.playerB = new Player();
+       this.playerB.name = "AI";
+     //  this.boatBoard = new Board(true);        //2-16 Jeffry remove - 2-14  added to remove NPE
+     //  this.shotBoard = new Board(false);       //2-16 Jeffry remove - 2-14  added to remove NPE
+    }
+
+    public Player getPlayerA() {
+        return playerA;
+    }
+
+    public void setPlayerA(Player playerA) {
+        this.playerA = playerA;
+    }
+
+    public Player getPlayerB() {
+        return playerB;
+    }
+
+    public void setPlayerB(Player playerB) {
+        this.playerB = playerB;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    public Player getOtherPlayer() {
+        return otherPlayer;
+    }
+
+    public void setOtherPlayer(Player otherPlayer) {
+        this.otherPlayer = otherPlayer;
+    }
+
+    public Player getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Player winner) {
+        this.winner = winner;
+    }
+
+    public Player getLoser() {
+        return loser;
+    }
+
+    public void setLoser(Player loser) {
+        this.loser = loser;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" + "playerA=" + playerA + ", playerB=" + playerB + ", currentPlayer=" + currentPlayer + ", otherPlayer=" + otherPlayer + ", winner=" + winner + ", loser=" + loser + ", status=" + status + '}';
+    }
      
+          
      //String gameType; --  2/14 Jeffry, this is not being used anywhere
      Player playerA;
      Player playerB;
@@ -31,18 +104,6 @@ public class Game {
      //Board shotBoard;   2/16 - Jeffry Removed to move under player
    
 
-    public Game() {
-   
-        
-       this.playerA = new Player();
-       this.playerA.name = "Captain Baymax";
-       this.playerB = new Player();
-       this.playerB.name = "AI";
-     //  this.boatBoard = new Board(true);        //2-16 Jeffry remove - 2-14  added to remove NPE
-     //  this.shotBoard = new Board(false);       //2-16 Jeffry remove - 2-14  added to remove NPE
-       
-    }
-
 /**************   2/14 Jeffry - this is not currently being used.
  
     public Game(String gameType) {
@@ -54,7 +115,7 @@ public class Game {
     }
 
 */
-    public void start(int numPlayers) {
+    private void start(int numPlayers) {
 
 
         // clear the board for both players  (2/16 Jeffry added Player. )
@@ -76,7 +137,7 @@ public class Game {
         }
     }
 
-    public void setPlayingOrder(int numPlayers) {  //2-16 Jeffry Added NumPLayers, removed Player 1 and Player2 variables
+    private void setPlayingOrder(int numPlayers) {  //2-16 Jeffry Added NumPLayers, removed Player 1 and Player2 variables
 
         if(numPlayers == 1)   //2-16 Jeffry -  One Player Game, Real Player always starts
         {
@@ -108,7 +169,7 @@ public class Game {
     Date:   2/16/2015
     Descpt: Method to switch current and other Player.
     */
-    public void switchPlayers()
+    private void switchPlayers()
     {
         Player tempPlayer;  //temp place holder
         
@@ -119,7 +180,7 @@ public class Game {
     }
     
 
-    public void recordWinner() {
+    private void recordWinner() {
         if (this.currentPlayer == this.playerA) {
             this.winner = this.playerA;
             this.loser = this.playerB;
@@ -139,7 +200,7 @@ public class Game {
         
     }
     
-    public void displayWinningMessage () {
+    private void displayWinningMessage () {
         System.out.println(
              "\n\t*******************************************************************************"
              + "\n\t Congratulations " + this.winner.name + "! You won the game."
@@ -147,10 +208,11 @@ public class Game {
              + "\n\t*******************************************************************************");
     }
     
-    public void displayPlayers() {
+    private void displayPlayers() {
         System.out.println("\n\tHere are the two default players in the game of Battleship.");
         this.playerA.displayName();
         this.playerB.displayName();
                               
     }
+    
 }
