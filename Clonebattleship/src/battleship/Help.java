@@ -12,8 +12,6 @@ import java.util.Scanner;
  * @author Shatzi-Webster
  */
 public class Help  {
-
-    
         
     private final static String[][] menuItems = {
         {"B", "The board"},
@@ -29,13 +27,6 @@ public class Help  {
     // Create instance of the HelpMenuControl (action) class
     private HelpMenuControl helpMenuControl = new HelpMenuControl();
     
-    public HelpMenuControl getHelpMenuControl() {
-        return helpMenuControl;
-    }
-
-    public void setHelpMenuControl(HelpMenuControl helpMenuControl) {
-        this.helpMenuControl = helpMenuControl;
-    }
     // default constructor
     public Help() {
         
@@ -89,7 +80,7 @@ public class Help  {
     }
 
         // displays the help menu
-    private final void display() {
+    public final void display() {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
 

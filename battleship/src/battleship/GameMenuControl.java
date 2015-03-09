@@ -18,6 +18,7 @@ public class GameMenuControl
     //private Board board;  //2-16 jeffry Removed, not needed as we have it in game object
     private GetLocationView getLocationView;
     private Player player;
+    private PlaceShipMenu placeShipMenu;
 
     public GameMenuControl(Game game) {
         this.game = game;
@@ -25,44 +26,91 @@ public class GameMenuControl
         this.getLocationView = new GetLocationView(game);
     }
 
-    
+    /* 3/7 Katie: Changed placeShips() for Lesson 8...change back after assignment completed.
     public void placeShips()
     {
        
-        new BattleshipError().displayLine("Placed a Ship");
-        
+        placeShipMenu = new PlaceShipMenu(game);
+        placeShipMenu.getInput();
     
     }
+    */
     
+    private void placeShips()
+    {
+       
+        placeShipMenu = new PlaceShipMenu(game);
+        placeShipMenu.getInput();
+    
+    }
+
+    public GetLocationView getGetLocationView() {
+        return getLocationView;
+    }
+
+    public void setGetLocationView(GetLocationView getLocationView) {
+        this.getLocationView = getLocationView;
+    }
+
+    public PlaceShipMenu getPlaceShipMenu() {
+        return placeShipMenu;
+    }
+
+    public void setPlaceShipMenu(PlaceShipMenu placeShipMenu) {
+        this.placeShipMenu = placeShipMenu;
+    }
+    //end of change 3/7
     public int fireAShot()
     {
-        Player currentPlayer = this.game.currentPlayer;     //2-16 Jeffry Create local object to point to Game object
-        Board board = this.game.currentPlayer.shotBoard;    //2-16 Jeffry Create local object to point to Game object
-        int flag=0;                                         //flag to determine if FireAShot is successful
+       // Player currentPlayer = this.game.currentPlayer.shotBoard;     //2-16 Jeffry Create local object to point to Game object
+       // Player otherPlayer = this.game.otherPlayer.boatBoard;  //2-25 Katie Created local object for otherPlayer
+       // Board board = this.game.currentPlayer.shotBoard;    //2-16 Jeffry Create local object to point to Game object
+        //Board otherBoard = this.game.otherPlayer.shotBoard; //2-25 Katie Created local object for otherPlayer shotBoard
+        
+        int flag=0;
+        int otherFlag=0;//flag to determine if FireAShot is successful
+        
+         Point location = getLocationView.getInput();
         
         do
         {  
-        
-            Point location = getLocationView.getInput();
+       
             if (location == null) 
             { // no location was entered?  
                 flag= -1;  //we should never get this error
                 break;
             }
             
-            flag = board.occupyLocation(currentPlayer, location);       //Set the shot in the grid,
+            flag = this.game.currentPlayer.shotBoard.occupyLocation(location);       //Set the shot in the grid,
             
             String tempPrint =((char) (location.x + 65) + " " + location.y);
 
-            if( flag == 1)  //Location already useed
+            if( flag == 1)  //Location already used
                 new BattleshipError().displayLine("You've already used " +  tempPrint + " for a shot");  //2/20 Jeffry - Temp print out of location
             else
                 new BattleshipError().displayLine("Fired a Shot at " +  tempPrint);  //2/16 Jeffry - Temp print out of location
-        
+            
+
         }while(flag != 0);
         
+        /* Katie 2/26/2015
+        Added code to establish enhanced firing system for program.
+        */
+
+        otherFlag = this.game.otherPlayer.boatBoard.occupyLocation(location); //needed to do same for opponent shotboard
+            Boat hitBoat = new Boat(4, "ship", ShipType.BATTLESHIP);
+   
+            if(otherFlag != 0){
+                   int local = this.game.otherPlayer.boatBoard.checkLocation(location); //checks location of coordinates
+                //   aiBoat.hit();        -- uses the hit method in boat.java.  Can switch to the hitOrSunk if needed later
+                   aiBoat.hitOrSunk(2, 4); //calls hitOrSunk method in boat.java            }
+            else{
+               this.game.switchPlayers(); //calls swtich player method in game.java
+  
+            }           
+
         return flag;
-         
+        
     }
     
     /*
@@ -71,6 +119,7 @@ public class GameMenuControl
     
     Author(s): John Vehikite
     */
+    
     
     public void availableShots() {
         Player currentPlayer = this.game.currentPlayer;

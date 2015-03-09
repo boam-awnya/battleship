@@ -16,27 +16,10 @@ public class GameMenu
     private Game game;
     private GameMenuControl gameMenuControl ; 
 
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
-
-    public GameMenuControl getGameMenuControl() {
-        return gameMenuControl;
-    }
-
-    public void setGameMenuControl(GameMenuControl gameMenuControl) {
-        this.gameMenuControl = gameMenuControl;
-    }
-
 
     private final static String[][] menuItems = {
         {"P", "Place your ships"},
         {"F", "Fire a shot"},
-        {"A", "Show available shot coordinates"},
         {"D", "Display the board"},
         {"S", "Start a new game"},
         {"R", "Report stastics"},
@@ -73,9 +56,6 @@ public class GameMenu
                 case "F":
                     this.gameMenuControl.fireAShot();  
                     break;
-                case "A":
-                    this.gameMenuControl.availableShots();
-                    break;
                 case "D":
                     gameMenuControl.displayBoard();
                     break;
@@ -102,7 +82,7 @@ public class GameMenu
         return;
     }
     
-    private final void display() //Updated to private 3/7 - Jeremy K.
+    public final void display() 
     {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");

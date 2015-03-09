@@ -6,31 +6,39 @@
 package battleship;
 
 /**
- *
  * @author Jeffry Simpson - BYUI CIT260 Section 03
  */
-public class Boat
+public class Boat 
+
 {
     private ShipType shipType;  //Enum type of Ships
     
-    int size,direction,maxDamage, hitDamage=0;   //max ddamage assigned in constructor
-    String name;                   //ship name
+    public static int size;
+    public static int direction;
+    private int maxDamage;
+    private int hitDamage=0;   //max damage assigned in constructor
+    public static String name;                   //ship name
 
-    Boat(int damage, String shipname, ShipType type)    //Constructor
+    public Boat(int damage, String shipname, ShipType type)    //Constructor
     {
-        this.maxDamage=damage;    //Max damage for this ship
+        this.maxDamage = damage;    //Max damage for this ship
         this.name = shipname;       //Ship name
         this.size = damage;         //size of boat
-        this.shipType = type;
+       // this.shipType = type;       //commented out 3/7/15 -- same thing as the name
     }
     
-    //Use to print out type of Ship
-    public ShipType getShipType()
+    /*
+    
+    Use to print out type of Ship   //commented out 3/7/15  -- unnecessary code
+     public ShipType getShipType()
     {
         return this.shipType;
     }
     
-    public void hit()       //function if the ship is hit
+       
+     ---commented out 3/7/15 -- redundent code - HitorSunk function does this same thing
+    
+    public void hit()       function if the ship is hit
     {
          this.hitDamage++;
          System.out.println("You hit my " + this.name);
@@ -39,7 +47,7 @@ public class Boat
                System.out.println("You sunk my " + this.name);
     }
     
-       
+    */
     
     /*-------------------------------------------------------------------
     Description:  Calculates Hits on a Ship, remaning hits and if the boat is sunk.
@@ -54,14 +62,14 @@ public class Boat
     --------------------------------------------------------------------*/
     
        
-    int hitOrSunk(int hitDamage, int maxDamage)
+    public int hitOrSunk(int hitDamage, int maxDamage)
     {
         //this.hitDamage++;  --->  We will need to add this in at a later date
         
-        int hitsRemaining;    //Requirement 1 - Two or more primitive Variables
-        double boatHitPercent, boatHitOutput;                 //Variables for typecasting
+      int hitsRemaining;   
+       double boatHitPercent, boatHitOutput;                 //Variables for typecasting
         
-        if(maxDamage < 2 || maxDamage > 5)   //Requirement 3 - At least one Relational operator 
+        if(maxDamage < 2 || maxDamage > 5)   
         {
             System.out.println("\nError: Invalid boat size.\n");  //min boat size = 2, max = 5.  Check to ensure maxHits is within those parameters.
             return -1;
@@ -95,13 +103,13 @@ public class Boat
         
         else
         {
-            hitsRemaining = maxDamage - hitDamage;               //Requirement 2 - Two or More Mathmatical Operators
+            hitsRemaining = maxDamage - hitDamage;               
            boatHitPercent = (double) hitDamage /maxDamage;
                          
-            boatHitOutput = (boatHitPercent * 100);   //Requirement 4 - A type conversion using type casting       
+            boatHitOutput = (boatHitPercent * 100);         
         
         
-            System.out.println ("\nYour " + name + " got hit! \n\t You have " + hitsRemaining + " hits on your " + name + " remaining. \n\tYour " + name + " is damaged " + (int) boatHitOutput + "%. \n"); // Requirement 5 - at least two character escape sequences
+            System.out.println ("\nYour " + name + " got hit! \n\t You have " + hitsRemaining + " hits on your " + name + " remaining. \n\tYour " + name + " is damaged " + (int) boatHitOutput + "%. \n"); 
               return 0; //everything working correctly
         }
         
