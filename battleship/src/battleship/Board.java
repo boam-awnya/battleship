@@ -61,14 +61,15 @@ public class Board
     Owner:  Jeffry
     Date:   2/20
     Descpt: Check if a location is occupied return 0 or 1 (No or Yes)
+    * @param location
     
     * 
     ***************************************************************************/
-        public int checkLocation(Player player, Point location) 
+        public int checkLocation(Point location) 
         {
         
         int occupied = 0;       //Not occupied
-        this.grid = player.shotBoard.grid;
+        //this.grid = player.shotBoard.grid; // 3/5 Katie :input not needed, no longer passing in player
 
         if (this.grid[location.x][location.y] != 0) 
            occupied = this.grid[location.x][location.y];  //Get the ship
@@ -85,12 +86,14 @@ public class Board
     Date:   
     Descpt: Determine if a location is occupied
     Notes:  2/20-Jeffry  Changed method to return INT not void
+    
+    @param location
     * 
     ***************************************************************************/
-    public int occupyLocation(Player player, Point location) {
+    public int occupyLocation(Point location) {
         
         int occupied = 1;       //Not occupied
-        this.grid = player.shotBoard.grid;
+        //this.grid = player.shotBoard.grid; // 3/5 Katie: input not needed, no longer passing in player info
 
         if (this.grid[location.x][location.y] == 0)   //Check if the location is emppty
         { 
@@ -123,15 +126,15 @@ public class Board
     }
     
     
-    
-    public int shipLocation(Player currentPlayer, Point location)
+    //Katie: commented out because we don't need it 2/3/2015
+    /*public int shipLocation(Player currentPlayer, Point location)
     {
         
       this.grid[location.x][location.y]= 1;
     
       return 0;
     }
-  
+  */
     
     // Function to randomly place ships; placed horizontally towards the right
     // of the starting point for now...
@@ -218,7 +221,6 @@ public class Board
         return flag;
     }
    
-    
      /**************************************************************************
      * 
     Method: putShipinGrid
@@ -240,7 +242,7 @@ public class Board
                     colOffset++;
         }
    
-        new BattleshipError().displayLine(boat.getShipType() + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.direction);
+        new BattleshipError().displayLine(boat.name + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.direction);
     
     }
 
