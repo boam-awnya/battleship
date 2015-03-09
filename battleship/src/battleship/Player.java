@@ -12,7 +12,7 @@ package battleship;
  */
 public class Player
 {
-    private String name;
+    String name;
     private String playerType;
     private String marker;
     private long wins = 0;
