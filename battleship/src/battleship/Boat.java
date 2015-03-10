@@ -13,8 +13,8 @@ public class Boat
 {
     private ShipType shipType;  //Enum type of Ships
     
-    public static int size;
-    public static int direction;
+    public int size;            //Jeff 3/10 - Removed Static as it would set size once and hold it.
+    public int direction;       //Jeff 3/10 - Removed Static as it would set direction once and hold it.
     private int maxDamage;
     private int hitDamage=0;   //max damage assigned in constructor
     public static String name;                   //ship name

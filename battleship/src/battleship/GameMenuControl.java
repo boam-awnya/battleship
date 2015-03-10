@@ -15,14 +15,12 @@ import java.util.ArrayList;
 public class GameMenuControl
 {
     private Game game;
-    //private Board board;  //2-16 jeffry Removed, not needed as we have it in game object
     private GetLocationView getLocationView;
     private Player player;
     private PlaceShipMenu placeShipMenu;
 
     public GameMenuControl(Game game) {
         this.game = game;
-        //this.board = game.boatBoard;    // 2-16 jeffry Removed as we have it in the game object
         this.getLocationView = new GetLocationView(game);
     }
 

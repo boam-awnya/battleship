@@ -139,7 +139,7 @@ public class Board
     // Function to randomly place ships; placed horizontally towards the right
     // of the starting point for now...
    // public void shipPlacement()   *** 2/20 Jeffry
-    public void shipPlacementAI(Boat boat)   //  ** Added Boat object
+    public void shipPlacementAI(Boat myBoat)   //  ** Added Boat object
     {
         int flag;                   //Flag for other boats in same locaiton
         int maxRows = this.rows;    //Used for Random and boundry checking
@@ -152,11 +152,11 @@ public class Board
             flag=0;  //Always reset
             shipRow = getRandom(maxRows);       //Get Random Startrow
             shipCol = getRandom(maxCols);       //Get Random StartCol
-            boat.direction = getRandom(2)+1;
+            myBoat.direction = getRandom(2)+1;
             
             // assures ship isn't placed off the grid
-            if(boat.direction == 1) //Direction is down
-                while(shipRow+boat.size  >= maxRows ) //Makes sure starting plus size are ok.
+            if(myBoat.direction == 1) //Direction is down
+                while(shipRow+myBoat.size  >= maxRows ) //Makes sure starting plus size are ok.
                 {
                     new BattleshipError().displayLine("Row too close to the end. Starting point: " + shipRow + ", " + shipCol + " is an invalid starting point.");
                     shipRow = getRandom(maxRows);  //Get new Row
@@ -164,7 +164,7 @@ public class Board
                 
             else //boat.diretion is RIGHT
             {
-                while(shipCol+boat.size  >= maxCols )   //Make sure starting plus size are ok
+                while(shipCol+myBoat.size  >= maxCols )   //Make sure starting plus size are ok
                 {
                     new BattleshipError().displayLine("Column too close to the end. Starting point: " + shipRow + "," + shipCol + " is an invalid starting point.");
                     shipCol = getRandom(maxCols);  //Get new Col
@@ -172,13 +172,13 @@ public class Board
             }
             
             // tests if another ship is in the proposed grid space
-            flag = checkGridLocation(boat,shipRow,shipCol);
+            flag = checkGridLocation(myBoat,shipRow,shipCol);
             
             
         }while(flag !=0);  //If flag = 1 then get a new Row and COlumn and try again.
         
         //Fill in the grid with the current boat location
-        putShipinGrid(boat,shipRow,shipCol);
+        putShipinGrid(myBoat,shipRow,shipCol);
 
         
 
