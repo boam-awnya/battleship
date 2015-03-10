@@ -36,7 +36,7 @@ public class GameMenuControl
     }
     */
     
-    private void placeShips()
+    public void placeShips()
     {
        
         placeShipMenu = new PlaceShipMenu(game);
@@ -103,10 +103,12 @@ public class GameMenuControl
             if(otherFlag != 0){
                    int local = this.game.otherPlayer.boatBoard.checkLocation(location); //checks location of coordinates
                 //   aiBoat.hit();        -- uses the hit method in boat.java.  Can switch to the hitOrSunk if needed later
-                   aiBoat.hitOrSunk(2, 4); //calls hitOrSunk method in boat.java            }
+                   Boat aiBoat = new Boat(5,"Carrier", ShipType.CARRIER); //Jeremy K. - Fixin errors.
+                   aiBoat.hitOrSunk(2, 4); //calls hitOrSunk method in boat.java            
+            }
             else{
                this.game.switchPlayers(); //calls swtich player method in game.java
-  
+
             }           
 
         return flag;

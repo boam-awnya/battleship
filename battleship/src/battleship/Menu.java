@@ -56,9 +56,9 @@ public class Menu {
                 default: 
                     new BattleshipError().displayError("Invalid command. Please enter a valid command.");
                     continue;                    
-            }
+            }           
         } while (!command.equals("Q"));
-
+ 
         return;
     }
     
@@ -70,9 +70,13 @@ public class Menu {
         System.out.println("\nPick a Number/Letter associated with one of the following commands:");
 
         for (int i = 0; i < this.menuItems.length; i++) {
-            System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
+            //System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
+            System.out.print("\t   " + menuItems[i][0]);
+            if (i == 2)
+                break;
+            System.out.println("\t   " + menuItems[0][i]);
         }
-        System.out.println("\t===============================================================\n");
+        System.out.println("\n\t===============================================================\n");
     }   
     
 }

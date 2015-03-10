@@ -189,7 +189,7 @@ public class Player
     //Group Programming Assignment 2-19-15
     //The exchange sort compares the first element with each following element of the array, making any necessary swaps.
     
-    private void sortScores () 
+    public void sortScores () 
     {
         
         int[] scores = {10, 90, 60, 40, 20, 90, 50};
@@ -215,7 +215,7 @@ public class Player
     //for-each loop to calculate the average of the scores. By Shatzi for the Individual Assignment lesson6
     
    
-    private void averageScores() 
+    public void averageScores() 
     {
         int[] scores = {50, 90, 60, 40, 20, 90, 10};
         double result = 0; //average will have decimal point
@@ -231,7 +231,7 @@ public class Player
         {
             result += scores[i];
         }
-        System.out.println("The current average score is: " + result/average);
+        System.out.println("The average score is: " + result/average);
         
     }
         
@@ -239,7 +239,7 @@ public class Player
 
     
     
- private void highScoreNames()
+ public void highScoreNames()
     {
                 System.out.print("\n");
                 System.out.println ("Names of players with current high scores:");

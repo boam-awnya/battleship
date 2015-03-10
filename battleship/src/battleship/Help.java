@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Shatzi-Webster
  */
-public class Help  {
+public class Help /*extends MenuSuper*/ {
 
     
         
@@ -89,14 +89,13 @@ public class Help  {
     }
 
         // displays the help menu
-    private final void display() {
+    public final void display() {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
 
-        for (int i = 0; i < Help.menuItems.length; i++) {
+        for (int i = 0; i < menuItems.length; i++) {
             System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
         }
         System.out.println("\t===============================================================\n");
     }
-  
 }

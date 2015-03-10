@@ -49,7 +49,7 @@ public void occupyLocation(Player player) {
 
 private void displayMarker() {
 if (this.player != null) {
-    System.out.println(this.player.marker);
+    System.out.println(this.player.getMarker());
     }
     else {
         System.out.println(" ");

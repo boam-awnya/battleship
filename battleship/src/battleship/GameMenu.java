@@ -5,16 +5,17 @@
  */
 package battleship;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  *
  * @author Jeffry Simpson - BYUI CIT260 Section 03
  */
-public class GameMenu
+public class GameMenu implements Serializable
 {
     private Game game;
-    private GameMenuControl gameMenuControl ; 
+    private GameMenuControl gameMenuControl; 
 
     public Game getGame() {
         return game;
