@@ -95,19 +95,24 @@ public class GameMenuControl
         Added code to establish enhanced firing system for program.
         */
 
-        otherFlag = this.game.otherPlayer.boatBoard.occupyLocation(location); //needed to do same for opponent shotboard
-            Boat hitBoat = new Boat(4, "ship", ShipType.BATTLESHIP);
-   
-            if(otherFlag != 0){
-                   int local = this.game.otherPlayer.boatBoard.checkLocation(location); //checks location of coordinates
-                //   aiBoat.hit();        -- uses the hit method in boat.java.  Can switch to the hitOrSunk if needed later
-                   Boat aiBoat = new Boat(5,"Carrier", ShipType.CARRIER); //Jeremy K. - Fixin errors.
-                   aiBoat.hitOrSunk(2, 4); //calls hitOrSunk method in boat.java            
-            }
-            else{
-               this.game.switchPlayers(); //calls swtich player method in game.java
+        //Check to see if the other player has a ship here.   Otherflag = 1 (Yes)  = 0 (No)
+        otherFlag = this.game.otherPlayer.boatBoard.occupyLocation(location);
+        
+        if(otherFlag != 0)  //Means there is a boat at this locaiton.
+        {
+            Boat hitBoat;  //new local varable to get ship information   
+            int typeShip = this.game.otherPlayer.boatBoard.checkLocation(location); //Get ship type location of coordinates
+           
+            hitBoat = this.game.otherPlayer.boatBoard.getShip(this.game.otherPlayer, typeShip);
+            hitBoat.setHitDamage(hitBoat.getHitDamage()+1);
+            hitBoat.hitOrSunk(hitBoat.getHitDamage(), hitBoat.getMaxDamage()); //calls hitOrSunk method in boat.java   
+            
+        }
+        else{
+            new BattleshipError().displayLine("Sorry your hit missed");
+            //this.game.switchPlayers(); //calls swtich player method in game.java
 
-            }           
+        }           
 
         return flag;
         

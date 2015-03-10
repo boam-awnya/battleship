@@ -17,7 +17,7 @@ public class Boat
     public int direction;       //Jeff 3/10 - Removed Static as it would set direction once and hold it.
     private int maxDamage;
     private int hitDamage=0;   //max damage assigned in constructor
-    public static String name;                   //ship name
+    public String name;                   //ship name
 
     public Boat(int damage, String shipname, ShipType type)    //Constructor
     {
@@ -60,6 +60,26 @@ public class Boat
     Output: 0 for OK and -1 for Error
     
     --------------------------------------------------------------------*/
+
+    public int getMaxDamage()
+    {
+        return maxDamage;
+    }
+
+    public void setMaxDamage(int maxDamage)
+    {
+        this.maxDamage = maxDamage;
+    }
+
+    public int getHitDamage()
+    {
+        return hitDamage;
+    }
+
+    public void setHitDamage(int hitDamage)
+    {
+        this.hitDamage = hitDamage;
+    }
     
        
     public int hitOrSunk(int hitDamage, int maxDamage)

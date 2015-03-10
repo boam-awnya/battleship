@@ -246,5 +246,19 @@ public class Board
     
     }
 
+  /**************************************************************************
+     * 
+    Method: getShip()
+    Owner:  Jeffry
+    Date:   2/20
+    Descpt: Fill the grid locations with a ship
+    
+    * 
+    ***************************************************************************/    
+    public Boat getShip(Player player,int shipType)
+    {
+        return player.submarine;
+    }
+    
 
 }
