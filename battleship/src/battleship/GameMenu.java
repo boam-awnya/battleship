@@ -75,7 +75,7 @@ public class GameMenu implements Serializable
                     this.gameMenuControl.fireAShot();  
                     break;
                 case "A":
-                    this.gameMenuControl.availableShots();
+                    this.game.currentPlayer.shotBoard.availableShots();
                     break;
                 case "D":
                     gameMenuControl.displayBoard();

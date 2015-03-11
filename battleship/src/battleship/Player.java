@@ -98,42 +98,13 @@ public class Player
     
     --------------------------------------------------------------------*/
     public int shotsTaken()
-    {
-        int sum=0;
+    {  
+        int sum = this.shotBoard.getHits() + this.shotBoard.getMisses();
         
-        for( int[] row : this.shotBoard.grid)
-            for(int col : row)
-                if(col == 1)
-                    sum++;
-                    
-      return sum;              
+        return sum;              
     }
     
-    
-    /*-------------------------------------------------------------------
-    Description: Calculate hits and misses on shotBoard
-    
-    Author(s): John Vehikite\
-    
-    Note: I am not sure if this is the best name for this method.
-    --------------------------------------------------------------------*/
-    
-    public void getHitMiss() {
-        Board board = this.shotBoard;
-        int hit = 0;
-        int miss = 1; // no code to show misses yet, so intialized to 1 for testing
-        
-        for(int i = 0; i < board.rows; i++) {
-            for (int j = 0; j < board.cols; j++) {
-                if(board.grid[i][j] == 1)
-                    hit++;
-                if(board.grid[i][j] == 2)
-                    miss++;
-            }
-        }
-        getGameStats(hit, miss);
-    }
-    
+
     
     /*-------------------------------------------------------------------
     Description:  Calculates Hit and Miss Percentage from Hit and Miss info

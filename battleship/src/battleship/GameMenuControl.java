@@ -6,7 +6,7 @@
 package battleship;
 
 import java.awt.Point;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -60,6 +60,7 @@ public class GameMenuControl
     //end of change 3/7
     public int fireAShot()
     {
+        Point location;
        // Player currentPlayer = this.game.currentPlayer.shotBoard;     //2-16 Jeffry Create local object to point to Game object
        // Player otherPlayer = this.game.otherPlayer.boatBoard;  //2-25 Katie Created local object for otherPlayer
        // Board board = this.game.currentPlayer.shotBoard;    //2-16 Jeffry Create local object to point to Game object
@@ -68,11 +69,12 @@ public class GameMenuControl
         int flag=0;
         int otherFlag=0;//flag to determine if FireAShot is successful
         
-         Point location = getLocationView.getInput();
+         
         
         do
         {  
-       
+            location = getLocationView.getInput();  //input a coordinate for a shot 
+            
             if (location == null) 
             { // no location was entered?  
                 flag= -1;  //we should never get this error
@@ -126,43 +128,6 @@ public class GameMenuControl
     */
     
     
-    public void availableShots() {
-        Player currentPlayer = this.game.currentPlayer;
-        Board board = this.game.currentPlayer.shotBoard;
-        
-        // String objects can be dynamically added to an array list
-        ArrayList<String> availableShots = new ArrayList<String>();
-        
-        String temp; // temporarily hold coordinate
-        int totalSpaces = 0; // keep track of number of available coordinates
-        String rowValues[] = {"A","B","C","D","E","F","G","H","I","J"};
-        
-        for(int i = 0; i < board.rows; i++) {
-            for (int j = 0; j < board.cols; j++) {
-                if(board.grid[i][j] == 0) {
-                    // temp will hold the oordinate string - ex: A 3
-                    temp = rowValues[i] + ' ' + j; 
-                    availableShots.add(temp); // add String to array list
-                    totalSpaces++;
-                }
-            }
-        }
-        
-        //The next block of code prints the array list and prints
-        //a new line after every 10 coordinates are printed
-        int count = 0; // keep track of how many coordinates there are printed on a line
-        for(String temp2 : availableShots) { //for each loop
-            System.out.print(temp2);
-            System.out.print(", ");
-            count++;
-            if(count == 10) {
-                System.out.println();
-                count = 0;
-            }
-        }
-        System.out.println("Total spaces available: " + totalSpaces);
-    }
-    
      public void displayBoard()
     {
         Board board = this.game.currentPlayer.shotBoard;    //2-16 Jeffry Create local object to point to Game object
@@ -179,11 +144,11 @@ public class GameMenuControl
     public void displayStatistics()
     {
          new BattleshipError().displayLine("Display Statistics");
-         this.game.currentPlayer.getHitMiss();
          this.game.currentPlayer.sortScores();
          this.game.currentPlayer.averageScores();
          this.game.currentPlayer.highScoreNames();
-         //player.getGameStats(hit, miss);
+         this.game.currentPlayer.getGameStats(this.game.currentPlayer.shotBoard.getHits(), this.game.currentPlayer.shotBoard.getMisses());
+        
          System.out.println("Shots Taken: " + this.game.currentPlayer.shotsTaken());
                  
     }
