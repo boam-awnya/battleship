@@ -255,11 +255,11 @@ public class Board
             flag=0;  //Always reset
             shipRow = getRandom(maxRows);       //Get Random Startrow
             shipCol = getRandom(maxCols);       //Get Random StartCol
-            myBoat.direction = getRandom(2)+1;
+            myBoat.setDirection(getRandom(2)+1);
             
             // assures ship isn't placed off the grid
-            if(myBoat.direction == 1) //Direction is down
-                while(shipRow+myBoat.size  >= maxRows ) //Makes sure starting plus size are ok.
+            if(myBoat.getDirection() == 1) //Direction is down
+                while(shipRow+myBoat.getSize()  >= maxRows ) //Makes sure starting plus size are ok.
                 {
                     new BattleshipError().displayLine("Row too close to the end. Starting point: " + shipRow + ", " + shipCol + " is an invalid starting point.");
                     shipRow = getRandom(maxRows);  //Get new Row
@@ -267,7 +267,7 @@ public class Board
                 
             else //boat.diretion is RIGHT
             {
-                while(shipCol+myBoat.size  >= maxCols )   //Make sure starting plus size are ok
+                while(shipCol+myBoat.getSize()  >= maxCols )   //Make sure starting plus size are ok
                 {
                     new BattleshipError().displayLine("Column too close to the end. Starting point: " + shipRow + "," + shipCol + " is an invalid starting point.");
                     shipCol = getRandom(maxCols);  //Get new Col
@@ -302,7 +302,7 @@ public class Board
         int flag= 0;
         int rowOffset = shipRow;  //Start at begining
         int colOffset = shipCol;
-        for(int i = 0; i < boat.size;i++)  //Loop through the boat size
+        for(int i = 0; i < boat.getSize();i++)  //Loop through the boat size
         {
 
             if(this.grid[rowOffset][colOffset] != 0)  //See if a value is in the grid locaiton other than 0
@@ -313,7 +313,7 @@ public class Board
 
             }           
 
-            if(boat.direction == 1)  //Increment row or column in the loop
+            if(boat.getDirection() == 1)  //Increment row or column in the loop
                 rowOffset++;
             else
                 colOffset++;
@@ -336,16 +336,16 @@ public class Board
     private void putShipinGrid(Boat boat,int shipRow, int shipCol)
     {
          //Fill in the grid with the current boat location
-        for(int i=0,rowOffset=shipRow,colOffset=shipCol;i<boat.size;i++)
+        for(int i=0,rowOffset=shipRow,colOffset=shipCol;i < boat.getSize() ;i++)
         {
-            this.grid[rowOffset][colOffset]= boat.size;
-            if(boat.direction == 1)  //CHeck for direction
+            this.grid[rowOffset][colOffset]= boat.getSize();
+            if(boat.getDirection() == 1)  //CHeck for direction
                     rowOffset++;
                 else
                     colOffset++;
         }
    
-        new BattleshipError().displayLine(boat.name + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.direction);
+        new BattleshipError().displayLine(boat.getName() + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.getDirection() );
     
     }
 
