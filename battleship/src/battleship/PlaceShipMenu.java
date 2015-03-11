@@ -9,11 +9,11 @@ import java.util.Scanner;
  *
  * @author John
  */
-public class PlaceShipMenu {
+public class PlaceShipMenu extends MenuSuper {
     private Game game;
     private PlaceShipMenuControl menu;
     
-    private final String[][] menuItems = {
+    private final static String[][] menuItems = {
         {"S", "Place your Submarine"},
         {"B", "Place your Battleship"},
         {"C", "Place your Carrier"},
@@ -23,6 +23,7 @@ public class PlaceShipMenu {
     };
     
     public PlaceShipMenu(Game game) {
+        super(PlaceShipMenu.menuItems);
         this.game = game;
         this.menu = new PlaceShipMenuControl(game);
     }
@@ -64,15 +65,15 @@ public class PlaceShipMenu {
         return;
     }
     
-    public final void display() 
-    {
-        System.out.println("\n\t===============================================================");
-        System.out.println("\tEnter the letter associated with one of the following commands:");
-
-        for (int i = 0; i < this.menuItems.length; i++) {
-            System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
-        }
-        System.out.println("\t===============================================================\n");
-    }
+//    public final void display() 
+//    {
+//        System.out.println("\n\t===============================================================");
+//        System.out.println("\tEnter the letter associated with one of the following commands:");
+//
+//        for (int i = 0; i < this.menuItems.length; i++) {
+//            System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
+//        }
+//        System.out.println("\t===============================================================\n");
+//    }
     
 }

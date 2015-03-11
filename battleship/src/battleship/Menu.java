@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author Jeffry Simpson
  */
-public class Menu {
+public class Menu extends MenuSuper {
    
     //Main Menu items 
     private static final String[][] menuItems = {
@@ -25,7 +25,7 @@ public class Menu {
     
     public Menu()
     {
-
+    super(Menu.menuItems);
     }
   
     public void getInput() {       
@@ -64,15 +64,15 @@ public class Menu {
 
     
     
-   public final void display() {
-        System.out.println("\n\t===============================================================");
-        System.out.println("\nPick a Number/Letter associated with one of the following commands:");
-
-        for (int i = 0; i < this.menuItems.length; i++) {
-            System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
-         
-        }
-        System.out.println("\n\t===============================================================\n");
-    }   
+//   public final void display() {
+//        System.out.println("\n\t===============================================================");
+//        System.out.println("\nPick a Number/Letter associated with one of the following commands:");
+//
+//        for (int i = 0; i < this.menuItems.length; i++) {
+//            System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
+//         
+//        }
+//        System.out.println("\n\t===============================================================\n");
+//    }   
     
 }
