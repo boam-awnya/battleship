@@ -6,6 +6,7 @@
 package battleship;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -14,11 +15,11 @@ import java.util.Random;
  */
 public class Board
 {
-    int rows = 10;   // Standard board rows
-    int cols = 10;   // Stardard boad columns
-    int[][] grid = new int[rows][cols];
-    int hits;
-    int misses;
+    private static int rows = 10;   // Standard board rows
+    private static int cols = 10;   // Stardard boad columns
+    private int[][] grid = new int[rows][cols];
+    private int hits=0;
+    private int misses=0;
     Random random = new Random(); 
     
     //String boardtype;                   //Jeffry 2/20 Don't believe we need this now
@@ -37,6 +38,47 @@ public class Board
             boardtype = "Oponent";
           */       
     }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
+
+    public int getCols() {
+        return cols;
+    }
+
+    public void setCols(int cols) {
+        this.cols = cols;
+    }
+
+    public int getHits()
+    {
+        getHitMiss();
+        return hits;
+    }
+
+    public void setHits(int hits)
+    {
+        this.hits = hits;
+    }
+
+    public int getMisses()
+    {
+        
+        getHitMiss();
+        return misses;
+    }
+
+    public void setMisses(int misses)
+    {
+        this.misses = misses;
+    }
+    
+    
     
     /**************************************************************************
      * 
@@ -65,8 +107,8 @@ public class Board
     
     * 
     ***************************************************************************/
-        public int checkLocation(Point location) 
-        {
+    public int checkLocation(Point location) 
+    {
         
         int occupied = 0;       //Not occupied
         //this.grid = player.shotBoard.grid; // 3/5 Katie :input not needed, no longer passing in player
@@ -121,7 +163,7 @@ public class Board
 
     
     
-    public int getRandom(int maxVal) {
+    private int getRandom(int maxVal) {
         return random.nextInt(maxVal);
     }
     
@@ -136,10 +178,71 @@ public class Board
     }
   */
     
+    
+    public void availableShots() {
+     
+        // String objects can be dynamically added to an array list
+        ArrayList<String> availableShots = new ArrayList<String>();
+        
+        String temp; // temporarily hold coordinate
+        int totalSpaces = 0; // keep track of number of available coordinates
+        String rowValues[] = {"A","B","C","D","E","F","G","H","I","J"};
+        
+        for(int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if(grid[i][j] == 0) {
+                    // temp will hold the oordinate string - ex: A 3
+                    temp = rowValues[i] + ' ' + j; 
+                    availableShots.add(temp); // add String to array list
+                    totalSpaces++;
+                }
+            }
+        }
+        
+        //The next block of code prints the array list and prints
+        //a new line after every 10 coordinates are printed
+        int count = 0; // keep track of how many coordinates there are printed on a line
+        for(String temp2 : availableShots) { //for each loop
+            System.out.print(temp2);
+            System.out.print(", ");
+            count++;
+            if(count == 10) {
+                System.out.println();
+                count = 0;
+            }
+        }
+        System.out.println("Total spaces available: " + totalSpaces);
+    }
+    
+    
+        
+    /*-------------------------------------------------------------------
+    Description: Calculate hits and misses on shotBoard
+    
+    Author(s): John Vehikite\
+    
+    Note: I am not sure if this is the best name for this method.
+    --------------------------------------------------------------------*/
+    
+    private void getHitMiss() {
+        
+        
+        for(int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if(grid[i][j] == 1)
+                    hits++;
+                if(grid[i][j] == 2)
+                    misses++;
+            }
+        }
+    
+    }
+    
+    
     // Function to randomly place ships; placed horizontally towards the right
     // of the starting point for now...
    // public void shipPlacement()   *** 2/20 Jeffry
-    public void shipPlacementAI(Boat boat)   //  ** Added Boat object
+    public void shipPlacementAI(Boat myBoat)   //  ** Added Boat object
     {
         int flag;                   //Flag for other boats in same locaiton
         int maxRows = this.rows;    //Used for Random and boundry checking
@@ -152,11 +255,11 @@ public class Board
             flag=0;  //Always reset
             shipRow = getRandom(maxRows);       //Get Random Startrow
             shipCol = getRandom(maxCols);       //Get Random StartCol
-            boat.direction = getRandom(2)+1;
+            myBoat.setDirection(getRandom(2)+1);
             
             // assures ship isn't placed off the grid
-            if(boat.direction == 1) //Direction is down
-                while(shipRow+boat.size  >= maxRows ) //Makes sure starting plus size are ok.
+            if(myBoat.getDirection() == 1) //Direction is down
+                while(shipRow+myBoat.getSize()  >= maxRows ) //Makes sure starting plus size are ok.
                 {
                     new BattleshipError().displayLine("Row too close to the end. Starting point: " + shipRow + ", " + shipCol + " is an invalid starting point.");
                     shipRow = getRandom(maxRows);  //Get new Row
@@ -164,7 +267,7 @@ public class Board
                 
             else //boat.diretion is RIGHT
             {
-                while(shipCol+boat.size  >= maxCols )   //Make sure starting plus size are ok
+                while(shipCol+myBoat.getSize()  >= maxCols )   //Make sure starting plus size are ok
                 {
                     new BattleshipError().displayLine("Column too close to the end. Starting point: " + shipRow + "," + shipCol + " is an invalid starting point.");
                     shipCol = getRandom(maxCols);  //Get new Col
@@ -172,13 +275,13 @@ public class Board
             }
             
             // tests if another ship is in the proposed grid space
-            flag = checkGridLocation(boat,shipRow,shipCol);
+            flag = checkGridLocation(myBoat,shipRow,shipCol);
             
             
         }while(flag !=0);  //If flag = 1 then get a new Row and COlumn and try again.
         
         //Fill in the grid with the current boat location
-        putShipinGrid(boat,shipRow,shipCol);
+        putShipinGrid(myBoat,shipRow,shipCol);
 
         
 
@@ -199,7 +302,7 @@ public class Board
         int flag= 0;
         int rowOffset = shipRow;  //Start at begining
         int colOffset = shipCol;
-        for(int i = 0; i < boat.size;i++)  //Loop through the boat size
+        for(int i = 0; i < boat.getSize();i++)  //Loop through the boat size
         {
 
             if(this.grid[rowOffset][colOffset] != 0)  //See if a value is in the grid locaiton other than 0
@@ -210,7 +313,7 @@ public class Board
 
             }           
 
-            if(boat.direction == 1)  //Increment row or column in the loop
+            if(boat.getDirection() == 1)  //Increment row or column in the loop
                 rowOffset++;
             else
                 colOffset++;
@@ -233,18 +336,32 @@ public class Board
     private void putShipinGrid(Boat boat,int shipRow, int shipCol)
     {
          //Fill in the grid with the current boat location
-        for(int i=0,rowOffset=shipRow,colOffset=shipCol;i<boat.size;i++)
+        for(int i=0,rowOffset=shipRow,colOffset=shipCol;i < boat.getSize() ;i++)
         {
-            this.grid[rowOffset][colOffset]= boat.size;
-            if(boat.direction == 1)  //CHeck for direction
+            this.grid[rowOffset][colOffset]= boat.getSize();
+            if(boat.getDirection() == 1)  //CHeck for direction
                     rowOffset++;
                 else
                     colOffset++;
         }
    
-        new BattleshipError().displayLine(boat.name + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.direction);
+        new BattleshipError().displayLine(boat.getName() + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.getDirection() );
     
     }
 
+  /**************************************************************************
+     * 
+    Method: getShip()
+    Owner:  Jeffry
+    Date:   2/20
+    Descpt: Fill the grid locations with a ship
+    
+    * 
+    ***************************************************************************/    
+    public Boat getShip(Player player,int shipType)
+    {
+        return player.submarine;
+    }
+    
 
 }

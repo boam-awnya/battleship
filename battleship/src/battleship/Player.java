@@ -98,42 +98,13 @@ public class Player
     
     --------------------------------------------------------------------*/
     public int shotsTaken()
-    {
-        int sum=0;
+    {  
+        int sum = this.shotBoard.getHits() + this.shotBoard.getMisses();
         
-        for( int[] row : this.shotBoard.grid)
-            for(int col : row)
-                if(col == 1)
-                    sum++;
-                    
-      return sum;              
+        return sum;              
     }
     
-    
-    /*-------------------------------------------------------------------
-    Description: Calculate hits and misses on shotBoard
-    
-    Author(s): John Vehikite\
-    
-    Note: I am not sure if this is the best name for this method.
-    --------------------------------------------------------------------*/
-    
-    public void getHitMiss() {
-        Board board = this.shotBoard;
-        int hit = 0;
-        int miss = 1; // no code to show misses yet, so intialized to 1 for testing
-        
-        for(int i = 0; i < board.rows; i++) {
-            for (int j = 0; j < board.cols; j++) {
-                if(board.grid[i][j] == 1)
-                    hit++;
-                if(board.grid[i][j] == 2)
-                    miss++;
-            }
-        }
-        getGameStats(hit, miss);
-    }
-    
+
     
     /*-------------------------------------------------------------------
     Description:  Calculates Hit and Miss Percentage from Hit and Miss info
@@ -189,7 +160,7 @@ public class Player
     //Group Programming Assignment 2-19-15
     //The exchange sort compares the first element with each following element of the array, making any necessary swaps.
     
-    private void sortScores () 
+    public void sortScores () 
     {
         
         int[] scores = {10, 90, 60, 40, 20, 90, 50};
@@ -215,7 +186,7 @@ public class Player
     //for-each loop to calculate the average of the scores. By Shatzi for the Individual Assignment lesson6
     
    
-    private void averageScores() 
+    public void averageScores() 
     {
         int[] scores = {50, 90, 60, 40, 20, 90, 10};
         double result = 0; //average will have decimal point
@@ -231,7 +202,7 @@ public class Player
         {
             result += scores[i];
         }
-        System.out.println("The current average score is: " + result/average);
+        System.out.println("The average score is: " + result/average);
         
     }
         
@@ -239,7 +210,7 @@ public class Player
 
     
     
- private void highScoreNames()
+ public void highScoreNames()
     {
                 System.out.print("\n");
                 System.out.println ("Names of players with current high scores:");

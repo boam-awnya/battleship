@@ -13,11 +13,11 @@ public class Boat
 {
     private ShipType shipType;  //Enum type of Ships
     
-    public static int size;
-    public static int direction;
+    private int size;            //Jeff 3/10 - Removed Static as it would set size once and hold it.
+    private int direction;       //Jeff 3/10 - Removed Static as it would set direction once and hold it.
     private int maxDamage;
     private int hitDamage=0;   //max damage assigned in constructor
-    public static String name;                   //ship name
+    private String name;                   //ship name
 
     public Boat(int damage, String shipname, ShipType type)    //Constructor
     {
@@ -49,7 +49,71 @@ public class Boat
     
     */
     
-    /*-------------------------------------------------------------------
+
+
+    public int getMaxDamage()
+    {
+        return maxDamage;
+    }
+
+    public void setMaxDamage(int maxDamage)
+    {
+        this.maxDamage = maxDamage;
+    }
+
+    public int getHitDamage()
+    {
+        return hitDamage;
+    }
+
+    public void setHitDamage(int hitDamage)
+    {
+        this.hitDamage = hitDamage;
+    }
+
+    public ShipType getShipType()
+    {
+        return shipType;
+    }
+
+    public void setShipType(ShipType shipType)
+    {
+        this.shipType = shipType;
+    }
+
+    public int getSize()
+    {
+        return size;
+    }
+
+    public void setSize(int size)
+    {
+        this.size = size;
+    }
+
+    public int getDirection()
+    {
+        return direction;
+    }
+
+    public void setDirection(int direction)
+    {
+        this.direction = direction;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    
+    
+    
+        /*-------------------------------------------------------------------
     Description:  Calculates Hits on a Ship, remaning hits and if the boat is sunk.
                   Also calculate the % of the ship that remains unharmed. 
     
@@ -59,9 +123,7 @@ public class Boat
     input: HitDamage, maxDamage
     Output: 0 for OK and -1 for Error
     
-    --------------------------------------------------------------------*/
-    
-       
+    --------------------------------------------------------------------*/   
     public int hitOrSunk(int hitDamage, int maxDamage)
     {
         //this.hitDamage++;  --->  We will need to add this in at a later date

@@ -115,7 +115,7 @@ public class Game implements Serializable {
     }
 
 */
-    private void start(int numPlayers) {
+    public void start(int numPlayers) {
 
 
         // clear the board for both players  (2/16 Jeffry added Player. )
@@ -169,7 +169,7 @@ public class Game implements Serializable {
     Date:   2/16/2015
     Descpt: Method to switch current and other Player.
     */
-    private void switchPlayers()
+    public void switchPlayers()
     {
         Player tempPlayer;  //temp place holder
         

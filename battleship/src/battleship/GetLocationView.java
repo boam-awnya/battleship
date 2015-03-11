@@ -102,8 +102,8 @@ public class GetLocationView {
             
             // Check for invalid row and column entered
             //2/14 Jeffry - Mondified to be < 0 not less than 1
-            if (row < 0   ||  row > board.rows ||
-                column < 0  ||  column > board.cols) {
+            if (row < 0   ||  row > board.getRows() ||
+                column < 0  ||  column > board.getCols() ) {
                 new BattleshipError().displayError(
                         "Enter a valid letter A-J and number number 1-10. Try again.");
                 continue;

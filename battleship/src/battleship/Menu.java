@@ -10,12 +10,11 @@ import java.util.Scanner;
  *
  * @author Jeffry Simpson
  */
-public class Menu {
+public class Menu extends MenuSuper {
    
     //Main Menu items 
     private static final String[][] menuItems = {
         {"1", "One player game"},
-        {"2", "Two player game"},
         {"H", "Help"},
         {"Q", "Quit Battleship"}
     }; 
@@ -26,7 +25,7 @@ public class Menu {
     
     public Menu()
     {
-
+    super(Menu.menuItems);
     }
   
     public void getInput() {       
@@ -56,23 +55,24 @@ public class Menu {
                 default: 
                     new BattleshipError().displayError("Invalid command. Please enter a valid command.");
                     continue;                    
-            }
+            }           
         } while (!command.equals("Q"));
-
+ 
         return;
     }
     
 
     
     
-   public final void display() {
-        System.out.println("\n\t===============================================================");
-        System.out.println("\nPick a Number/Letter associated with one of the following commands:");
-
-        for (int i = 0; i < this.menuItems.length; i++) {
-            System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
-        }
-        System.out.println("\t===============================================================\n");
-    }   
+//   public final void display() {
+//        System.out.println("\n\t===============================================================");
+//        System.out.println("\nPick a Number/Letter associated with one of the following commands:");
+//
+//        for (int i = 0; i < this.menuItems.length; i++) {
+//            System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
+//         
+//        }
+//        System.out.println("\n\t===============================================================\n");
+//    }   
     
 }
