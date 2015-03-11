@@ -11,10 +11,8 @@ import java.util.Scanner;
  *
  * @author Shatzi-Webster
  */
-public class Help /*extends MenuSuper*/ {
-
-    
-        
+public class Help extends MenuSuper {
+          
     private final static String[][] menuItems = {
         {"B", "The board"},
         {"C", "A computer player"}, 
@@ -26,6 +24,10 @@ public class Help /*extends MenuSuper*/ {
         {"Q", "Quit Help"}        
     };
     
+    public Help() {
+        super(Help.menuItems);
+    }
+    
     // Create instance of the HelpMenuControl (action) class
     private HelpMenuControl helpMenuControl = new HelpMenuControl();
     
@@ -36,12 +38,10 @@ public class Help /*extends MenuSuper*/ {
     public void setHelpMenuControl(HelpMenuControl helpMenuControl) {
         this.helpMenuControl = helpMenuControl;
     }
-    // default constructor
-    public Help() {
-        
-    } 
-    
+     
     // display the help menu and get the end users input selection
+    
+    @Override
     public void getInput() {       
               
         String command;
@@ -89,6 +89,8 @@ public class Help /*extends MenuSuper*/ {
     }
 
         // displays the help menu
+    
+    /*  commented out 3/10 
     public final void display() {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
@@ -98,4 +100,9 @@ public class Help /*extends MenuSuper*/ {
         }
         System.out.println("\t===============================================================\n");
     }
+    */
+    
+    
+        
+    
 }

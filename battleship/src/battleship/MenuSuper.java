@@ -9,9 +9,13 @@ package battleship;
  *
  * @author Jeremy
  */
-public class MenuSuper {
+public abstract class MenuSuper {
+
+    public MenuSuper(String [][]menuItemsSub) {
+        menuItems = menuItemsSub;
+    }
     
-    private final static String[][] menuItems = {};
+    private static String[][] menuItems = null;
     
     public final void display() {
         System.out.println("\n\t===============================================================");
@@ -23,4 +27,6 @@ public class MenuSuper {
         System.out.println("\t===============================================================\n");
     }
   
+   public abstract void getInput();
+    
 }

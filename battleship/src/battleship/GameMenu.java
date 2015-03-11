@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  * @author Jeffry Simpson - BYUI CIT260 Section 03
  */
-public class GameMenu implements Serializable
+public class GameMenu extends MenuSuper
 {
     private Game game;
     private GameMenuControl gameMenuControl; 
@@ -49,11 +49,14 @@ public class GameMenu implements Serializable
     
     public GameMenu(Game game) 
     {
+        super(GameMenu.menuItems);
+        
         this.game = game;  //2-16 Jeffry Added
         this.gameMenuControl = new GameMenuControl(game);
         
     }
     
+    @Override
     public void getInput() 
     {
    
@@ -103,16 +106,16 @@ public class GameMenu implements Serializable
         return;
     }
     
-    private final void display() //Updated to private 3/7 - Jeremy K.
-    {
-        System.out.println("\n\t===============================================================");
-        System.out.println("\tEnter the letter associated with one of the following commands:");
-
-        for (int i = 0; i < this.menuItems.length; i++) {
-            System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
-        }
-        System.out.println("\t===============================================================\n");
-    }
+//    private final void display() //Updated to private 3/7 - Jeremy K.
+//    {
+//        System.out.println("\n\t===============================================================");
+//        System.out.println("\tEnter the letter associated with one of the following commands:");
+//
+//        for (int i = 0; i < this.menuItems.length; i++) {
+//            System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
+//        }
+//        System.out.println("\t===============================================================\n");
+//    }
   
     
 }
