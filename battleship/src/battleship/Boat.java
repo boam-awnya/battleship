@@ -126,7 +126,7 @@ public class Boat
     --------------------------------------------------------------------*/   
     public int hitOrSunk(int hitDamage, int maxDamage)
     {
-        //this.hitDamage++;  --->  We will need to add this in at a later date
+      this.hitDamage++;  
         
       int hitsRemaining;   
        double boatHitPercent, boatHitOutput;                 //Variables for typecasting

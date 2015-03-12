@@ -111,7 +111,7 @@ public class GameMenuControl
             
         }
         else{
-            new BattleshipError().displayLine("Sorry your hit missed");
+            new BattleshipError().displayLine("Sorry your shot missed");
             //this.game.switchPlayers(); //calls swtich player method in game.java
 
         }           
