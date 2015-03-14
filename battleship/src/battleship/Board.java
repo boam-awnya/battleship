@@ -13,8 +13,8 @@ import java.awt.Point;
  */
 public class Board
 {
-    private static int rows = 10;   // Standard board rows
-    private static int cols = 10;   // Stardard boad columns
+    private static final int rows = 10;   // Standard board rows
+    private static final int cols = 10;   // Stardard boad columns
     private int[][] grid = new int[rows][cols];
  
     
@@ -37,17 +37,11 @@ public class Board
         return rows;
     }
 
-    public void setRows(int rows) {
-        this.rows = rows;
-    }
 
     public int getCols() {
         return cols;
     }
 
-    public void setCols(int cols) {
-        this.cols = cols;
-    }
 
    
     
