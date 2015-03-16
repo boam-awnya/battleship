@@ -81,7 +81,7 @@ public class GameMenuControl
                 break;
             }
             
-            flag = this.game.currentPlayer.shotBoard.occupyLocation(location);       //Set the shot in the grid,
+            flag = this.game.currentPlayer.shotBoard.occupyLocation(location,1);       //Set the shot in the grid,
             
             String tempPrint =((char) (location.x + 65) + " " + location.y);
 
@@ -98,7 +98,7 @@ public class GameMenuControl
         */
 
         //Check to see if the other player has a ship here.   Otherflag = 1 (Yes)  = 0 (No)
-        otherFlag = this.game.otherPlayer.boatBoard.occupyLocation(location);
+        otherFlag = this.game.otherPlayer.boatBoard.checkLocation(location);
         
         if(otherFlag != 0)  //Means there is a boat at this locaiton.
         {

@@ -17,8 +17,8 @@ public class Player
     private String marker;
     private long wins = 0;
     private long losses = 0;
-    public Board shotBoard;    //Jeffry - 2/16 added
-    public Board boatBoard;    //Jeffry - 2/16 added
+    public Board4Shots shotBoard;    //Jeffry - 2/16 added
+    public Board4Ships boatBoard;    //Jeffry - 2/16 added
     public Boat submarine;
     public Boat battleship;
     public Boat carrier;
@@ -27,8 +27,8 @@ public class Player
     public Player()
     {
        
-       shotBoard = new Board();    //Jeffry - 2/16 added to avoid getting NPE
-       boatBoard = new Board();    //Jeffry - 2/16 added to avoid getting NPE
+       shotBoard = new Board4Shots();    //Jeffry - Player board to show shots
+       boatBoard = new Board4Ships();    //Jeffry - Player board to show boats
        submarine = new Boat(3,"Submarine", ShipType.SUBMARINE);     //Jeremy - 2/24
        battleship = new Boat(4,"BattleShip", ShipType.BATTLESHIP);  //Jeremy - 2/24 
        carrier = new Boat(5,"Carrier", ShipType.CARRIER);
