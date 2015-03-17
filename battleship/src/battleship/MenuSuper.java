@@ -15,7 +15,7 @@ public abstract class MenuSuper {
         menuItems = menuItemsSub;
     }
     
-    private static String[][] menuItems = null;
+    private String[][] menuItems = null;
     
     public final void display() {
         System.out.println("\n\t===============================================================");
