@@ -106,7 +106,7 @@ public class GameMenuControl
             int typeShip = this.game.otherPlayer.boatBoard.checkLocation(location); //Get ship type location of coordinates
            
             hitBoat = this.game.otherPlayer.boatBoard.getShip(this.game.otherPlayer, typeShip);
-            hitBoat.setHitDamage(hitBoat.getHitDamage()+1);
+            hitBoat.setHitDamage(hitBoat.getHitDamage()+1);  //Increase damage by one
             hitBoat.hitOrSunk(hitBoat.getHitDamage(), hitBoat.getMaxDamage()); //calls hitOrSunk method in boat.java   
             
         }

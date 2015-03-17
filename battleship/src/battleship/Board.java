@@ -135,12 +135,14 @@ public class Board
     
     public void display()
     {
-        System.out.println("This is the " + this.getClass() + "'s board and it is " + ROWS + " by " + COLS + ".");
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLS; j++) {
-            //grid[i][j] = 0;                       //2-16 jeffry Commented out the line that was setting everyting to zero
-            System.out.print(grid[i][j]);
+        //System.out.println("This is the " + this.getClass() + "'s board and it is " + ROWS + " by " + COLS + ".");
+        for (int i = 0; i < ROWS; i++) 
+        {
+            for (int j = 0; j < COLS; j++) 
+            {
+                System.out.print(grid[i][j]);
             }
+            
             System.out.println();
         }
     }

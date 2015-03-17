@@ -41,6 +41,13 @@ public class PlaceShipMenuControl {
         new BattleshipError().displayLine("Your board has been reset.");
     }
     
+    public void displayBoard() {
+        
+        board = this.game.currentPlayer.boatBoard;
+        board.display();
+        
+    }
+    
     public void displayHelp() {
         Help helpMenu = new Help();
         helpMenu.getInput();
