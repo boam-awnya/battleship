@@ -10,6 +10,7 @@ import battleship.HelpMenuControl;
 import battleship.MenuSuper;
 import java.util.Scanner;
 
+
 /**
  *
  * @author Shatzi-Webster
@@ -26,6 +27,8 @@ public class Help extends MenuSuper {
         {"W", "How to win"},
         {"Q", "Quit Help"}        
     };
+    
+    
     
     public Help() {
         super(Help.menuItems);
