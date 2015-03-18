@@ -95,8 +95,8 @@ public class Game implements Serializable {
      //String gameType; --  2/14 Jeffry, this is not being used anywhere
      Player playerA;
      Player playerB;
-     Player currentPlayer;
-     Player otherPlayer;
+     public Player currentPlayer;
+     public Player otherPlayer;
      Player winner;
      Player loser;
      String status;

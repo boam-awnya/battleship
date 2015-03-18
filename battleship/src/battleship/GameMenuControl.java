@@ -5,6 +5,8 @@
  */
 package battleship;
 
+import citbyui260.section03.battleship.view.GetLocationView;
+import citbyui260.section03.battleship.view.Help;
 import java.awt.Point;
 
 

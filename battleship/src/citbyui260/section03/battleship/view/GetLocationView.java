@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package battleship;
+package citbyui260.section03.battleship.view;
 
 /**
  *
  * @author Vehikite-John and Team 3
  */
 
+import battleship.BattleshipError;
+import battleship.Board;
+import battleship.Game;
 import java.awt.Point;
 import java.util.Scanner;
 
@@ -39,8 +42,8 @@ public class GetLocationView {
         // prompt the use to enter the locaton to placeread the row and column coordinates
         while (!valid) {
             // prompt for the row and column numbers
-            System.out.println("\n\n\t" + this.game.currentPlayer.name + " it is your turn."
-                + " Enter a row and column number (For example: A 3)");
+//            System.out.println("\n\n\t" + this.game.currentPlayer.name + " it is your turn."
+//              + " Enter a row and column number (For example: A 3)");
             
             // get the value entered by the user 
             String strRowColumn = inFile.nextLine(); 

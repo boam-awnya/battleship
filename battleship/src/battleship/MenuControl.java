@@ -5,6 +5,8 @@
  */
 package battleship;
 
+import citbyui260.section03.battleship.view.Help;
+
 /**
  *
  * @author Jeffry Simpson - BYUI CIT260 Section 03
