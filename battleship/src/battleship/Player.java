@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package battleship;
-
+import battleship.ShipType;  //Inport ENUM Class
 
 /**
  *
@@ -29,9 +29,9 @@ public class Player
        
        shotBoard = new Board4Shots();    //Jeffry - Player board to show shots
        boatBoard = new Board4Ships();    //Jeffry - Player board to show boats
-       submarine = new Boat(3,"Submarine", ShipType.SUBMARINE);     //Jeremy - 2/24
-       battleship = new Boat(4,"BattleShip", ShipType.BATTLESHIP);  //Jeremy - 2/24 
-       carrier = new Boat(5,"Carrier", ShipType.CARRIER);
+       submarine = new Boat(ShipType.SUBMARINE);     //Jeremy - 2/24
+       battleship = new Boat(ShipType.BATTLESHIP);  //Jeremy - 2/24 
+       carrier = new Boat(ShipType.CARRIER);
         
     }
 

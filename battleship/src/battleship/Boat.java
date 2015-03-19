@@ -5,60 +5,43 @@
  */
 package battleship;
 
+import battleship.ShipType;   // Inport Enum Class
+
 /**
  * @author Jeffry Simpson - BYUI CIT260 Section 03
  */
 public class Boat 
 
 {
-    private ShipType shipType;  //Enum type of Ships
     
     private int size;            //Jeff 3/10 - Removed Static as it would set size once and hold it.
     private int direction;       //Jeff 3/10 - Removed Static as it would set direction once and hold it.
     private int maxDamage;
-    private int hitDamage=0;   //max damage assigned in constructor
-    private String name;                   //ship name
+    private int hitDamage=0;        //max damage assigned in constructor
+    private String name;            //ship name
+    private ShipType shipType;      //Enum type of Ships
+    
 
-    public Boat(int damage, String shipname, ShipType type)    //Constructor
+    public Boat(ShipType sType)    //Constructor
     {
-        this.maxDamage = damage;    //Max damage for this ship
-        this.name = shipname;       //Ship name
-        this.size = damage;         //size of boat
-       // this.shipType = type;       //commented out 3/7/15 -- same thing as the name
+        this.maxDamage = sType.getHits();    //Max damage for this ship
+        this.name = sType.name();       //Ship name
+        this.size = sType.getHits();         //size of boat
+        this.shipType = sType;       //commented out 3/7/15 -- same thing as the name
+    
     }
     
-    /*
-    
-    Use to print out type of Ship   //commented out 3/7/15  -- unnecessary code
-     public ShipType getShipType()
-    {
-        return this.shipType;
-    }
-    
-       
-     ---commented out 3/7/15 -- redundent code - HitorSunk function does this same thing
-    
-    public void hit()       function if the ship is hit
-    {
-         this.hitDamage++;
-         System.out.println("You hit my " + this.name);
-         
-         if(this.hitDamage== this.maxDamage)
-               System.out.println("You sunk my " + this.name);
-    }
-    
-    */
-    
+   
 
 
     public int getMaxDamage()
     {
-        return maxDamage;
+        return shipType.getHits();
     }
 
-    public void setMaxDamage(int maxDamage)
+    public void setMaxDamage()
     {
-        this.maxDamage = maxDamage;
+        maxDamage = shipType.getHits();
     }
 
     public int getHitDamage()
@@ -129,7 +112,7 @@ public class Boat
       //this.hitDamage++;    //Removed after we added get and set Damage
         
       int hitsRemaining;   
-       double boatHitPercent, boatHitOutput;                 //Variables for typecasting
+      double boatHitPercent, boatHitOutput;                 //Variables for typecasting
         
         if(maxDamage < 2 || maxDamage > 5)   
         {

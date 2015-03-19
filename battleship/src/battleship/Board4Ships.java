@@ -6,6 +6,7 @@
 package battleship;
 
 import java.util.Random;
+import battleship.ShipType;
 
 /**
  *

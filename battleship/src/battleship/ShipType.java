@@ -11,7 +11,21 @@ package battleship;
  */
 public enum ShipType
 {
-    SUBMARINE,
-    BATTLESHIP,
-    CARRIER 
+    SUBMARINE(3),
+    BATTLESHIP(4),
+    CARRIER(5); 
+ 
+    private final int maxHits;
+    
+    //Constructor;
+    ShipType(int hits)
+    {
+        maxHits = hits;
+    }
+    
+    //Return MaxHits
+    int getHits()
+    {
+        return maxHits;
+    }
 }
