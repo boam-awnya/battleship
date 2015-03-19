@@ -82,7 +82,21 @@ public class Board4Ships extends Board
     ***************************************************************************/    
     public Boat getShip(Player player,int shipType)
     {
-        return player.submarine;
+        
+       switch(shipType)
+       {
+           case 3:
+               return player.submarine;
+           case 4:
+               return player.battleship;
+           case 5:
+               return player.carrier;
+           default:
+               return null;
+               
+       }
+        
+   
     }
     
     /**************************************************************************

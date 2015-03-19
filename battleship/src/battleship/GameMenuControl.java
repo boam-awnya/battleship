@@ -5,6 +5,8 @@
  */
 package battleship;
 
+import citbyui260.section03.battleship.view.GetLocationView;
+import citbyui260.section03.battleship.view.Help;
 import java.awt.Point;
 
 
@@ -106,12 +108,12 @@ public class GameMenuControl
             int typeShip = this.game.otherPlayer.boatBoard.checkLocation(location); //Get ship type location of coordinates
            
             hitBoat = this.game.otherPlayer.boatBoard.getShip(this.game.otherPlayer, typeShip);
-            hitBoat.setHitDamage(hitBoat.getHitDamage()+1);
+            hitBoat.setHitDamage(hitBoat.getHitDamage()+1);  //Increase damage by one
             hitBoat.hitOrSunk(hitBoat.getHitDamage(), hitBoat.getMaxDamage()); //calls hitOrSunk method in boat.java   
             
         }
         else{
-            new BattleshipError().displayLine("Sorry your hit missed");
+            new BattleshipError().displayLine("Sorry your shot missed");
             //this.game.switchPlayers(); //calls swtich player method in game.java
 
         }           

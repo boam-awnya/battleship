@@ -4,18 +4,19 @@
  * and open the template in the editor.
  */
 package battleship;
+import citbyui260.section03.battleship.interfaces.*;
 
 /**
  *
  * @author Jeremy
  */
-public abstract class MenuSuper {
+public class MenuSuper implements DisplayInfo, EnterInfo {
 
     public MenuSuper(String [][]menuItemsSub) {
         menuItems = menuItemsSub;
     }
     
-    private static String[][] menuItems = null;
+    private String[][] menuItems = null;
     
     public final void display() {
         System.out.println("\n\t===============================================================");
@@ -27,6 +28,8 @@ public abstract class MenuSuper {
         System.out.println("\t===============================================================\n");
     }
   
-   public abstract void getInput();
+   public void getInput(){
+   
+   }
     
 }

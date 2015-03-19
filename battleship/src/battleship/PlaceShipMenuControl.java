@@ -5,6 +5,8 @@
  */
 package battleship;
 
+import citbyui260.section03.battleship.view.GetLocationView;
+import citbyui260.section03.battleship.view.Help;
 import java.awt.Point;
 
 /**
@@ -39,6 +41,13 @@ public class PlaceShipMenuControl {
         board = this.game.currentPlayer.boatBoard;
         board.clearTheBoard();
         new BattleshipError().displayLine("Your board has been reset.");
+    }
+    
+    public void displayBoard() {
+        
+        board = this.game.currentPlayer.boatBoard;
+        board.display();
+        
     }
     
     public void displayHelp() {

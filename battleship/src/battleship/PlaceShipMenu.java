@@ -17,6 +17,7 @@ public class PlaceShipMenu extends MenuSuper {
         {"S", "Place your Submarine"},
         {"B", "Place your Battleship"},
         {"C", "Place your Carrier"},
+        {"V", "View your Board"},
         {"R", "Reset all"},
         {"H", "Help"},
         {"Q", "Quit"} 
@@ -49,6 +50,9 @@ public class PlaceShipMenu extends MenuSuper {
                     break;
                 case "R":
                     menu.resetBoard();
+                    break;
+                case "V":
+                    menu.displayBoard();
                     break;
                 case "H":
                     menu.displayHelp();

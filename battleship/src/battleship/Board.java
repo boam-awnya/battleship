@@ -13,9 +13,9 @@ import java.awt.Point;
  */
 public class Board
 {
-    private static final int rows = 10;   // Standard board rows
-    private static final int cols = 10;   // Stardard boad columns
-    private int[][] grid = new int[rows][cols];
+    private static final int ROWS = 10;   // Standard board rows
+    private static final int COLS = 10;   // Stardard boad columns
+    private int[][] grid = new int[ROWS][COLS];
  
     
     //String boardtype;                   //Jeffry 2/20 Don't believe we need this now
@@ -34,12 +34,12 @@ public class Board
     }
   
     public int getRows() {
-        return rows;
+        return ROWS;
     }
 
 
     public int getCols() {
-        return cols;
+        return COLS;
     }
 
 
@@ -57,8 +57,8 @@ public class Board
     ***************************************************************************/  
     public void clearTheBoard() 
     {
-        for (int i = 0; i < rows; i++)
-            for (int j = 0; j < cols; j++) 
+        for (int i = 0; i < ROWS; i++)
+            for (int j = 0; j < COLS; j++) 
                 grid[i][j] = 0;
     
     }
@@ -135,12 +135,14 @@ public class Board
     
     public void display()
     {
-        System.out.println("This is the " + this + "'s board and it is " + rows + " by " + cols + ".");
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-            //grid[i][j] = 0;                       //2-16 jeffry Commented out the line that was setting everyting to zero
-            System.out.print(grid[i][j]);
+        //System.out.println("This is the " + this.getClass() + "'s board and it is " + ROWS + " by " + COLS + ".");
+        for (int i = 0; i < ROWS; i++) 
+        {
+            for (int j = 0; j < COLS; j++) 
+            {
+                System.out.print(grid[i][j]);
             }
+            
             System.out.println();
         }
     }
