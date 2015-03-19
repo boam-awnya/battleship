@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package battleship;
+package citbyui260.section03.battleship.boards;
 
 import java.util.ArrayList;
 
@@ -13,12 +13,12 @@ import java.util.ArrayList;
  */
 
 
-public class Board4Shots extends Board
+public class ShotBoard extends Board
 {
     private int hits;
     private int misses;
     
-    public Board4Shots()
+    public ShotBoard()
     {
         setHits(0);
         setMisses(0);

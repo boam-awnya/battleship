@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package battleship;
+package citbyui260.section03.battleship.boards;
 
+import battleship.BattleshipError;
+import battleship.Boat;
+import battleship.Player;
 import java.util.Random;
 import battleship.ShipType;
 
@@ -14,11 +17,11 @@ import battleship.ShipType;
  */
 
 
-public class Board4Ships extends Board
+public class ShipBoard extends Board
 {
     
     
-    public Board4Ships()
+    public ShipBoard()
     {
        
     }

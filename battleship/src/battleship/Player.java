@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package battleship;
+import citbyui260.section03.battleship.boards.ShotBoard;
+import citbyui260.section03.battleship.boards.ShipBoard;
+import citbyui260.section03.battleship.boards.Board;
 import battleship.ShipType;  //Inport ENUM Class
 
 /**
@@ -17,8 +20,8 @@ public class Player
     private String marker;
     private long wins = 0;
     private long losses = 0;
-    public Board4Shots shotBoard;    //Jeffry - 2/16 added
-    public Board4Ships boatBoard;    //Jeffry - 2/16 added
+    public ShotBoard shotBoard;    //Jeffry - 2/16 added
+    public ShipBoard boatBoard;    //Jeffry - 2/16 added
     public Boat submarine;
     public Boat battleship;
     public Boat carrier;
@@ -27,8 +30,8 @@ public class Player
     public Player()
     {
        
-       shotBoard = new Board4Shots();    //Jeffry - Player board to show shots
-       boatBoard = new Board4Ships();    //Jeffry - Player board to show boats
+       shotBoard = new ShotBoard();    //Jeffry - Player board to show shots
+       boatBoard = new ShipBoard();    //Jeffry - Player board to show boats
        submarine = new Boat(ShipType.SUBMARINE);     //Jeremy - 2/24
        battleship = new Boat(ShipType.BATTLESHIP);  //Jeremy - 2/24 
        carrier = new Boat(ShipType.CARRIER);

@@ -11,7 +11,7 @@ package citbyui260.section03.battleship.view;
  */
 
 import battleship.BattleshipError;
-import battleship.Board;
+import citbyui260.section03.battleship.boards.Board;
 import battleship.Game;
 import java.awt.Point;
 import java.util.Scanner;
