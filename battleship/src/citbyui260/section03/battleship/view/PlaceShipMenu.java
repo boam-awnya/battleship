@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package battleship;
+package citbyui260.section03.battleship.view;
+import battleship.BattleshipError;
+import battleship.Game;
+import citbyui260.section03.battleship.control.PlaceShipMenuControl;
 import java.util.Scanner;
 /**
  *

@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package battleship;
+package citbyui260.section03.battleship.control;
 
+import battleship.BattleshipError;
+import battleship.Game;
+import battleship.Player;
 import citbyui260.section03.battleship.boards.Board;
 import citbyui260.section03.battleship.view.GetLocationView;
 import citbyui260.section03.battleship.view.Help;
