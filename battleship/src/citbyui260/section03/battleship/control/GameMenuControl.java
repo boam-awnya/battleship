@@ -5,7 +5,9 @@
  */
 package citbyui260.section03.battleship.control;
 
-import citbyui260.section03.battleship.game.BattleshipError;
+import citbyui260.section03.battleship.errormsgs.ShotOutput;
+import citbyui260.section03.battleship.errormsgs.BattleshipError;
+import citbyui260.section03.battleship.game.*;
 import citbyui260.section03.battleship.ships.*;
 //import citbyui260.section03.battleship.ships.ShipCodes;
 import citbyui260.section03.battleship.game.Game;
@@ -70,12 +72,14 @@ public class GameMenuControl
     public int fireAShot()
     {
         ShipCodes errCode= ShipCodes.OK;
+      
         
         Point location; 
         int flag=0;
         int otherFlag=0;//flag to determine if FireAShot is successful
         
-         
+         //shotErr.displayError(errCode);
+         new ShotOutput().displayError("Test text message"); 
         
         do
         {  
@@ -118,7 +122,7 @@ public class GameMenuControl
             switch(errCode)
             {
                 case OK:
-                    System.out.println("OK now what");
+                   new ShotOutput().displayError(errCode);
                     break;
                 default:
                     new BattleshipError().displayLine("Sorry you got the following error: " + errCode.name());

@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package citbyui260.section03.battleship.game;
+package citbyui260.section03.battleship.errormsgs;
+
+import citbyui260.section03.battleship.interfaces.*;
 
 /**
  *
  * @author awnyaboam
  */
-public class BattleshipError {
+public class BattleshipError implements OutputMsg {
 
         public void displayError(Object object) {
             String message = (String) object;
