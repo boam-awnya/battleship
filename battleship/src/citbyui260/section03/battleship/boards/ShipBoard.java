@@ -5,9 +5,9 @@
  */
 package citbyui260.section03.battleship.boards;
 
-import battleship.BattleshipError;
+import citbyui260.section03.battleship.game.BattleshipError;
 import citbyui260.section03.battleship.ships.Boat;
-import battleship.Player;
+import citbyui260.section03.battleship.game.Player;
 import java.util.Random;
 import citbyui260.section03.battleship.ships.ShipType;
 

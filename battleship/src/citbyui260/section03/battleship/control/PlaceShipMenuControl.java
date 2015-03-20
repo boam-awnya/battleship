@@ -5,9 +5,9 @@
  */
 package citbyui260.section03.battleship.control;
 
-import battleship.BattleshipError;
-import battleship.Game;
-import battleship.Player;
+import citbyui260.section03.battleship.game.BattleshipError;
+import citbyui260.section03.battleship.game.Game;
+import citbyui260.section03.battleship.game.Player;
 import citbyui260.section03.battleship.boards.Board;
 import citbyui260.section03.battleship.view.GetLocationView;
 import citbyui260.section03.battleship.view.Help;

@@ -5,7 +5,7 @@
  */
 package citbyui260.section03.battleship.control;
 
-import battleship.Game;
+import citbyui260.section03.battleship.game.Game;
 import citbyui260.section03.battleship.view.GameMenu;
 import citbyui260.section03.battleship.view.Help;
 

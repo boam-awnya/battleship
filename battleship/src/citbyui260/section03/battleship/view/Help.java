@@ -5,7 +5,7 @@
  */
 package citbyui260.section03.battleship.view;
 
-import battleship.BattleshipError;
+import citbyui260.section03.battleship.game.BattleshipError;
 import citbyui260.section03.battleship.control.HelpMenuControl;
 import java.util.Scanner;
 

@@ -10,9 +10,9 @@ package citbyui260.section03.battleship.view;
  * @author Vehikite-John and Team 3
  */
 
-import battleship.BattleshipError;
+import citbyui260.section03.battleship.game.BattleshipError;
 import citbyui260.section03.battleship.boards.Board;
-import battleship.Game;
+import citbyui260.section03.battleship.game.Game;
 import java.awt.Point;
 import java.util.Scanner;
 

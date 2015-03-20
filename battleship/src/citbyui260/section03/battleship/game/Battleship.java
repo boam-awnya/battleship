@@ -1,4 +1,4 @@
-package battleship;
+package citbyui260.section03.battleship.game;
 
 import citbyui260.section03.battleship.view.Menu;
 
