@@ -6,6 +6,7 @@
 package citbyui260.section03.battleship.ships;
 
 import citbyui260.section03.battleship.ships.ShipType;   // Inport Enum Class
+import citbyui260.section03.battleship.ships.ShipCodes;   // Inport Enum Class for error codes
 
 /**
  * @author Jeffry Simpson - BYUI CIT260 Section 03
@@ -107,28 +108,28 @@ public class Boat
     Output: 0 for OK and -1 for Error
     
     --------------------------------------------------------------------*/   
-    public int hitOrSunk(int hitDamage, int maxDamage)
+    public ShipCodes hitOrSunk(int hitDamage, int maxDamage)
     {
-      //this.hitDamage++;    //Removed after we added get and set Damage
         
       int hitsRemaining;   
       double boatHitPercent, boatHitOutput;                 //Variables for typecasting
+      ShipCodes sc = ShipCodes.OK;
         
         if(maxDamage < 2 || maxDamage > 5)   
         {
             System.out.println("\nError: Invalid boat size.\n");  //min boat size = 2, max = 5.  Check to ensure maxHits is within those parameters.
-            return -1;
+            return sc.INVALIDSIZE;
         }
         else if(hitDamage < 0 || (hitDamage > maxDamage))  //Check hitDamage is less than maxDamage and greater than 0
         {
             System.out.println("\nError: Invalid number of hits. \n");
-            return -1;
+            return sc.INVALIDNUMHITS;
         }
                 
          else if (hitDamage == 0) // no hits yet statement
         {
             System.out.println("\nYour " + name + " is safe.  It has no hits yet. \n");
-            return 0; 
+            return sc.NOHITS; 
         }
         
         else if (hitDamage == maxDamage) // ship sunk statement 
@@ -136,13 +137,13 @@ public class Boat
             if (maxDamage == 4) //if the boat sunk is the battleship
             {
                 System.out.println("\nYour " + name + " is sunk.  You LOSE.  Better luck next time!! \n");
-                return 0; 
+                return sc.BATTLESHIPSUNK; 
             }
             
             else //for any other ship
             {
                 System.out.println("\nYour " + name + " is sunk.\n");
-                return 0; 
+                return sc.SHIPSUNK; 
             }          
         }
         
@@ -155,7 +156,7 @@ public class Boat
         
         
             System.out.println ("\nYour " + name + " got hit! \n\t You have " + hitsRemaining + " hits on your " + name + " remaining. \n\tYour " + name + " is damaged " + (int) boatHitOutput + "%. \n"); 
-              return 0; //everything working correctly
+              return sc.OK; //everything working correctly
         }
         
     }
