@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 package battleship;
+import citbyui260.section03.battleship.ships.Boat;
 import citbyui260.section03.battleship.boards.ShotBoard;
 import citbyui260.section03.battleship.boards.ShipBoard;
 import citbyui260.section03.battleship.boards.Board;
-import battleship.ShipType;  //Inport ENUM Class
+import citbyui260.section03.battleship.ships.ShipType;  //Inport ENUM Class
 
 /**
  *

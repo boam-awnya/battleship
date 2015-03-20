@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package battleship;
+package citbyui260.section03.battleship.ships;
 
-import battleship.ShipType;   // Inport Enum Class
+import citbyui260.section03.battleship.ships.ShipType;   // Inport Enum Class
 
 /**
  * @author Jeffry Simpson - BYUI CIT260 Section 03

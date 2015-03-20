@@ -6,7 +6,7 @@
 package citbyui260.section03.battleship.control;
 
 import battleship.BattleshipError;
-import battleship.Boat;
+import citbyui260.section03.battleship.ships.Boat;
 import battleship.Game;
 import battleship.Player;
 import citbyui260.section03.battleship.view.PlaceShipMenu;

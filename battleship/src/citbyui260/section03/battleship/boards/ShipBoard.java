@@ -6,10 +6,10 @@
 package citbyui260.section03.battleship.boards;
 
 import battleship.BattleshipError;
-import battleship.Boat;
+import citbyui260.section03.battleship.ships.Boat;
 import battleship.Player;
 import java.util.Random;
-import battleship.ShipType;
+import citbyui260.section03.battleship.ships.ShipType;
 
 /**
  *
