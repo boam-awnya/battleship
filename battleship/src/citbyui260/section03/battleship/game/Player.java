@@ -126,11 +126,10 @@ public class Player
     {
         double totalShots,hitPercent,missPercent;   //Requirement 1 - Two or more primitive Variables
         int hitOutput, missOutput;                  //Variables for typecasting
-        Board board = this.shotBoard;
         
         if(hit == 0 && miss == 0)   //Requirement 3 - At least one Relational operator 
         {
-            System.out.println("\nError: You can't divide by 0\n");  //Check for 0 and print error
+            System.out.println("\nError: You have taken no shots yet.  Try harder.");  //Check for 0 and print error
             return -1;
         }
         else if(hit < 0 || miss < 0)  //CHeck if Hit or miss are less than 0
@@ -140,7 +139,7 @@ public class Player
         }
         else
         {
-            averageScores();
+            
             
              totalShots = hit + miss;               //Requirement 2 - Two or More Mathmatical Operators
              hitPercent = hit/totalShots;
@@ -150,10 +149,12 @@ public class Player
              missOutput = (int) (missPercent * 100);
             
              // Requirement 5 - at least two character escape sequences
-             System.out.println("\nYou statistics:\n\tTotal shots: " + (int) totalShots + "\n\tHits:" + hit +" Percentage: " +hitOutput + "%\n\tMiss:" + miss +" Percentage: " +missOutput+"%");
-                 
-            sortScores();
-            highScoreNames();
+             System.out.println(getName() + " Your statistics:\n\tTotal shots: " + (int) totalShots + "\n\tHits:" + hit +" Percentage: " +hitOutput + "%\n\tMiss:" + miss +" Percentage: " +missOutput+"%");
+             
+            //Additional scoring functions here
+            //averageScores();
+            //sortScores();
+            //highScoreNames();
             
              
              return 0;  //Exit all is well

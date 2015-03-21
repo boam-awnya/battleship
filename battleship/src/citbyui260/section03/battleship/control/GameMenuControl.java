@@ -5,9 +5,10 @@
  */
 package citbyui260.section03.battleship.control;
 
+import citbyui260.section03.battleship.msgs.BattleshipError;
+import citbyui260.section03.battleship.msgs.ShotOutput;
 import citbyui260.section03.battleship.boards.*;
 import citbyui260.section03.battleship.enums.*;
-import citbyui260.section03.battleship.utils.*;
 import citbyui260.section03.battleship.view.*;
 import citbyui260.section03.battleship.game.*;
 import citbyui260.section03.battleship.ships.*;
@@ -91,12 +92,12 @@ public class GameMenuControl
             
             flag = thisShotBoard.occupyLocation(location,1);       //Set the shot in the grid,
             
-            String tempPrint =((char) (location.x + 65) + " " + location.y);
+            String printShotLocation =((char) (location.x + 65) + " " + location.y);
 
             if( flag == 1)  //Location already used
-                new BattleshipError().displayLine("You've already used " +  tempPrint + " for a shot");  //2/20 Jeffry - Temp print out of location
+                new BattleshipError().displayLine(this.game.currentPlayer.getName() + " you've already used " +  printShotLocation + " for a shot");  //2/20 Jeffry - Temp print out of location
             else
-                new BattleshipError().displayLine("Fired a Shot at " +  tempPrint);  //2/16 Jeffry - Temp print out of location
+                new BattleshipError().displayLine(this.game.currentPlayer.getName() + " fired a Shot at " +  printShotLocation);  //2/16 Jeffry - Temp print out of location
             
 
         }while(flag != 0);
@@ -131,7 +132,7 @@ public class GameMenuControl
         }
         else{
             thisShotBoard.setMisses(thisShotBoard.getMisses()+1);
-            new BattleshipError().displayLine("Sorry your shot missed");
+            new BattleshipError().displayLine(this.game.currentPlayer.getName() + " Sorry your shot missed.");
             //this.game.switchPlayers(); //calls swtich player method in game.java
 
         }           
@@ -170,7 +171,6 @@ public class GameMenuControl
          //this.game.currentPlayer.highScoreNames();
          this.game.currentPlayer.getGameStats(this.game.currentPlayer.shotBoard.getHits(), this.game.currentPlayer.shotBoard.getMisses());
         
-         System.out.println("Shots Taken: " + this.game.currentPlayer.shotsTaken());
                  
     }
     

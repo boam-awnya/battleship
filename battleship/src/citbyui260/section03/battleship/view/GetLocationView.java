@@ -10,7 +10,7 @@ package citbyui260.section03.battleship.view;
  * @author Vehikite-John and Team 3
  */
 
-import citbyui260.section03.battleship.utils.BattleshipError;
+import citbyui260.section03.battleship.msgs.BattleshipError;
 import citbyui260.section03.battleship.boards.Board;
 import citbyui260.section03.battleship.game.Game;
 import java.awt.Point;
@@ -42,8 +42,8 @@ public class GetLocationView {
         // prompt the use to enter the locaton to placeread the row and column coordinates
         while (!valid) {
             // prompt for the row and column numbers
-//            System.out.println("\n\n\t" + this.game.currentPlayer.name + " it is your turn."
-//              + " Enter a row and column number (For example: A 3)");
+            System.out.println("\n\n\t" + this.game.currentPlayer.getName() + " it is your turn."
+              + " Enter a row and column number (For example: A 3)");
             
             // get the value entered by the user 
             String strRowColumn = inFile.nextLine(); 

@@ -114,6 +114,7 @@ public class Boat
       int hitsRemaining;   
       double boatHitPercent, boatHitOutput;                 //Variables for typecasting
       ShipCodes sc = ShipCodes.OK;
+    
         
         if(maxDamage < 2 || maxDamage > 5)   
         {
@@ -128,7 +129,7 @@ public class Boat
                 
          else if (hitDamage == 0) // no hits yet statement
         {
-            System.out.println("\nYour " + name + " is safe.  It has no hits yet. \n");
+            System.out.println("\nThe " + name + " is safe.  It has no hits yet. \n");
             return sc.NOHITS; 
         }
         
@@ -136,13 +137,13 @@ public class Boat
         {
             if (maxDamage == 4) //if the boat sunk is the battleship
             {
-                System.out.println("\nYour " + name + " is sunk.  You LOSE.  Better luck next time!! \n");
+                System.out.println("\nThe " + name + " is sunk.  You LOSE.  Better luck next time!! \n");
                 return sc.BATTLESHIPSUNK; 
             }
             
             else //for any other ship
             {
-                System.out.println("\nYour " + name + " is sunk.\n");
+                System.out.println("\nThe " + name + " is sunk.\n");
                 return sc.SHIPSUNK; 
             }          
         }
@@ -155,7 +156,7 @@ public class Boat
             boatHitOutput = (boatHitPercent * 100);         
         
         
-            System.out.println ("\nYour " + name + " got hit! \n\t You have " + hitsRemaining + " hits on your " + name + " remaining. \n\tYour " + name + " is damaged " + (int) boatHitOutput + "%. \n"); 
+            System.out.println ("\nThe " + name + " got hit! \n\t There are " + hitsRemaining + " hit(s) on the " + name + " remaining. \n\tThe " + name + " is damaged " + (int) boatHitOutput + "%. \n"); 
               return sc.OK; //everything working correctly
         }
         

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package citbyui260.section03.battleship.utils;
+package citbyui260.section03.battleship.msgs;
 
 import citbyui260.section03.battleship.interfaces.*;
 import citbyui260.section03.battleship.enums.ShipCodes;
