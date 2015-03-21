@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package citbyui260.section03.battleship.view;
-import citbyui260.section03.battleship.errormsgs.BattleshipError;
+import citbyui260.section03.battleship.utils.BattleshipError;
 import citbyui260.section03.battleship.game.Game;
 import citbyui260.section03.battleship.control.PlaceShipMenuControl;
 import java.util.Scanner;

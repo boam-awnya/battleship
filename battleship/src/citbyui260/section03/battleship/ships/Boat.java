@@ -5,8 +5,8 @@
  */
 package citbyui260.section03.battleship.ships;
 
-import citbyui260.section03.battleship.ships.ShipType;   // Inport Enum Class
-import citbyui260.section03.battleship.ships.ShipCodes;   // Inport Enum Class for error codes
+import citbyui260.section03.battleship.enums.ShipType;   // Inport Enum Class
+import citbyui260.section03.battleship.enums.ShipCodes;   // Inport Enum Class for error codes
 
 /**
  * @author Jeffry Simpson - BYUI CIT260 Section 03
@@ -149,7 +149,7 @@ public class Boat
         
         else
         {
-            hitsRemaining = maxDamage - hitDamage;               
+           hitsRemaining = maxDamage - hitDamage;               
            boatHitPercent = (double) hitDamage /maxDamage;
                          
             boatHitOutput = (boatHitPercent * 100);         

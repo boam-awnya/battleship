@@ -5,6 +5,7 @@
  */
 package citbyui260.section03.battleship.boards;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +27,7 @@ public class ShotBoard extends Board
     
      public int getHits()
     {
-        getHitMiss();
+       
         return hits;
     }
 
@@ -38,7 +39,6 @@ public class ShotBoard extends Board
     public int getMisses()
     {
         
-        getHitMiss();
         return misses;
     }
 
@@ -104,4 +104,18 @@ public class ShotBoard extends Board
         System.out.println("Total spaces available: " + totalSpaces);
     }
     
+      public Point fireShotAI()
+    {
+        Point location= null;
+        int row, column;
+      
+        row = getRandom(getRows());       //Get Random Startrow
+        column = getRandom(getCols());
+
+        location = new Point(row, column);
+        
+        return location;
+    }
+     
+     
 }

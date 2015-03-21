@@ -5,17 +5,12 @@
  */
 package citbyui260.section03.battleship.control;
 
-import citbyui260.section03.battleship.errormsgs.ShotOutput;
-import citbyui260.section03.battleship.errormsgs.BattleshipError;
+import citbyui260.section03.battleship.boards.*;
+import citbyui260.section03.battleship.enums.*;
+import citbyui260.section03.battleship.utils.*;
+import citbyui260.section03.battleship.view.*;
 import citbyui260.section03.battleship.game.*;
 import citbyui260.section03.battleship.ships.*;
-//import citbyui260.section03.battleship.ships.ShipCodes;
-import citbyui260.section03.battleship.game.Game;
-import citbyui260.section03.battleship.game.Player;
-import citbyui260.section03.battleship.view.PlaceShipMenu;
-import citbyui260.section03.battleship.boards.Board;
-import citbyui260.section03.battleship.view.GetLocationView;
-import citbyui260.section03.battleship.view.Help;
 import java.awt.Point;
 
 
@@ -71,19 +66,22 @@ public class GameMenuControl
     //end of change 3/7
     public int fireAShot()
     {
-        ShipCodes errCode= ShipCodes.OK;
+        ShipCodes errCode= ShipCodes.OK;   //Error value for shots
+        ShipBoard otherBoatBoard = this.game.otherPlayer.boatBoard;
+        ShotBoard thisShotBoard = this.game.currentPlayer.shotBoard;
       
         
         Point location; 
         int flag=0;
         int otherFlag=0;//flag to determine if FireAShot is successful
-        
-         //shotErr.displayError(errCode);
-         new ShotOutput().displayError("Test text message"); 
-        
+              
         do
         {  
-            location = getLocationView.getInput();  //input a coordinate for a shot 
+            //Human or AI get shot location
+            if(this.game.currentPlayer.getPlayerType() == PlayerType.HUMAN)
+                location = getLocationView.getInput();  //input a coordinate for a shot 
+            else
+                location = thisShotBoard.fireShotAI();  //AI shot, using random coordinates
             
             if (location == null) 
             { // no location was entered?  
@@ -91,7 +89,7 @@ public class GameMenuControl
                 break;
             }
             
-            flag = this.game.currentPlayer.shotBoard.occupyLocation(location,1);       //Set the shot in the grid,
+            flag = thisShotBoard.occupyLocation(location,1);       //Set the shot in the grid,
             
             String tempPrint =((char) (location.x + 65) + " " + location.y);
 
@@ -108,28 +106,31 @@ public class GameMenuControl
         */
 
         //Check to see if the other player has a ship here.   Otherflag = 1 (Yes)  = 0 (No)
-        otherFlag = this.game.otherPlayer.boatBoard.checkLocation(location);
+        otherFlag = otherBoatBoard.checkLocation(location);
         
         if(otherFlag != 0)  //Means there is a boat at this locaiton.
         {
-            Boat hitBoat;  //new local varable to get ship information   
-            int typeShip = this.game.otherPlayer.boatBoard.checkLocation(location); //Get ship type location of coordinates
+            Boat hitBoat;  //new local varable to get ship information 
+            
+            thisShotBoard.setHits(thisShotBoard.getHits()+1);
+            
+            int typeShip = otherBoatBoard.checkLocation(location); //Get ship type location of coordinates
            
-            hitBoat = this.game.otherPlayer.boatBoard.getShip(this.game.otherPlayer, typeShip);
+            hitBoat = otherBoatBoard.getShip(this.game.otherPlayer, typeShip);
             hitBoat.setHitDamage(hitBoat.getHitDamage()+1);  //Increase damage by one
             errCode = hitBoat.hitOrSunk(hitBoat.getHitDamage(), hitBoat.getMaxDamage()); //calls hitOrSunk method in boat.java   
             
-            switch(errCode)
+            switch(errCode)   //Check if there is an error code and display it.
             {
                 case OK:
-                   new ShotOutput().displayError(errCode);
                     break;
                 default:
-                    new BattleshipError().displayLine("Sorry you got the following error: " + errCode.name());
+                    new ShotOutput().displayError(errCode);
             }
             
         }
         else{
+            thisShotBoard.setMisses(thisShotBoard.getMisses()+1);
             new BattleshipError().displayLine("Sorry your shot missed");
             //this.game.switchPlayers(); //calls swtich player method in game.java
 
@@ -138,15 +139,16 @@ public class GameMenuControl
         return flag;
         
     }
+  
     
+   
     /*
     Description: Display available grid spaces for shots and calculate
     the total number of shots.
     
     Author(s): John Vehikite
     */
-    
-    
+   
      public void displayBoard()
     {
         Board board = this.game.currentPlayer.shotBoard;    //2-16 Jeffry Create local object to point to Game object
@@ -163,9 +165,9 @@ public class GameMenuControl
     public void displayStatistics()
     {
          new BattleshipError().displayLine("Display Statistics");
-         this.game.currentPlayer.sortScores();
-         this.game.currentPlayer.averageScores();
-         this.game.currentPlayer.highScoreNames();
+         //this.game.currentPlayer.sortScores();
+         //this.game.currentPlayer.averageScores();
+         //this.game.currentPlayer.highScoreNames();
          this.game.currentPlayer.getGameStats(this.game.currentPlayer.shotBoard.getHits(), this.game.currentPlayer.shotBoard.getMisses());
         
          System.out.println("Shots Taken: " + this.game.currentPlayer.shotsTaken());

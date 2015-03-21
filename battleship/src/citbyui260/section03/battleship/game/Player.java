@@ -8,7 +8,7 @@ import citbyui260.section03.battleship.ships.Boat;
 import citbyui260.section03.battleship.boards.ShotBoard;
 import citbyui260.section03.battleship.boards.ShipBoard;
 import citbyui260.section03.battleship.boards.Board;
-import citbyui260.section03.battleship.ships.ShipType;  //Inport ENUM Class
+import citbyui260.section03.battleship.enums.*;  //Inport ENUM Class
 
 /**
  *
@@ -17,7 +17,7 @@ import citbyui260.section03.battleship.ships.ShipType;  //Inport ENUM Class
 public class Player
 {
     String name;
-    private String playerType;
+    private PlayerType playerType;
     private String marker;
     private long wins = 0;
     private long losses = 0;
@@ -50,11 +50,11 @@ public class Player
    }
     
    
-    public String getPlayerType() {
+    public PlayerType getPlayerType() {
         return playerType;
     }
     
-    public void setPlayerType(String playerType) {
+    public void setPlayerType(PlayerType playerType) {
         this.playerType = playerType;
     }
 

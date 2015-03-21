@@ -5,11 +5,10 @@
  */
 package citbyui260.section03.battleship.boards;
 
-import citbyui260.section03.battleship.errormsgs.BattleshipError;
+import citbyui260.section03.battleship.utils.BattleshipError;
 import citbyui260.section03.battleship.ships.Boat;
 import citbyui260.section03.battleship.game.Player;
-import java.util.Random;
-import citbyui260.section03.battleship.ships.ShipType;
+import citbyui260.section03.battleship.enums.ShipType;
 
 /**
  *
@@ -163,14 +162,7 @@ public class ShipBoard extends Board
         new BattleshipError().displayLine(boat.getName() + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.getDirection() );
     
     }
-    
-    
-    
-    private int getRandom(int maxVal) {
-        Random random = new Random();
-        return random.nextInt(maxVal);
-    }
-    
+   
     
     
 }
