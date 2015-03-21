@@ -5,6 +5,7 @@
  */
 package battleship;
 
+import byui.cit260.section03.boardpackage.Board;
 import citbyui260.section03.battleship.view.GetLocationView;
 import citbyui260.section03.battleship.view.Help;
 import java.awt.Point;

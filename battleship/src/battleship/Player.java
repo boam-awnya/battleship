@@ -5,6 +5,8 @@
  */
 package battleship;
 
+import byui.cit260.section03.boardpackage.Board;
+
 
 /**
  *

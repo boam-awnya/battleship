@@ -5,6 +5,7 @@
  */
 package battleship;
 
+import byui.cit260.section03.boardpackage.Board;
 import java.util.Random;
 
 /**
@@ -165,6 +166,11 @@ public class Board4Ships extends Board
     private int getRandom(int maxVal) {
         Random random = new Random();
         return random.nextInt(maxVal);
+    }
+
+    @Override
+    public void getRows() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

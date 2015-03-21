@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package battleship;
+package byui.cit260.section03.boardpackage;
 
+import citbyui260.section03.battleship.interfaces.GetCols;
+import citbyui260.section03.battleship.interfaces.GetRows;
 import java.awt.Point;
 
 /**
  *
  * @author jeffrysimpson, Vehikite-John
  */
-public class Board
+public abstract class Board implements GetRows, GetCols
 {
     private static final int ROWS = 10;   // Standard board rows
     private static final int COLS = 10;   // Stardard boad columns
@@ -33,14 +35,14 @@ public class Board
         myGrid = grid;
     }
   
-    public int getRows() {
-        return ROWS;
-    }
-
-
-    public int getCols() {
-        return COLS;
-    }
+//    public int getRows() {
+//        return ROWS;
+//    }
+//
+//
+//    public int getCols() {
+//        return COLS;
+//    }
 
 
    

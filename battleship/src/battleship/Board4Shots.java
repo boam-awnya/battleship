@@ -5,6 +5,7 @@
  */
 package battleship;
 
+import byui.cit260.section03.boardpackage.Board;
 import java.util.ArrayList;
 
 /**
@@ -103,5 +104,18 @@ public class Board4Shots extends Board
         }
         System.out.println("Total spaces available: " + totalSpaces);
     }
+
+    /**
+     *
+     * @return
+     */
+//    @Override
+//    public int getRows() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    private int getCols() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
     
 }
