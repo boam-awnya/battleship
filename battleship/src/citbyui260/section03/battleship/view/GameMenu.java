@@ -69,9 +69,10 @@ public class GameMenu extends MenuSuper
         Scanner inFile = new Scanner(System.in);
 
         do {    
-            this.display(); // display the menu
+            
             if(this.game.currentPlayer.getPlayerType()  == PlayerType.HUMAN)
             {
+                this.display(); // display the menu
                     // get commaned entered
                 command = inFile.nextLine();
                 command = command.trim().toUpperCase();
@@ -97,6 +98,7 @@ public class GameMenu extends MenuSuper
                     break;
                 case "S":
                     gameMenuControl.startNewGame();
+                    command = "Q"; 
                     break;
                 case "R":
                     gameMenuControl.displayStatistics();

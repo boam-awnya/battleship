@@ -84,15 +84,15 @@ public class GameMenuControl
             else
                 location = thisShotBoard.fireShotAI();  //AI shot, using random coordinates
             
+            //No location was returned, exit the method
             if (location == null) 
-            { // no location was entered?  
-                flag= -1;  //we should never get this error
-                break;
+            { // no location was entered?    
+                return -1;
             }
             
             flag = thisShotBoard.occupyLocation(location,1);       //Set the shot in the grid,
             
-            String printShotLocation =((char) (location.x + 65) + " " + location.y);
+            String printShotLocation =((char) (location.x + 65) + "" + location.y);
 
             if( flag == 1)  //Location already used
                 new BattleshipError().displayLine(this.game.currentPlayer.getName() + " you've already used " +  printShotLocation + " for a shot");  //2/20 Jeffry - Temp print out of location
@@ -160,7 +160,7 @@ public class GameMenuControl
      
     public void startNewGame()
     {
-         new BattleshipError().displayLine("Start a new game");
+         new BattleshipError().displayLine("Starting a new game");
     }
    
     public void displayStatistics()
