@@ -32,17 +32,15 @@ public class GetLocationView {
 
         Scanner inFile = new Scanner(System.in); // get input file      
         //String[] coordinates = new String[2];
-        String[] coordinates = {" ",""};
-        
+        String[] coordinates = {"",""};    
         Point location = null;
-        
         boolean valid = false;
         
 
         // prompt the use to enter the locaton to placeread the row and column coordinates
         while (!valid) {
             // prompt for the row and column numbers
-            System.out.println("\n\n\t" + this.game.currentPlayer.getName() + " it is your turn."
+            System.out.println("\n\n\t" + this.game.currentPlayer.getName() + " Please choose a grid location."
               + " Enter a row and column number (For example: A3 )");
             
             // get the value entered by the user 

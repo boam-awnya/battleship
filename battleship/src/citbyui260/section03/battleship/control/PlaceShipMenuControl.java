@@ -9,9 +9,11 @@ import citbyui260.section03.battleship.msgs.BattleshipError;
 import citbyui260.section03.battleship.game.Game;
 import citbyui260.section03.battleship.game.Player;
 import citbyui260.section03.battleship.boards.Board;
+import citbyui260.section03.battleship.ships.Boat;
 import citbyui260.section03.battleship.view.GetLocationView;
 import citbyui260.section03.battleship.view.Help;
 import java.awt.Point;
+import java.util.Scanner;
 
 /**
  *
@@ -22,22 +24,27 @@ public class PlaceShipMenuControl {
     private GetLocationView getLocationView;
     private Player player;
     private Board board;
+    private Boat boat;
     
     public PlaceShipMenuControl(Game game) {
         this.game = game;
         this.getLocationView = new GetLocationView(game);
+        player = this.game.currentPlayer;
     }
     
     public void placeSub() {
-        new BattleshipError().displayLine("Placed submarine.");
+       boat = player.submarine;
+       placeYourShip(player,boat);
     }
     
     public void placeBattleship() {
-        new BattleshipError().displayLine("Placed battleship.");
+       boat = player.battleship; 
+       placeYourShip(player,boat);
     }
     
     public void placeCarrier() {
-        new BattleshipError().displayLine("Placed carrier.");
+       boat = player.carrier; 
+       placeYourShip(player,boat);
     }
     
     public void resetBoard() {
@@ -58,4 +65,60 @@ public class PlaceShipMenuControl {
         Help helpMenu = new Help();
         helpMenu.getInput();
     }
+    
+    private void placeYourShip(Player player,Boat boat) 
+    {
+       Point location;
+     
+       if(boat.isPlaced())
+            new BattleshipError().displayError("Your " + boat.getName() + " is already placed");
+       else
+       {
+       
+           new BattleshipError().displayLine("Placing " + boat.getName());
+           do
+           {
+                location = getLocationView.getInput();
+                System.out.print(location);
+                pickDirection(boat);
+                System.out.println(boat.getDirection());
+
+           }while(player.boatBoard.shipPlacement(boat,location)== 1);  //1 means there was an error  0 means success placing ship
+           
+           boat.setPlaced(true);
+
+       }
+    }
+    
+    private void pickDirection(Boat pickedBoat)
+    {
+        Scanner inFile = new Scanner(System.in); // get input file 
+        this.boat = pickedBoat;
+        boolean flag=true;
+        
+        do
+        {
+            System.out.println("Please choose a direction for your ship to be placed\n " 
+                    + "type: 1 for Down or 2 for across");
+
+             // get the value entered by the user 
+             String strDirection = inFile.nextLine();
+
+             switch(strDirection.charAt(0))
+             {
+                 case '1':
+                     boat.setDirection(1);
+                     flag=false; //end do/while
+                     break;
+                 case '2':
+                     boat.setDirection(2);
+                     flag=false; //end do/while
+                     break;
+                 default:
+                     System.out.println("Invalid entry:  Please try again.");
+             }
+         }while(flag);
+                
+    }
+    
 }

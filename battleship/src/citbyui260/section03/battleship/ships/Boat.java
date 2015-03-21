@@ -19,16 +19,21 @@ public class Boat
     private int direction;       //Jeff 3/10 - Removed Static as it would set direction once and hold it.
     private int maxDamage;
     private int hitDamage=0;        //max damage assigned in constructor
+    private boolean placed;
     private String name;            //ship name
     private ShipType shipType;      //Enum type of Ships
+  
     
 
     public Boat(ShipType sType)    //Constructor
     {
+        
+        this.placed = false;
         this.maxDamage = sType.getHits();    //Max damage for this ship
         this.name = sType.name();       //Ship name
         this.size = sType.getHits();         //size of boat
         this.shipType = sType;       //commented out 3/7/15 -- same thing as the name
+        
     
     }
     
@@ -93,6 +98,16 @@ public class Boat
     public void setName(String name)
     {
         this.name = name;
+    }
+
+    public boolean isPlaced()
+    {
+        return placed;
+    }
+
+    public void setPlaced(boolean placed)
+    {
+        this.placed = placed;
     }
     
     

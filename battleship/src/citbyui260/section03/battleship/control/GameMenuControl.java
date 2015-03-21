@@ -121,7 +121,7 @@ public class GameMenuControl
             hitBoat.setHitDamage(hitBoat.getHitDamage()+1);  //Increase damage by one
             errCode = hitBoat.hitOrSunk(hitBoat.getHitDamage(), hitBoat.getMaxDamage()); //calls hitOrSunk method in boat.java   
             
-            switch(errCode)   //Check if there is an error code and display it.
+            switch(errCode)   //Check if there is an error code need for when we know to end the game.
             {
                 case OK:
                     break;
@@ -152,10 +152,11 @@ public class GameMenuControl
    
      public void displayBoard()
     {
-        Board board = this.game.currentPlayer.shotBoard;    //2-16 Jeffry Create local object to point to Game object
  
-        new BattleshipError().displayLine("Display the board");
-        board.display();
+        new BattleshipError().displayLine("Displaying Your Shot  board");
+        this.game.currentPlayer.shotBoard.display();
+         new BattleshipError().displayLine("\nDisplaying Your Ships ");
+        this.game.currentPlayer.boatBoard.display();
     }
      
     public void startNewGame()
