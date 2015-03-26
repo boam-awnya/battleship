@@ -47,9 +47,10 @@ public class Menu extends MenuSuper {
                 case "1":
                     this.mainMenuControl.startGame(1);
                     break;
-                case "2":
-                    this.mainMenuControl.startGame(2);
-                    break;
+//  Currently not supporting a two human player game                   
+//                case "2":
+//                    this.mainMenuControl.startGame(2);
+//                    break;
                 case "H":
                     this.mainMenuControl.displayHelpMenu();            
                     break;

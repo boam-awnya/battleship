@@ -136,10 +136,11 @@ public class Board
     
     public void display()
     {
-        
-        for (int i = 0; i < ROWS; i++) 
+        System.out.print("  0123456789\n------------\n");   //Print Row header
+        for (int i = 0; i < getRows(); i++) 
         {
-            for (int j = 0; j < COLS; j++) 
+            System.out.print(getColStr(i));                 //Print Col header
+            for (int j = 0; j < getCols(); j++) 
             {
                 System.out.print(grid[i][j]);
             }
@@ -148,12 +149,51 @@ public class Board
         }
     }
 
-protected int getRandom(int maxVal) 
+    protected int getRandom(int maxVal) 
     {
         Random random = new Random();
         return random.nextInt(maxVal);
     }
     
- 
-   
+    protected String getColStr(int i)
+    {
+        String x = "";
+        switch(i)
+        {
+
+            case 0:
+                x = "A ";
+                break;
+            case 1:
+                x = "B ";
+                break;
+            case 2:
+                x = "C ";
+                break;
+            case 3:
+                x = "D ";
+                break;
+            case 4:
+                x = "E ";
+                break;
+            case 5:
+                x = "F ";
+                break;
+            case 6:
+                x = "G ";
+                break;
+            case 7:
+                x = "H ";
+                break;
+            case 8:
+                x = "I ";
+                break;
+            case 9:
+                x = "J ";
+                break;                     
+            default:
+                x= "  ";
+        }
+       return x;
+    }
 }
