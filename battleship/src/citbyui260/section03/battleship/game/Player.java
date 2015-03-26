@@ -21,11 +21,15 @@ public class Player
     private String marker;
     private long wins = 0;
     private long losses = 0;
+    private boolean readyToPlay;
     public ShotBoard shotBoard;    //Jeffry - 2/16 added
     public ShipBoard boatBoard;    //Jeffry - 2/16 added
     public Boat submarine;
     public Boat battleship;
     public Boat carrier;
+    ShipType[] ships = {ShipType.SUBMARINE,ShipType.BATTLESHIP,ShipType.CARRIER};
+        
+    
  
     
     public Player()
@@ -33,6 +37,7 @@ public class Player
        
        shotBoard = new ShotBoard();    //Jeffry - Player board to show shots
        boatBoard = new ShipBoard();    //Jeffry - Player board to show boats
+       setReadyToPlay(false);           //Set as not ready to play
        submarine = new Boat(ShipType.SUBMARINE);     //Jeremy - 2/24
        battleship = new Boat(ShipType.BATTLESHIP);  //Jeremy - 2/24 
        carrier = new Boat(ShipType.CARRIER);
@@ -90,7 +95,19 @@ public class Player
     {
         System.out.println("My name is " + this.name);
     }
+
+    public boolean isReadyToPlay()
+    {
+        return readyToPlay;
+    }
+
+    public void setReadyToPlay(boolean readyToPlay)
+    {
+        this.readyToPlay = readyToPlay;
+    }
        
+    
+    
     /*-------------------------------------------------------------------
     Description:  Count number of shots taken
     
@@ -109,6 +126,40 @@ public class Player
     }
     
 
+    
+    public boolean checkReadyToPlay()
+    {
+        boolean flag = false;
+       
+        setReadyToPlay(true);
+        
+        for(ShipType ship : ships )
+        {
+            switch(ship)
+            {
+                case SUBMARINE:
+                    flag=submarine.isPlaced();
+                    break;
+                case BATTLESHIP:
+                    flag=battleship.isPlaced();
+                    break;
+                case CARRIER:
+                    flag=carrier.isPlaced();
+                    break;
+            }                
+                        
+            if(!flag)
+            {
+                setReadyToPlay(false);
+                break;
+            }
+        }
+            
+            
+        return isReadyToPlay();
+        
+    }
+    
     
     /*-------------------------------------------------------------------
     Description:  Calculates Hit and Miss Percentage from Hit and Miss info

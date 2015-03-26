@@ -87,8 +87,15 @@ public class GameMenu extends MenuSuper
                     this.gameMenuControl.placeShips();
                     break;
                 case "F":
-                    this.gameMenuControl.fireAShot();
-                    this.game.switchPlayers();
+                        if(this.game.currentPlayer.checkReadyToPlay())
+                        {
+                            this.gameMenuControl.fireAShot();
+                            this.game.switchPlayers();
+                        }
+                        else
+                        {
+                            BattleshipError.displayError("You must place your ships before you fire a shot at your opponent!");
+                        }
                     break;
                 case "A":
                     this.game.currentPlayer.shotBoard.availableShots();

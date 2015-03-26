@@ -86,6 +86,7 @@ public class ShipBoard extends Board
         
         //Fill in the grid with the current boat location
         putShipinGrid(myBoat,shipRow,shipCol);
+        myBoat.setPlaced(true);
 
         
 
