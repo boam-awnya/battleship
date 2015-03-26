@@ -116,6 +116,34 @@ public class ShotBoard extends Board
         
         return location;
     }
-     
+    
+      
+        public void display()
+    {
+        String marker;
+        
+        for (int i = 0; i < getRows(); i++) 
+        {
+            for (int j = 0; j < getCols(); j++) 
+            {
+                switch(checkLocation(i,j))
+                {
+                    case 1:
+                        marker = "H";
+                        break;
+                    case 2:
+                        marker = "M";
+                        break;
+                    default:
+                        marker = "0";
+                                
+                }
+
+                System.out.print(marker);
+            }
+            
+            System.out.println();
+        }
+    }
      
 }

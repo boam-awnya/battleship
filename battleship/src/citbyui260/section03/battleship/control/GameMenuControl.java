@@ -90,7 +90,7 @@ public class GameMenuControl
                 return -1;
             }
             
-            flag = thisShotBoard.occupyLocation(location,1);       //Set the shot in the grid,
+            flag = thisShotBoard.checkLocation(location);       //Set the shot in the grid, 2 = Miss
             
             String printShotLocation =((char) (location.x + 65) + "" + location.y);
 
@@ -114,11 +114,12 @@ public class GameMenuControl
             Boat hitBoat;  //new local varable to get ship information 
             
             thisShotBoard.setHits(thisShotBoard.getHits()+1);
+            thisShotBoard.occupyLocation(location,1); //set to Hit on Shot Board
             
             int typeShip = otherBoatBoard.checkLocation(location); //Get ship type location of coordinates
-           
             hitBoat = otherBoatBoard.getShip(this.game.otherPlayer, typeShip);
             hitBoat.setHitDamage(hitBoat.getHitDamage()+1);  //Increase damage by one
+            
             errCode = hitBoat.hitOrSunk(hitBoat.getHitDamage(), hitBoat.getMaxDamage()); //calls hitOrSunk method in boat.java   
             
             switch(errCode)   //Check if there is an error code need for when we know to end the game.
@@ -132,6 +133,7 @@ public class GameMenuControl
         }
         else{
             thisShotBoard.setMisses(thisShotBoard.getMisses()+1);
+            thisShotBoard.occupyLocation(location,2); //set to Miss on Shot board
             BattleshipError.displayLine(this.game.currentPlayer.getName() + " Sorry your shot missed.");
             //this.game.switchPlayers(); //calls swtich player method in game.java
 

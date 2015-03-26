@@ -136,7 +136,7 @@ public class Board
     
     public void display()
     {
-        //System.out.println("This is the " + this.getClass() + "'s board and it is " + ROWS + " by " + COLS + ".");
+        
         for (int i = 0; i < ROWS; i++) 
         {
             for (int j = 0; j < COLS; j++) 
