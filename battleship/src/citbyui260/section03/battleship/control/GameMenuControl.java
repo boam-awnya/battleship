@@ -95,9 +95,9 @@ public class GameMenuControl
             String printShotLocation =((char) (location.x + 65) + "" + location.y);
 
             if( flag == 1)  //Location already used
-                new BattleshipError().displayLine(this.game.currentPlayer.getName() + " you've already used " +  printShotLocation + " for a shot");  //2/20 Jeffry - Temp print out of location
+                BattleshipError.displayLine(this.game.currentPlayer.getName() + " you've already used " +  printShotLocation + " for a shot");  //2/20 Jeffry - Temp print out of location
             else
-                new BattleshipError().displayLine(this.game.currentPlayer.getName() + " fired a Shot at " +  printShotLocation);  //2/16 Jeffry - Temp print out of location
+                BattleshipError.displayLine(this.game.currentPlayer.getName() + " fired a Shot at " +  printShotLocation);  //2/16 Jeffry - Temp print out of location
             
 
         }while(flag != 0);
@@ -132,7 +132,7 @@ public class GameMenuControl
         }
         else{
             thisShotBoard.setMisses(thisShotBoard.getMisses()+1);
-            new BattleshipError().displayLine(this.game.currentPlayer.getName() + " Sorry your shot missed.");
+            BattleshipError.displayLine(this.game.currentPlayer.getName() + " Sorry your shot missed.");
             //this.game.switchPlayers(); //calls swtich player method in game.java
 
         }           
@@ -153,20 +153,20 @@ public class GameMenuControl
      public void displayBoard()
     {
  
-        new BattleshipError().displayLine("Displaying Your Shot  board");
+        BattleshipError.displayLine("Displaying Your Shot  board");
         this.game.currentPlayer.shotBoard.display();
-         new BattleshipError().displayLine("\nDisplaying Your Ships ");
+         BattleshipError.displayLine("\nDisplaying Your Ships ");
         this.game.currentPlayer.boatBoard.display();
     }
      
     public void startNewGame()
     {
-         new BattleshipError().displayLine("Starting a new game");
+         BattleshipError.displayLine("Starting a new game");
     }
    
     public void displayStatistics()
     {
-         new BattleshipError().displayLine("Display Statistics");
+         BattleshipError.displayLine("Display Statistics");
          //this.game.currentPlayer.sortScores();
          //this.game.currentPlayer.averageScores();
          //this.game.currentPlayer.highScoreNames();

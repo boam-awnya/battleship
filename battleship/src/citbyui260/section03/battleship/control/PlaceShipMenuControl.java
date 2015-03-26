@@ -51,7 +51,7 @@ public class PlaceShipMenuControl {
         
         board = this.game.currentPlayer.boatBoard;
         board.clearTheBoard();
-        new BattleshipError().displayLine("Your board has been reset.");
+        BattleshipError.displayLine("Your board has been reset.");
     }
     
     public void displayBoard() {
@@ -71,11 +71,11 @@ public class PlaceShipMenuControl {
        Point location;
      
        if(boat.isPlaced())
-            new BattleshipError().displayError("Your " + boat.getName() + " is already placed");
+            BattleshipError.displayError("Your " + boat.getName() + " is already placed");
        else
        {
        
-           new BattleshipError().displayLine("Placing " + boat.getName());
+           BattleshipError.displayLine("Placing " + boat.getName());
            do
            {
                 location = getLocationView.getInput();

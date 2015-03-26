@@ -77,22 +77,6 @@ public class ShipBoard extends Board
                    shipCol = getRandom(maxCols);  //Get new Col
             }
             
-//            // assures ship isn't placed off the grid
-//            if(myBoat.getDirection() == 1) //Direction is down
-//                while(shipRow+myBoat.getSize()  >= maxRows ) //Makes sure starting plus size are ok.
-//                {
-//                    new BattleshipError().displayLine("Row too close to the end. Starting point: " + shipRow + ", " + shipCol + " is an invalid starting point.");
-//                    shipRow = getRandom(maxRows);  //Get new Row
-//                }
-//                
-//            else //boat.diretion is RIGHT
-//            {
-//                while(shipCol+myBoat.getSize()  >= maxCols )   //Make sure starting plus size are ok
-//                {
-//                    new BattleshipError().displayLine("Column too close to the end. Starting point: " + shipRow + "," + shipCol + " is an invalid starting point.");
-//                    shipCol = getRandom(maxCols);  //Get new Col
-//                } 
-//            }
             
             // tests if another ship is in the proposed grid space
             flag = checkGridLocation(myBoat,shipRow,shipCol);
@@ -148,7 +132,7 @@ public class ShipBoard extends Board
             {
                 if(shipRow+myBoat.getSize()  > maxRows ) //Makes sure starting plus size are ok.
                 {
-                    new BattleshipError().displayLine("Row too close to the end. Starting point: " + shipRow + ", " + shipCol + " is an invalid starting point.");
+                    BattleshipError.displayLine("Row too close to the end. Starting point: " + shipRow + ", " + shipCol + " is an invalid starting point.");
                     flag=1;  //error to close to edge
                 }
             }   
@@ -156,7 +140,7 @@ public class ShipBoard extends Board
             {
                 if(shipCol+myBoat.getSize()  > maxCols )   //Make sure starting plus size are ok
                 {
-                    new BattleshipError().displayLine("Column too close to the end. Starting point: " + shipRow + "," + shipCol + " is an invalid starting point.");
+                    BattleshipError.displayLine("Column too close to the end. Starting point: " + shipRow + "," + shipCol + " is an invalid starting point.");
                     flag = 1; //error too close to edge
                 } 
             }
@@ -188,7 +172,7 @@ public class ShipBoard extends Board
             if(this.checkLocation(rowOffset,colOffset) != 0)  //See if a value is in the grid locaiton other than 0
             {
                 flag= 1;  //Set the flag to repeat the loop
-                new BattleshipError().displayLine("Grid Check conflict when placing a boat at " + rowOffset + "," + colOffset);
+                BattleshipError.displayLine("Grid Check conflict when placing a boat at " + rowOffset + "," + colOffset);
                 break;
 
             }           
@@ -224,7 +208,7 @@ public class ShipBoard extends Board
                     colOffset++;
         }
    
-        new BattleshipError().displayLine(boat.getName() + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.getDirection() );
+        BattleshipError.displayLine(boat.getName() + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.getDirection() );
     
     }
    

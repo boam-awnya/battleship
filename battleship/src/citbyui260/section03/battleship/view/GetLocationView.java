@@ -59,7 +59,7 @@ public class GetLocationView {
             }
             
             if (strRowColumn.length() < 1) { // the value entered was not blank?
-                new BattleshipError().displayError(
+                BattleshipError.displayError(
                         "You must enter a letter A-J and a number 1-10, "
                         + "or a \"Q\" to quit. Try again.");
                 continue;
@@ -73,21 +73,11 @@ public class GetLocationView {
             coordinates[1] = String.valueOf(strRowColumn.charAt(1)); 
                 
 
-//            else if (coordinates.length == 1) { // only one coordinate entered?
-//               
-//                } else { // wrong number of values entered.
-//                    new BattleshipError().displayError(
-//                        "You must enter a letter A-J and a number 1-10, "
-//                        + "or a \"Q\" to quit. Try again.");
-//                    continue;
-//                }
-           
-
             //2/14 - Add this section to convert Letters Enter for Row to num of grid.
             coordinates[0] = convertRow(coordinates[0]);
             if  (coordinates[0].equals("-1"))
             { // wrong Row  values entered.
-                    new BattleshipError().displayError(
+                    BattleshipError.displayError(
                         "You must enter a letter A-J "
                         + "or a \"Q\" to quit. Try again.");
                     continue;
@@ -98,7 +88,7 @@ public class GetLocationView {
             String regExpressionPattern = ".*\\d.*";
             if (!coordinates[0].matches(regExpressionPattern) ||
                 !coordinates[1].matches(regExpressionPattern)) {
-                new BattleshipError().displayError(
+                BattleshipError.displayError(
                         "You must enter a letter A-J and a number 0-9, "
                         + "or a \"Q\" to quit. Try again.");
                 continue;
@@ -115,7 +105,7 @@ public class GetLocationView {
             //2/14 Jeffry - Mondified to be < 0 not less than 1
             if (row < 0   ||  row > board.getRows() ||
                 column < 0  ||  column > board.getCols() ) {
-                new BattleshipError().displayError(
+                BattleshipError.displayError(
                         "Enter a valid letter A-J and number number 0-9. Try again.");
                 continue;
             }

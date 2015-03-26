@@ -11,9 +11,9 @@ import citbyui260.section03.battleship.interfaces.*;
  *
  * @author awnyaboam
  */
-public class BattleshipError implements OutputMsg {
+public class BattleshipError{
 
-        public void displayError(Object object) {
+        public static void displayError(Object object) {
             String message = (String) object;
             System.out.println("\t??????????????????????????????????????????????????????????????????????????????");
             System.out.println("\t ERROR: " + message);
@@ -21,13 +21,13 @@ public class BattleshipError implements OutputMsg {
             
         }
     
-        public void displayLine(Object object)
+        public static void displayLine(Object object)
         {
+            
             String message = (String) object;
             System.out.println(message);
             
         }
-       
      
         
 }

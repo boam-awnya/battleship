@@ -1,7 +1,7 @@
 package citbyui260.section03.battleship.game;
 
 import citbyui260.section03.battleship.enums.PlayerType;
-import citbyui260.section03.battleship.msgs.BattleshipError;
+import citbyui260.section03.battleship.msgs.*;
 import java.io.Serializable;
 
 /*
@@ -183,7 +183,9 @@ public class Game implements Serializable {
         this.currentPlayer = this.otherPlayer;
         this.otherPlayer = tempPlayer;
         
-        new BattleshipError().displayLine("\n" + this.currentPlayer.getName() + " It's your turn.");
+      //  BattleshipError.displayLine("\n" + this.currentPlayer.getName() + " It's your turn.");
+        BattleshipError.displayLine("\n" + this.currentPlayer.getName() + " It's your turn.");
+       
         
     }
     

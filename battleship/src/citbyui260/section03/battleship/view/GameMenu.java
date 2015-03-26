@@ -112,7 +112,7 @@ public class GameMenu extends MenuSuper
                 case "Q":                   
                     break;
                 default: 
-                    new BattleshipError().displayError("Invalid command. Please enter a valid command.");
+                    BattleshipError.displayError("Invalid command. Please enter a valid command.");
                     continue;                              
             }
         } while (!command.equals("Q"));
@@ -120,16 +120,7 @@ public class GameMenu extends MenuSuper
         return;
     }
     
-//    private final void display() //Updated to private 3/7 - Jeremy K.
-//    {
-//        System.out.println("\n\t===============================================================");
-//        System.out.println("\tEnter the letter associated with one of the following commands:");
-//
-//        for (int i = 0; i < this.menuItems.length; i++) {
-//            System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
-//        }
-//        System.out.println("\t===============================================================\n");
-//    }
+
   
     
 }
