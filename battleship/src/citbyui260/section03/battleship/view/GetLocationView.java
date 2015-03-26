@@ -52,16 +52,16 @@ public class GetLocationView {
             strRowColumn = strRowColumn.toUpperCase();
          
             
-             //Check for Q to Quit and return if found
-            if (strRowColumn.contains("Q")) 
-            {
-                return null;
-            }
+//             //Check for Q to Quit and return if found
+//            if (strRowColumn.contains("Q")) 
+//            {
+//                return null;
+//            }
             
-            if (strRowColumn.length() < 1) { // the value entered was not blank?
+            if (strRowColumn.length() < 2) { // the value entered was not blank?
                 BattleshipError.displayError(
-                        "You must enter a letter A-J and a number 1-10, "
-                        + "or a \"Q\" to quit. Try again.");
+                        "You must enter a letter A-J and a number 1-10. "
+                        + "Pease Try again.");
                 continue;
             }  
             
@@ -78,8 +78,8 @@ public class GetLocationView {
             if  (coordinates[0].equals("-1"))
             { // wrong Row  values entered.
                     BattleshipError.displayError(
-                        "You must enter a letter A-J "
-                        + "or a \"Q\" to quit. Try again.");
+                        "You must enter a letter A-J. "
+                        + "Please try again.");
                     continue;
             }
             
@@ -89,8 +89,8 @@ public class GetLocationView {
             if (!coordinates[0].matches(regExpressionPattern) ||
                 !coordinates[1].matches(regExpressionPattern)) {
                 BattleshipError.displayError(
-                        "You must enter a letter A-J and a number 0-9, "
-                        + "or a \"Q\" to quit. Try again.");
+                        "You must enter a letter A-J and a number 0-9. "
+                        + "Please Try again.");
                 continue;
             }
             
@@ -106,7 +106,7 @@ public class GetLocationView {
             if (row < 0   ||  row > board.getRows() ||
                 column < 0  ||  column > board.getCols() ) {
                 BattleshipError.displayError(
-                        "Enter a valid letter A-J and number number 0-9. Try again.");
+                        "Enter a valid letter A-J and number number 0-9. Please try again.");
                 continue;
             }
             
