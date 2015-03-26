@@ -46,7 +46,7 @@ public class GameMenu extends MenuSuper
         {"D", "Display the board"},
         {"S", "Start a new game"},
         {"R", "Report stastics"},
-        {"C", "Change game preferences"},
+ //     {"C", "Change game preferences"},
         {"H", "Help"},
         {"Q", "QUIT"}
     };
@@ -110,9 +110,9 @@ public class GameMenu extends MenuSuper
                 case "R":
                     gameMenuControl.displayStatistics();
                     break;
-                case "C":
-                    gameMenuControl.displayPreferencesMenu();
-                    break;
+//                case "C":
+//                    gameMenuControl.displayPreferencesMenu();
+//                    break;
                 case "H":
                     gameMenuControl.displayHelpMenu();
                     break;
