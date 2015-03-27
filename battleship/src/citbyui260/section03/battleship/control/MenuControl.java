@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package battleship;
+package citbyui260.section03.battleship.control;
 
+import citbyui260.section03.battleship.game.Game;
+import citbyui260.section03.battleship.view.GameMenu;
 import citbyui260.section03.battleship.view.Help;
 
 /**
@@ -25,7 +27,7 @@ public class MenuControl
     {
         Game game = new Game();
         game.start(numPlayers);       //2-16 Jeffry Call to setup Game and Players
-        game.playerB.setMarker("MyCheck");  //2-20 Jeff temp debug marker
+        //game.playerB.setMarker("MyCheck");  //2-20 Jeff temp debug marker
         gameMenu = new GameMenu(game);
         gameMenu.getInput();
         

@@ -1,5 +1,7 @@
-package battleship;
+package citbyui260.section03.battleship.game;
 
+import citbyui260.section03.battleship.enums.PlayerType;
+import citbyui260.section03.battleship.msgs.*;
 import java.io.Serializable;
 
 /*
@@ -129,6 +131,7 @@ public class Game implements Serializable {
 
         if(numPlayers == 1)  //Setup AI ships
         {
+            
             playerB.boatBoard.shipPlacementAI(playerB.submarine);  //Let the AI pick all the locations
             playerB.boatBoard.shipPlacementAI(playerB.battleship);  //Let the AI pick all the locations
             playerB.boatBoard.shipPlacementAI(playerB.carrier);  //Let the AI pick all the locations
@@ -141,14 +144,17 @@ public class Game implements Serializable {
 
         if(numPlayers == 1)   //2-16 Jeffry -  One Player Game, Real Player always starts
         {
+            playerA.setPlayerType(PlayerType.HUMAN);
+            playerB.setPlayerType(PlayerType.AI);
+            
             this.currentPlayer = playerA;
             this.otherPlayer = playerB;
-            this.playerB.setPlayerType(AIPLAYER);       //2-20 added AIPlayer String in 1 player game
+            
         }
         else    // Else for two player game, randomly choose which one goes first
         {   
-            this.playerA.setPlayerType("");     //2-20 Jeffry Set player types to real
-            this.playerB.setPlayerType("");
+            playerA.setPlayerType(PlayerType.HUMAN);
+            playerB.setPlayerType(PlayerType.HUMAN);
             
             double randomValue = Math.random();
             
@@ -176,6 +182,10 @@ public class Game implements Serializable {
         tempPlayer = this.currentPlayer;
         this.currentPlayer = this.otherPlayer;
         this.otherPlayer = tempPlayer;
+        
+      //  BattleshipError.displayLine("\n" + this.currentPlayer.getName() + " It's your turn.");
+        BattleshipError.displayLine("\n" + this.currentPlayer.getName() + " It's your turn.");
+       
         
     }
     

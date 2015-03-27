@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package battleship;
+package citbyui260.section03.battleship.view;
+import citbyui260.section03.battleship.msgs.BattleshipError;
+import citbyui260.section03.battleship.game.Game;
+import citbyui260.section03.battleship.control.PlaceShipMenuControl;
 import java.util.Scanner;
 /**
  *
@@ -60,7 +63,7 @@ public class PlaceShipMenu extends MenuSuper {
                 case "Q":
                     break;
                 default: 
-                    new BattleshipError().displayError("Invalid command. Please enter a valid command.");
+                    BattleshipError.displayError("Invalid command. Please enter a valid command.");
                     continue;
                     
             }
@@ -68,16 +71,5 @@ public class PlaceShipMenu extends MenuSuper {
         
         return;
     }
-    
-//    public final void display() 
-//    {
-//        System.out.println("\n\t===============================================================");
-//        System.out.println("\tEnter the letter associated with one of the following commands:");
-//
-//        for (int i = 0; i < this.menuItems.length; i++) {
-//            System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
-//        }
-//        System.out.println("\t===============================================================\n");
-//    }
     
 }

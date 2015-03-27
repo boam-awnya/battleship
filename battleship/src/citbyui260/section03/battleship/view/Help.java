@@ -5,9 +5,8 @@
  */
 package citbyui260.section03.battleship.view;
 
-import battleship.BattleshipError;
-import battleship.HelpMenuControl;
-import battleship.MenuSuper;
+import citbyui260.section03.battleship.msgs.BattleshipError;
+import citbyui260.section03.battleship.control.HelpMenuControl;
 import java.util.Scanner;
 
 
@@ -86,29 +85,14 @@ public class Help extends MenuSuper {
                 case "Q": 
                     break;
                 default: 
-                    new BattleshipError().displayError("Invalid command. Please enter a valid command.");
+                    BattleshipError.displayError("Invalid command. Please enter a valid command.");
                     continue;
             }
         } while (!command.equals("Q"));  
         
          return;
     }
-
-        // displays the help menu
-    
-    /*  commented out 3/10 
-    public final void display() {
-        System.out.println("\n\t===============================================================");
-        System.out.println("\tEnter the letter associated with one of the following commands:");
-
-        for (int i = 0; i < menuItems.length; i++) {
-            System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
-        }
-        System.out.println("\t===============================================================\n");
-    }
-    */
-    
-    
+   
         
     
 }

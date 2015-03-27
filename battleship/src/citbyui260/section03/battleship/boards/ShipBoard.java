@@ -3,9 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package battleship;
+package citbyui260.section03.battleship.boards;
 
-import java.util.Random;
+import citbyui260.section03.battleship.msgs.BattleshipError;
+import citbyui260.section03.battleship.ships.Boat;
+import citbyui260.section03.battleship.game.Player;
+import citbyui260.section03.battleship.enums.ShipType;
+import java.awt.Point;
 
 /**
  *
@@ -13,18 +17,43 @@ import java.util.Random;
  */
 
 
-public class Board4Ships extends Board
+public class ShipBoard extends Board
 {
     
     
-    public Board4Ships()
+    public ShipBoard()
     {
        
     }
       
     // Function to randomly place ships; placed horizontally towards the right
     // of the starting point for now...
-   // public void shipPlacement()   *** 2/20 Jeffry
+   
+    public int shipPlacement(Boat myBoat,Point location)   
+    {
+        int flag=0; //set flag for OK
+        
+        flag = stayOnGrid(myBoat,location.x,location.y);     
+        if(flag == 1)
+            return flag;
+        
+        flag = checkGridLocation(myBoat,location.x,location.y);
+        
+        if(flag == 1)
+        {
+            return flag;
+        }
+        else
+        {
+            putShipinGrid(myBoat,location.x,location.y);
+            return flag;
+ 
+        }
+             
+    }
+    
+    
+    
     public void shipPlacementAI(Boat myBoat)   //  ** Added Boat object
     {
         int flag;                   //Flag for other boats in same locaiton
@@ -40,22 +69,14 @@ public class Board4Ships extends Board
             shipCol = getRandom(maxCols);       //Get Random StartCol
             myBoat.setDirection(getRandom(2)+1);
             
-            // assures ship isn't placed off the grid
-            if(myBoat.getDirection() == 1) //Direction is down
-                while(shipRow+myBoat.getSize()  >= maxRows ) //Makes sure starting plus size are ok.
-                {
-                    new BattleshipError().displayLine("Row too close to the end. Starting point: " + shipRow + ", " + shipCol + " is an invalid starting point.");
-                    shipRow = getRandom(maxRows);  //Get new Row
-                }
-                
-            else //boat.diretion is RIGHT
+            while(stayOnGrid(myBoat,shipRow,shipCol) == 1)
             {
-                while(shipCol+myBoat.getSize()  >= maxCols )   //Make sure starting plus size are ok
-                {
-                    new BattleshipError().displayLine("Column too close to the end. Starting point: " + shipRow + "," + shipCol + " is an invalid starting point.");
-                    shipCol = getRandom(maxCols);  //Get new Col
-                } 
+               if(myBoat.getDirection() == 1) //Direction is down
+                    shipRow = getRandom(maxRows);  //Get new Row 
+               else //boat.diretion is RIGHT
+                   shipCol = getRandom(maxCols);  //Get new Col
             }
+            
             
             // tests if another ship is in the proposed grid space
             flag = checkGridLocation(myBoat,shipRow,shipCol);
@@ -65,6 +86,7 @@ public class Board4Ships extends Board
         
         //Fill in the grid with the current boat location
         putShipinGrid(myBoat,shipRow,shipCol);
+        myBoat.setPlaced(true);
 
         
 
@@ -99,6 +121,35 @@ public class Board4Ships extends Board
    
     }
     
+    // assures ship isn't placed off the grid
+    private int stayOnGrid(Boat myBoat, int shipRow, int shipCol)
+    {
+        
+        int maxRows = getRows();    //Used for Random and boundry checking
+        int maxCols = getCols();    //Used for Random and boundry checking
+        int flag=0;  //0 = OK
+        
+            if(myBoat.getDirection() == 1) //Direction is down
+            {
+                if(shipRow+myBoat.getSize()  > maxRows ) //Makes sure starting plus size are ok.
+                {
+                    BattleshipError.displayLine("Row too close to the end. Starting point: " + shipRow + ", " + shipCol + " is an invalid starting point.");
+                    flag=1;  //error to close to edge
+                }
+            }   
+            else //boat.diretion is Across
+            {
+                if(shipCol+myBoat.getSize()  > maxCols )   //Make sure starting plus size are ok
+                {
+                    BattleshipError.displayLine("Column too close to the end. Starting point: " + shipRow + "," + shipCol + " is an invalid starting point.");
+                    flag = 1; //error too close to edge
+                } 
+            }
+            
+       return flag;
+    }
+    
+    
     /**************************************************************************
      * 
     Method: checkGridLocation
@@ -108,6 +159,8 @@ public class Board4Ships extends Board
     
     * 
     ***************************************************************************/
+    
+    
     private int checkGridLocation(Boat boat, int shipRow, int shipCol)
     {
         // tests if another ship is in the proposed grid space
@@ -120,7 +173,7 @@ public class Board4Ships extends Board
             if(this.checkLocation(rowOffset,colOffset) != 0)  //See if a value is in the grid locaiton other than 0
             {
                 flag= 1;  //Set the flag to repeat the loop
-                new BattleshipError().displayLine("Grid Check conflict when placing a boat at " + rowOffset + "," + colOffset);
+                BattleshipError.displayLine("Grid Check conflict when placing a boat at " + rowOffset + "," + colOffset);
                 break;
 
             }           
@@ -133,7 +186,7 @@ public class Board4Ships extends Board
 
         }
         
-        return flag;
+        return flag;  //1 = error  0 = ok
     }
     
     /*************************************************************************** 
@@ -156,17 +209,10 @@ public class Board4Ships extends Board
                     colOffset++;
         }
    
-        new BattleshipError().displayLine(boat.getName() + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.getDirection() );
+        BattleshipError.displayLine(boat.getName() + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.getDirection() );
     
     }
-    
-    
-    
-    private int getRandom(int maxVal) {
-        Random random = new Random();
-        return random.nextInt(maxVal);
-    }
-    
+   
     
     
 }
