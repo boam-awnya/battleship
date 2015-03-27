@@ -7,7 +7,7 @@ package citbyui260.section03.battleship.ships;
 
 import citbyui260.section03.battleship.enums.ShipType;   // Inport Enum Class
 import citbyui260.section03.battleship.enums.ShipCodes;   // Inport Enum Class for error codes
-
+import citbyui260.section03.battleship.exceptions.*;
 /**
  * @author Jeffry Simpson - BYUI CIT260 Section 03
  */
@@ -123,7 +123,7 @@ public class Boat
     Output: 0 for OK and -1 for Error
     
     --------------------------------------------------------------------*/   
-    public ShipCodes hitOrSunk(int hitDamage, int maxDamage)
+    public ShipCodes hitOrSunk(int hitDamage, int maxDamage) throws BoatException
     {
         
       int hitsRemaining;   
@@ -133,33 +133,37 @@ public class Boat
         
         if(maxDamage < 2 || maxDamage > 5)   
         {
-            System.out.println("\nError: Invalid boat size.\n");  //min boat size = 2, max = 5.  Check to ensure maxHits is within those parameters.
-            return sc.INVALIDSIZE;
+            // System.out.println("\nError: Invalid boat size.\n");  //min boat size = 2, max = 5.  Check to ensure maxHits is within those parameters.
+            throw new BoatException("Wrong boat size sailor");
         }
         else if(hitDamage < 0 || (hitDamage > maxDamage))  //Check hitDamage is less than maxDamage and greater than 0
         {
-            System.out.println("\nError: Invalid number of hits. \n");
-            return sc.INVALIDNUMHITS;
+            //System.out.println("\nError: Invalid number of hits. \n");
+            //return sc.INVALIDNUMHITS;
+            throw new BoatException("Your ship is not that big buddy");
         }
                 
          else if (hitDamage == 0) // no hits yet statement
         {
-            System.out.println("\nThe " + name + " is safe.  It has no hits yet. \n");
-            return sc.NOHITS; 
+            //System.out.println("\nThe " + name + " is safe.  It has no hits yet. \n");
+            //return sc.NOHITS; 
+            throw new BoatException("The " + name + " is safe.  It has no hits yet. ");
         }
         
         else if (hitDamage == maxDamage) // ship sunk statement 
         {
             if (maxDamage == 4) //if the boat sunk is the battleship
             {
-                System.out.println("\nThe " + name + " is sunk.  You LOSE.  Better luck next time!! \n");
-                return sc.BATTLESHIPSUNK; 
+                //System.out.println("\nThe " + name + " is sunk.  You LOSE.  Better luck next time!! \n");
+                //return sc.BATTLESHIPSUNK; 
+                throw new BoatException("The Battleship is sunk...GAME OVER");
             }
             
             else //for any other ship
             {
-                System.out.println("\nThe " + name + " is sunk.\n");
-                return sc.SHIPSUNK; 
+                //System.out.println("\nThe " + name + " is sunk.\n");
+                //return sc.SHIPSUNK; 
+                throw new BoatException("One of the ships is sunk");
             }          
         }
         
