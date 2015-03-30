@@ -176,12 +176,17 @@ public class GameMenuControl
    
     public void displayStatistics()
     {
+        try{
          BattleshipError.displayLine("Display Statistics");
          //this.game.currentPlayer.sortScores();
          //this.game.currentPlayer.averageScores();
          //this.game.currentPlayer.highScoreNames();
          this.game.currentPlayer.getGameStats(this.game.currentPlayer.shotBoard.getHits(), this.game.currentPlayer.shotBoard.getMisses());
-        
+        }
+        catch(PlayerException pe)
+        {
+            BattleshipError.displayLine(pe.getMessage());
+        }
                  
     }
     
