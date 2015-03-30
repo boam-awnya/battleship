@@ -13,6 +13,7 @@ import citbyui260.section03.battleship.view.*;
 import citbyui260.section03.battleship.game.*;
 import citbyui260.section03.battleship.ships.*;
 import java.awt.Point;
+import citbyui260.section03.battleship.exceptions.*;
 
 
 /**
@@ -111,6 +112,9 @@ public class GameMenuControl
         
         if(otherFlag != 0)  //Means there is a boat at this locaiton.
         {
+            try {
+            
+            
             Boat hitBoat;  //new local varable to get ship information 
             
             thisShotBoard.setHits(thisShotBoard.getHits()+1);
@@ -120,15 +124,19 @@ public class GameMenuControl
             hitBoat = otherBoatBoard.getShip(this.game.otherPlayer, typeShip);
             hitBoat.setHitDamage(hitBoat.getHitDamage()+1);  //Increase damage by one
             
-            errCode = hitBoat.hitOrSunk(hitBoat.getHitDamage(), hitBoat.getMaxDamage()); //calls hitOrSunk method in boat.java   
             
-            switch(errCode)   //Check if there is an error code need for when we know to end the game.
+            errCode = hitBoat.hitOrSunk(hitBoat.getHitDamage(), hitBoat.getMaxDamage()); //calls hitOrSunk method in boat.java   
+                } catch(BoatException be){
+                BattleshipError.displayError(be.getMessage()); 
+            
+            }
+            /*switch(errCode)   //Check if there is an error code need for when we know to end the game.
             {
                 case OK:
                     break;
                 default:
                     new ShotOutput().displayError(errCode);
-            }
+            }*/
             
         }
         else{
@@ -168,12 +176,17 @@ public class GameMenuControl
    
     public void displayStatistics()
     {
+        try{
          BattleshipError.displayLine("Display Statistics");
          //this.game.currentPlayer.sortScores();
          //this.game.currentPlayer.averageScores();
          //this.game.currentPlayer.highScoreNames();
          this.game.currentPlayer.getGameStats(this.game.currentPlayer.shotBoard.getHits(), this.game.currentPlayer.shotBoard.getMisses());
-        
+        }
+        catch(PlayerException pe)
+        {
+            BattleshipError.displayLine(pe.getMessage());
+        }
                  
     }
     
