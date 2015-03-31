@@ -88,22 +88,7 @@ public class GameMenu extends MenuSuper
                     this.gameMenuControl.placeShips();
                     break;
                 case "F":
-                        if(this.game.currentPlayer.checkReadyToPlay())
-                        {
-                            try
-                            {
-                                this.gameMenuControl.fireAShot();
-                                this.game.switchPlayers();
-                            }catch (BattleshipSunkException bse)
-                            {
-                                BattleshipError.displayLine(bse.getMessage());
-                                command = "Q";
-                            }
-                        }
-                        else
-                        {
-                            BattleshipError.displayError("You must place your ships before you fire a shot at your opponent!");
-                        }
+                    command = gameMenuControl.fireControl();    
                     break;
                 case "A":
                     this.game.currentPlayer.shotBoard.availableShots();
@@ -128,11 +113,11 @@ public class GameMenu extends MenuSuper
                     break;
                 default: 
                     BattleshipError.displayError("Invalid command. Please enter a valid command.");
-                    continue;                              
+                                                
             }
         } while (!command.equals("Q"));
 
-        return;
+      
     }
     
 

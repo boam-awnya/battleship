@@ -64,7 +64,44 @@ public class GameMenuControl
     public void setPlaceShipMenu(PlaceShipMenu placeShipMenu) {
         this.placeShipMenu = placeShipMenu;
     }
-    //end of change 3/7
+    
+    
+    /*
+    
+    New Method to control Firing a Shot with End of Game capcity.
+    
+    */
+    
+    public String fireControl()
+    {
+        String passBack = "F";  //Use this to pass back F or Q deplending if the battleship got sunk.
+        
+        if(this.game.currentPlayer.checkReadyToPlay())
+        {
+            try
+            {
+                fireAShot();
+                this.game.switchPlayers();
+            }catch (BattleshipSunkException bse)
+            {
+                BattleshipError.displayLine(game.otherPlayer.getName()+ bse.getMessage()); 
+                game.endGame();
+                displayStatistics();   //current player
+                this.game.switchPlayers();
+                displayStatistics();   //other player
+                passBack = "Q";
+            }
+        }
+        else
+        {
+            BattleshipError.displayError("You must place your ships before you fire a shot at your opponent!");
+        }
+        
+        return passBack;
+    }
+    
+    
+    
     public int fireAShot() throws BattleshipSunkException
     {
         ShipCodes errCode= ShipCodes.OK;   //Error value for shots
@@ -128,9 +165,8 @@ public class GameMenuControl
                 } 
             catch (BattleshipSunkException bse)
             {
-              BattleshipError.displayLine(this.game.currentPlayer.getName() + " you won!");
-              BattleshipError.displayLine(this.game.otherPlayer.getName() + bse.getMessage()); 
-              throw new BattleshipSunkException("Game Over");
+              BattleshipError.displayLine(this.game.currentPlayer.getName() + " you won!"); 
+              throw new BattleshipSunkException(bse.getMessage());
             }
             catch(BoatException be)
             {
