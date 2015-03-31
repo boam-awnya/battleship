@@ -9,6 +9,7 @@ import citbyui260.section03.battleship.msgs.BattleshipError;
 import citbyui260.section03.battleship.game.Game;
 import citbyui260.section03.battleship.control.GameMenuControl;
 import citbyui260.section03.battleship.enums.PlayerType;
+import citbyui260.section03.battleship.exceptions.*;
 import citbyui260.section03.battleship.view.MenuSuper;
 import java.io.Serializable;
 import java.util.Scanner;
@@ -89,8 +90,15 @@ public class GameMenu extends MenuSuper
                 case "F":
                         if(this.game.currentPlayer.checkReadyToPlay())
                         {
-                            this.gameMenuControl.fireAShot();
-                            this.game.switchPlayers();
+                            try
+                            {
+                                this.gameMenuControl.fireAShot();
+                                this.game.switchPlayers();
+                            }catch (BattleshipSunkException bse)
+                            {
+                                BattleshipError.displayLine(bse.getMessage());
+                                command = "Q";
+                            }
                         }
                         else
                         {
