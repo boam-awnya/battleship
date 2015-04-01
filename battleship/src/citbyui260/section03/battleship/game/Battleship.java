@@ -1,8 +1,9 @@
 package citbyui260.section03.battleship.game;
 
+import citbyui260.section03.battleship.frames.MainFrame;
 import citbyui260.section03.battleship.msgs.BattleshipError;
 import citbyui260.section03.battleship.view.Menu;
-
+import citbyui260.section03.battleship.frames.MainFrame;
 
 //import battleship.Game;
 
@@ -17,7 +18,7 @@ import citbyui260.section03.battleship.view.Menu;
 
 
 public class Battleship {
-    
+    private static MainFrame mainFrame;
     String welcome = 
               "\n\t***********************************************************************"
             + "\n\t* Prepare your fleet. A battle is about to begin!                     *"                            
@@ -44,8 +45,15 @@ public class Battleship {
         Battleship battleship = new Battleship();
         battleship.display();
      
-        Menu mainMenu = new Menu();
-        mainMenu.getInput();
+//        Menu mainMenu = new Menu();
+//        mainMenu.getInput();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                Battleship.mainFrame = new MainFrame();
+                
+                Battleship.mainFrame.setVisible(true);
+            }
+        });
             } catch(Throwable ex)
             {
             BattleshipError.displayLine("Unexpected error: " + ex.getMessage());
@@ -53,7 +61,11 @@ public class Battleship {
             }
               finally
         {
-        BattleshipError.displayLine("Dust thou art, unto dust thou shalt become");
+        
+            if(Battleship.mainFrame != null) {
+                Battleship.mainFrame.dispose();
+            }
+            BattleshipError.displayLine("Dust thou art, unto dust thou shalt become");
         }
     }
     
