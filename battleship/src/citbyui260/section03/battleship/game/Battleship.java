@@ -3,7 +3,6 @@ package citbyui260.section03.battleship.game;
 import citbyui260.section03.battleship.frames.MainFrame;
 import citbyui260.section03.battleship.msgs.BattleshipError;
 import citbyui260.section03.battleship.view.Menu;
-import citbyui260.section03.battleship.frames.MainFrame;
 
 //import battleship.Game;
 

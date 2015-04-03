@@ -6,9 +6,10 @@
 package citbyui260.section03.battleship.control;
 
 import citbyui260.section03.battleship.game.Game;
+import citbyui260.section03.battleship.msgs.BattleshipError;
 import citbyui260.section03.battleship.view.GameMenu;
 import citbyui260.section03.battleship.view.Help;
-
+import citbyui260.section03.battleship.frames.HelpFrame;
 /**
  *
  * @author Jeffry Simpson - BYUI CIT260 Section 03
@@ -16,6 +17,7 @@ import citbyui260.section03.battleship.view.Help;
 public class MenuControl
 {
     private GameMenu gameMenu;
+   // private static HelpFrame helpFrame;
  
     
     public MenuControl()
@@ -37,8 +39,30 @@ public class MenuControl
     
     public void displayHelpMenu() 
     {
-        Help helpMenu = new Help();
-        helpMenu.getInput();
+        final Help help = null;
+        
+        try {
+                        
+            /*Create and display help GUI */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    help.helpFrame = new HelpFrame();
+                    help.helpFrame.setVisible(true);
+                }
+            });
+        }
+        
+        catch (Throwable ex) {
+            BattleshipError.displayError("Unexpected error: " + ex.getMessage());
+            BattleshipError.displayError(ex.getStackTrace().toString());
+        }
+        
+        finally {
+            if (help.helpFrame != null) {
+                help.helpFrame.dispose();
+            }
+        }
+        //helpMenu.getInput();
     }
     
     

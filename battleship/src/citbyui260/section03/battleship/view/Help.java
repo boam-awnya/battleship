@@ -7,6 +7,7 @@ package citbyui260.section03.battleship.view;
 
 import citbyui260.section03.battleship.msgs.BattleshipError;
 import citbyui260.section03.battleship.control.HelpMenuControl;
+import citbyui260.section03.battleship.frames.HelpFrame;
 import java.util.Scanner;
 
 
@@ -15,6 +16,7 @@ import java.util.Scanner;
  * @author Shatzi-Webster
  */
 public class Help extends MenuSuper {
+    public static HelpFrame helpFrame;
           
     private final static String[][] menuItems = {
         {"B", "The board"},
