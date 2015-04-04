@@ -8,6 +8,7 @@ package citbyui260.section03.battleship.control;
 import citbyui260.section03.battleship.game.Game;
 import citbyui260.section03.battleship.view.GameMenu;
 import citbyui260.section03.battleship.view.Help;
+import citbyui260.section03.battleship.frames.*;
 
 /**
  *
@@ -35,10 +36,10 @@ public class MenuControl
     }   
     
     
-    public void displayHelpMenu() 
+    public void displayHelpForm() 
     {
-        Help helpMenu = new Help();
-        helpMenu.getInput();
+        Help helpForm = new Help();
+        helpForm.display();
     }
     
     

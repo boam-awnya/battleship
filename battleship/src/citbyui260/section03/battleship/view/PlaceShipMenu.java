@@ -58,7 +58,7 @@ public class PlaceShipMenu extends MenuSuper {
                     menu.displayBoard();
                     break;
                 case "H":
-                    menu.displayHelp();
+                    menu.displayHelpForm();
                     break;
                 case "Q":
                     break;

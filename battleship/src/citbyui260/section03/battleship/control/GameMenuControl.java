@@ -12,6 +12,7 @@ import citbyui260.section03.battleship.enums.*;
 import citbyui260.section03.battleship.view.*;
 import citbyui260.section03.battleship.game.*;
 import citbyui260.section03.battleship.ships.*;
+import citbyui260.section03.battleship.frames.*;
 import java.awt.Point;
 import citbyui260.section03.battleship.exceptions.*;
 
@@ -195,10 +196,10 @@ public class GameMenuControl
         //nothing here yet
     }
 
-    public void displayHelpMenu() 
+    public void displayHelpForm() 
     {
-        Help helpMenu = new Help();
-        helpMenu.getInput();
+        Help helpForm = new Help();
+        helpForm.display();
     }
     
 }

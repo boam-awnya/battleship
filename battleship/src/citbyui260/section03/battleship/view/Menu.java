@@ -52,7 +52,7 @@ public class Menu extends MenuSuper {
 //                    this.mainMenuControl.startGame(2);
 //                    break;
                 case "H":
-                    this.mainMenuControl.displayHelpMenu();            
+                    this.mainMenuControl.displayHelpForm();            
                     break;
                 case "Q":
                     break;

@@ -12,6 +12,7 @@ import citbyui260.section03.battleship.boards.Board;
 import citbyui260.section03.battleship.ships.Boat;
 import citbyui260.section03.battleship.view.GetLocationView;
 import citbyui260.section03.battleship.view.Help;
+import citbyui260.section03.battleship.frames.*;
 import java.awt.Point;
 import java.util.Scanner;
 
@@ -61,9 +62,10 @@ public class PlaceShipMenuControl {
         
     }
     
-    public void displayHelp() {
-        Help helpMenu = new Help();
-        helpMenu.getInput();
+    public void displayHelpForm() 
+    {
+        Help helpForm = new Help();
+        helpForm.display();
     }
     
     private void placeYourShip(Player player,Boat boat) 

@@ -164,7 +164,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jpQuitButtonActionPerformed
 
     private void jpHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpHelpButtonActionPerformed
-        menuControl.displayHelpMenu();
+        menuControl.displayHelpForm();
     }//GEN-LAST:event_jpHelpButtonActionPerformed
 
     private void jpOnePlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpOnePlayerButtonActionPerformed

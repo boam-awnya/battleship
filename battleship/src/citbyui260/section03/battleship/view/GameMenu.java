@@ -114,7 +114,7 @@ public class GameMenu extends MenuSuper
 //                    gameMenuControl.displayPreferencesMenu();
 //                    break;
                 case "H":
-                    gameMenuControl.displayHelpMenu();
+                    gameMenuControl.displayHelpForm();
                     break;
                 case "Q":                   
                     break;
