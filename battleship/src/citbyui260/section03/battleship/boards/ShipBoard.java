@@ -209,7 +209,7 @@ public class ShipBoard extends Board
                     colOffset++;
         }
    
-        BattleshipError.displayLine(boat.getName() + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.getDirection() );
+        //BattleshipError.displayLine(boat.getName() + " placed. Starting point is: " + shipRow + "," + shipCol + " direction = " + boat.getDirection() );
     
     }
    

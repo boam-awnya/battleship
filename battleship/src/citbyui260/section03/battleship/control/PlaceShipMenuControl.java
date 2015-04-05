@@ -49,8 +49,8 @@ public class PlaceShipMenuControl {
     
     public void resetBoard() {
         
-        board = this.game.currentPlayer.boatBoard;
-        board.clearTheBoard();
+        this.game.currentPlayer.boatBoard.clearTheBoard();      //Clear the board 
+        this.game.currentPlayer.ClearShips();                   //remove "Placed flag from ships
         BattleshipError.displayLine("Your board has been reset.");
     }
     

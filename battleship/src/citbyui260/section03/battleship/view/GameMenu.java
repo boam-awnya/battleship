@@ -9,6 +9,7 @@ import citbyui260.section03.battleship.msgs.BattleshipError;
 import citbyui260.section03.battleship.game.Game;
 import citbyui260.section03.battleship.control.GameMenuControl;
 import citbyui260.section03.battleship.enums.PlayerType;
+import citbyui260.section03.battleship.exceptions.*;
 import citbyui260.section03.battleship.view.MenuSuper;
 import java.io.Serializable;
 import java.util.Scanner;
@@ -87,15 +88,7 @@ public class GameMenu extends MenuSuper
                     this.gameMenuControl.placeShips();
                     break;
                 case "F":
-                        if(this.game.currentPlayer.checkReadyToPlay())
-                        {
-                            this.gameMenuControl.fireAShot();
-                            this.game.switchPlayers();
-                        }
-                        else
-                        {
-                            BattleshipError.displayError("You must place your ships before you fire a shot at your opponent!");
-                        }
+                    command = gameMenuControl.fireControl();    
                     break;
                 case "A":
                     this.game.currentPlayer.shotBoard.availableShots();
@@ -120,11 +113,11 @@ public class GameMenu extends MenuSuper
                     break;
                 default: 
                     BattleshipError.displayError("Invalid command. Please enter a valid command.");
-                    continue;                              
+                                                
             }
         } while (!command.equals("Q"));
 
-        return;
+      
     }
     
 

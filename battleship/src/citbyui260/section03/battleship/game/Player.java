@@ -126,8 +126,32 @@ public class Player
         return sum;              
     }
     
-
+    /*-------------------------------------------------------------------
+    Description:  Clears the player ship's marker for is placed
     
+    Author(s):  Jeffry Simpson
+
+    input: N/A
+    Output: N/A
+    
+    --------------------------------------------------------------------*/
+    public void ClearShips()
+    {
+        submarine.setPlaced(false);
+        battleship.setPlaced(false);
+        carrier.setPlaced(false);
+    }
+    
+    
+   /*-------------------------------------------------------------------
+    Description:  Checks if all ships have been "Placed"
+    
+    Author(s):  Jeffry Simpson
+   
+    input: N/A
+    Output: Boolean flag (true/False)
+    
+    --------------------------------------------------------------------*/
     public boolean checkReadyToPlay()
     {
         boolean flag = false;

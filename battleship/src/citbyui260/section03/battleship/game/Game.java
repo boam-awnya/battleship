@@ -135,8 +135,8 @@ public class Game implements Serializable {
             playerB.boatBoard.shipPlacementAI(playerB.submarine);  //Let the AI pick all the locations
             playerB.boatBoard.shipPlacementAI(playerB.battleship);  //Let the AI pick all the locations
             playerB.boatBoard.shipPlacementAI(playerB.carrier);  //Let the AI pick all the locations
-           
-            playerB.boatBoard.display();
+            BattleshipError.displayLine("The AI has placed it ships.");
+            //playerB.boatBoard.display();   Debug only
         }
     }
 
@@ -187,6 +187,12 @@ public class Game implements Serializable {
         BattleshipError.displayLine("\n" + this.currentPlayer.getName() + " It's your turn.");
        
         
+    }
+    
+    public void endGame()
+    {
+        recordWinner();
+        displayWinningMessage ();
     }
     
 
