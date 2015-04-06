@@ -28,8 +28,7 @@ public class Game implements Serializable {
        this.playerA.name = "Captain Baymax";
        this.playerB = new Player();
        this.playerB.name = "AI";
-     //  this.boatBoard = new Board(true);        //2-16 Jeffry remove - 2-14  added to remove NPE
-     //  this.shotBoard = new Board(false);       //2-16 Jeffry remove - 2-14  added to remove NPE
+  
     }
 
     public Player getPlayerA() {
@@ -119,23 +118,20 @@ public class Game implements Serializable {
 */
     public void start(int numPlayers) {
 
+        setPlayingOrder(numPlayers);   //2-16 Jeffry Added NumPlayers, removed Player1 and Player2 variables
+        status = Game.NEW_GAME;
 
-        // clear the board for both players  (2/16 Jeffry added Player. )
-        playerA.boatBoard.clearTheBoard();
-        playerA.shotBoard.clearTheBoard();
-        playerB.boatBoard.clearTheBoard();
-        playerB.shotBoard.clearTheBoard();
-        this.status = Game.NEW_GAME;
+        // Setup Players
+        playerA.setup();
+        playerB.setup();
         
-        this.setPlayingOrder(numPlayers);   //2-16 Jeffry Added NumPlayers, removed Player1 and Player2 variables
-
         if(numPlayers == 1)  //Setup AI ships
         {
             
-            playerB.boatBoard.shipPlacementAI(playerB.submarine);  //Let the AI pick all the locations
-            playerB.boatBoard.shipPlacementAI(playerB.battleship);  //Let the AI pick all the locations
-            playerB.boatBoard.shipPlacementAI(playerB.carrier);  //Let the AI pick all the locations
-            BattleshipError.displayLine("The AI has placed it ships.");
+            playerB.boatBoard.shipPlacementAI(playerB.submarine);  //Let the AI pick ship locations
+            playerB.boatBoard.shipPlacementAI(playerB.battleship);  //Let the AI pick shiplocations
+            playerB.boatBoard.shipPlacementAI(playerB.carrier);  //Let the AI pick ship locations
+            BattleshipError.displayLine("AI Player: " + playerB.getName() + " has placed their ships.");
             //playerB.boatBoard.display();   Debug only
         }
     }

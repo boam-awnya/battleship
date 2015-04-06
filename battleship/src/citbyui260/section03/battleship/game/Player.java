@@ -10,10 +10,11 @@ import citbyui260.section03.battleship.boards.ShipBoard;
 import citbyui260.section03.battleship.boards.Board;
 import citbyui260.section03.battleship.enums.*;  //Inport ENUM Class
 import citbyui260.section03.battleship.exceptions.PlayerException;
+import java.util.Scanner;
 
 /**
  *
- * @author jeffrysimpson, awnyaboam
+ * @author jeffrysimpson, awnyaboam, Colby
  */
 public class Player
 {
@@ -108,6 +109,43 @@ public class Player
     }
        
     
+    /*-------------------------------------------------------------------
+    Description:  setup for new name
+    Author(s):  Jeffry Simpson
+    input: N/A
+    Output: N/A
+    --------------------------------------------------------------------*/
+    public void setup()
+    {
+        boatBoard.clearTheBoard();   //Clear the boat board
+        shotBoard.clearTheBoard();  //Clear the Shot board
+        
+        //Setup Player name
+        if(playerType != PlayerType.AI)    
+            setName(getNameInput());
+        else
+            setName("Captain BayMax");
+    }
+    
+    
+    /*-------------------------------------------------------------------
+    Description:  Get Player name
+    Author(s):  Jeffry Simpson
+    input: N/A
+    Output: String
+    --------------------------------------------------------------------*/
+    private String getNameInput()
+    {
+        String getName;
+        Scanner inFile = new Scanner(System.in);
+        
+        System.out.print("Enter your player name: ");
+
+        //Get User name
+        getName = inFile.nextLine();
+            
+        return getName;
+    }
     
     /*-------------------------------------------------------------------
     Description:  Count number of shots taken
@@ -128,12 +166,10 @@ public class Player
     
     /*-------------------------------------------------------------------
     Description:  Clears the player ship's marker for is placed
-    
     Author(s):  Jeffry Simpson
 
     input: N/A
-    Output: N/A
-    
+    Output: N/A  
     --------------------------------------------------------------------*/
     public void ClearShips()
     {
@@ -144,13 +180,11 @@ public class Player
     
     
    /*-------------------------------------------------------------------
-    Description:  Checks if all ships have been "Placed"
-    
+    Description:  Checks if all ships have been "Placed   
     Author(s):  Jeffry Simpson
    
     input: N/A
     Output: Boolean flag (true/False)
-    
     --------------------------------------------------------------------*/
     public boolean checkReadyToPlay()
     {
@@ -189,15 +223,13 @@ public class Player
     /*-------------------------------------------------------------------
     Description:  Calculates Hit and Miss Percentage from Hit and Miss info
     
-    Author(s):  Jeffry Simpson
+    Author(s):  Group 3 (John, Katie, Awyna, Jeremy, Cobly, Shatzi
     Info:  Group Lesson #3 assignemnt
     
     input: Hit and Miss
     Output: 0 for OK and -1 for Error
     
     --------------------------------------------------------------------*/
-    
-    
      public int getGameStats(int hit, int miss) throws PlayerException
     {
         double totalShots,hitPercent,missPercent;   //Requirement 1 - Two or more primitive Variables
@@ -290,9 +322,7 @@ public class Player
     }
         
     //For-each loop to associate name with score--authored by Colby 2/21/15
-
-    
-    
+ 
  public void highScoreNames()
     {
                 System.out.print("\n");
