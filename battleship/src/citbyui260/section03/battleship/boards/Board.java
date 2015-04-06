@@ -44,9 +44,6 @@ public class Board
     }
 
 
-   
-    
-    
     
     /**************************************************************************
      * 
@@ -139,7 +136,7 @@ public class Board
         System.out.print("  0123456789\n------------\n");   //Print Row header
         for (int i = 0; i < getRows(); i++) 
         {
-            System.out.print(getColStr(i));                 //Print Col header
+            System.out.print(getColStr(i) + " ");                 //Print Col header
             for (int j = 0; j < getCols(); j++) 
             {
                 System.out.print(grid[i][j]);
@@ -162,37 +159,37 @@ public class Board
         {
 
             case 0:
-                x = "A ";
+                x = "A";
                 break;
             case 1:
-                x = "B ";
+                x = "B";
                 break;
             case 2:
-                x = "C ";
+                x = "C";
                 break;
             case 3:
-                x = "D ";
+                x = "D";
                 break;
             case 4:
-                x = "E ";
+                x = "E";
                 break;
             case 5:
-                x = "F ";
+                x = "F";
                 break;
             case 6:
-                x = "G ";
+                x = "G";
                 break;
             case 7:
-                x = "H ";
+                x = "H";
                 break;
             case 8:
-                x = "I ";
+                x = "I";
                 break;
             case 9:
-                x = "J ";
+                x = "J";
                 break;                     
             default:
-                x= "  ";
+                x= " ";
         }
        return x;
     }

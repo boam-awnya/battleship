@@ -131,8 +131,8 @@ public class Game implements Serializable {
             playerB.boatBoard.shipPlacementAI(playerB.submarine);  //Let the AI pick ship locations
             playerB.boatBoard.shipPlacementAI(playerB.battleship);  //Let the AI pick shiplocations
             playerB.boatBoard.shipPlacementAI(playerB.carrier);  //Let the AI pick ship locations
-            BattleshipError.displayLine("AI Player: " + playerB.getName() + " has placed their ships.");
-            //playerB.boatBoard.display();   Debug only
+            BattleshipError.displayLine("AI Player " + playerB.getName() + " has placed his ships.");
+            //playerB.boatBoard.display();   //Debug only
         }
     }
 

@@ -17,9 +17,9 @@ public class PlaceShipMenu extends MenuSuper {
     private PlaceShipMenuControl menu;
     
     private final static String[][] menuItems = {
-        {"S", "Place your Submarine"},
-        {"B", "Place your Battleship"},
-        {"C", "Place your Carrier"},
+        {"S", "Place your Submarine (3) "},
+        {"B", "Place your Battleship (4) "},
+        {"C", "Place your Carrier (5) "},
         {"V", "View your Board"},
         {"R", "Reset all"},
         {"H", "Help"},

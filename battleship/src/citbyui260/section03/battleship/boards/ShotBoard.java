@@ -118,7 +118,8 @@ public class ShotBoard extends Board
     }
     
       
-        public void display()
+    @Override
+    public void display()
     {
         String marker;
         
@@ -135,6 +136,9 @@ public class ShotBoard extends Board
                         break;
                     case 2:
                         marker = "M";
+                        break;
+                    case 3:
+                        marker = "S";
                         break;
                     default:
                         marker = "0";

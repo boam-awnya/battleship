@@ -9,6 +9,7 @@ import citbyui260.section03.battleship.msgs.BattleshipError;
 import citbyui260.section03.battleship.game.Game;
 import citbyui260.section03.battleship.game.Player;
 import citbyui260.section03.battleship.boards.Board;
+import citbyui260.section03.battleship.exceptions.BoatException;
 import citbyui260.section03.battleship.ships.Boat;
 import citbyui260.section03.battleship.view.GetLocationView;
 import citbyui260.section03.battleship.view.Help;
@@ -69,6 +70,7 @@ public class PlaceShipMenuControl {
     private void placeYourShip(Player player,Boat boat) 
     {
        Point location;
+       int flag = 0; //Everything is ok
      
        if(boat.isPlaced())
             BattleshipError.displayError("Your " + boat.getName() + " is already placed");
@@ -78,12 +80,27 @@ public class PlaceShipMenuControl {
            BattleshipError.displayLine("Placing " + boat.getName());
            do
            {
+                flag = 1;
                 location = getLocationView.getInput();
-                System.out.print(location);
+                //System.out.print(location);
                 pickDirection(boat);
-                System.out.println(boat.getDirection());
+                //System.out.println(boat.getDirection());
+                
+                try
+                {
+                    flag = player.boatBoard.shipPlacement(boat,location);
+                    if (flag==1)
+                    {
+                        BattleshipError.displayLine("This Boat placement conflicts with one of your other boats ");
+  
+                    }
+                                
+                }catch(BoatException be)
+                    {             
+                        BattleshipError.displayLine(be.getMessage()); 
+                    }
 
-           }while(player.boatBoard.shipPlacement(boat,location)== 1);  //1 means there was an error  0 means success placing ship
+           }while(flag == 1);  //1 means there was an error  0 means success placing ship
            
            boat.setPlaced(true);
 
