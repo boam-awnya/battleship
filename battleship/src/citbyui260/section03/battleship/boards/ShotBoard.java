@@ -126,7 +126,7 @@ public class ShotBoard extends Board
         System.out.print("  0123456789\n------------\n");   //Print Row header
         for (int i = 0; i < getRows(); i++) 
         {
-            System.out.print(getColStr(i));
+            System.out.print(getColStr(i) + " ");
             for (int j = 0; j < getCols(); j++) 
             {
                 switch(checkLocation(i,j))

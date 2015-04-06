@@ -131,7 +131,7 @@ public class GameMenuControl
             
             String printShotLocation =((char) (location.x + 65) + "" + location.y);
 
-            if( flag == 1)  //Location already used
+            if( flag == 1 || flag == 2)  //Location already used
                 BattleshipError.displayLine(this.game.currentPlayer.getName() + " you've already used " +  printShotLocation + " for a shot");  //2/20 Jeffry - Temp print out of location
             else
                 BattleshipError.displayLine(this.game.currentPlayer.getName() + " fired a Shot at " +  printShotLocation);  //2/16 Jeffry - Temp print out of location
@@ -161,12 +161,17 @@ public class GameMenuControl
                     hitBoat.setHitDamage(hitBoat.getHitDamage()+1);  //Increase damage by one
 
 
-                    errCode = hitBoat.hitOrSunk(hitBoat.getHitDamage(), hitBoat.getMaxDamage()); //calls hitOrSunk method in boat.java   
+                    errCode = hitBoat.hitOrSunk(hitBoat.getHitDamage(), hitBoat.getMaxDamage()); //calls method in boat.java   
                 } 
-            catch (BattleshipSunkException bse)
+            catch (BattleshipSunkException btse)
             {
               BattleshipError.displayLine(this.game.currentPlayer.getName() + " you won!"); 
-              throw new BattleshipSunkException(bse.getMessage());
+              throw new BattleshipSunkException(btse.getMessage());
+            }
+            catch (BoatSunkException bse)
+            {
+              BattleshipError.displayLine(this.game.currentPlayer.getName() + " you sunk "
+                      + this.game.otherPlayer.getName()+ "'s " + bse.getMessage()); 
             }
             catch(BoatException be)
             {

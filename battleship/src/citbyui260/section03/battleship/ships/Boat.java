@@ -123,7 +123,7 @@ public class Boat
     Output: 0 for OK and -1 for Error
     
     --------------------------------------------------------------------*/   
-    public ShipCodes hitOrSunk(int hitDamage, int maxDamage) throws BoatException, BattleshipSunkException
+    public ShipCodes hitOrSunk(int hitDamage, int maxDamage) throws BoatException, BoatSunkException, BattleshipSunkException
     {
         
       int hitsRemaining;   
@@ -163,7 +163,7 @@ public class Boat
             {
                 //System.out.println("\nThe " + name + " is sunk.\n");
                 //return sc.SHIPSUNK; 
-                throw new BoatException("One of the ships is sunk");
+                throw new BoatSunkException(name);
             }          
         }
         
