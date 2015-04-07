@@ -123,7 +123,7 @@ public class Boat
     Output: 0 for OK and -1 for Error
     
     --------------------------------------------------------------------*/   
-    public ShipCodes hitOrSunk(int hitDamage, int maxDamage) throws BoatException, BoatSunkException, BattleshipSunkException
+    public void hitOrSunk(int hitDamage, int maxDamage) throws BoatException, BoatHitException, BoatSunkException, BattleshipSunkException
     {
         
       int hitsRemaining;   
@@ -175,8 +175,8 @@ public class Boat
             boatHitOutput = (boatHitPercent * 100);         
         
         
-            System.out.println ("\nThe " + name + " got hit! \n\t There are " + hitsRemaining + " hit(s) on the " + name + " remaining. \n\tThe " + name + " is damaged " + (int) boatHitOutput + "%. \n"); 
-              return sc.OK; //everything working correctly
+            throw new BoatHitException(name + "! \n\t There are " + hitsRemaining + " hit(s) on the " + name + " remaining. \n\tThe " + name + " is damaged " + (int) boatHitOutput + "%. \n"); 
+            
         }
         
     }

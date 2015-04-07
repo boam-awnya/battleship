@@ -104,7 +104,7 @@ public class GameMenuControl
     
     public int fireAShot() throws BattleshipSunkException
     {
-        ShipCodes errCode= ShipCodes.OK;   //Error value for shots
+        //ShipCodes errCode= ShipCodes.OK;   //Error value for shots
         ShipBoard otherBoatBoard = this.game.otherPlayer.boatBoard;
         ShotBoard thisShotBoard = this.game.currentPlayer.shotBoard;
       
@@ -161,7 +161,7 @@ public class GameMenuControl
                     hitBoat.setHitDamage(hitBoat.getHitDamage()+1);  //Increase damage by one
 
 
-                    errCode = hitBoat.hitOrSunk(hitBoat.getHitDamage(), hitBoat.getMaxDamage()); //calls method in boat.java   
+                    hitBoat.hitOrSunk(hitBoat.getHitDamage(), hitBoat.getMaxDamage()); //calls method in boat.java   
                 } 
             catch (BattleshipSunkException btse)
             {
@@ -171,6 +171,11 @@ public class GameMenuControl
             catch (BoatSunkException bse)
             {
               BattleshipError.displayLine(this.game.currentPlayer.getName() + " you sunk "
+                      + this.game.otherPlayer.getName()+ "'s " + bse.getMessage()); 
+            }
+             catch (BoatHitException bse)
+            {
+              BattleshipError.displayLine(this.game.currentPlayer.getName() + " you hit "
                       + this.game.otherPlayer.getName()+ "'s " + bse.getMessage()); 
             }
             catch(BoatException be)
